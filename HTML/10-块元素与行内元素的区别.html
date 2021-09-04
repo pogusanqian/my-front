@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        块元素主要用来整体布局网页
+        行内元素主要用来进行包裹文字的
+
+        通常块元素中可以放行内元素, 而不会再行内元素中放块元素
+        块元素通常可以嵌套块元素, 但是p标签除外, p标签内不能放任何块元素
+     -->
+    <p>你好世界<em>哈哈哈</em></p>
+    <!-- blockquote块元素被抽出来了 -->
+    <p>
+        hello<blockquote>world</blockquote>
+    </p>
+
+    <!-- 正常存放 -->
+    <h2>
+        h2标签
+        <blockquote>world</blockquote>
+    </h2>
+</body>
+
+</html>
