@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 这里的ID不能以纯数字表示, 不然会出错, 如果写成#'1001', 语法都是错的 */
+        #1001 {
+            color: red;
+        }
+
+        #id-1001 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>古诗词</h1>
+    <!-- 在html中两个相同的标签具有相同的id不会报错, 但是这样写具有隐患 -->
+    <p id="1001">纵我不往, 子宁不来</p>
+    <p id="id-1001">女子有行, 远父母兄弟</p>
+    <p>窗前明月光, 疑是地上霜</p>
+    <p id="id-1001">落霞与孤鹜齐飞, 秋水共长天一色</p>
+</body>
+
+</html>

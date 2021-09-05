@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* 
+            并不是所有的颜色都会被继承, 如背景,布局相关的元素
+            子元素默认的背景颜色是透明色, 如果设置了父元素的背景颜色, 子元素因为是透明, 所以会把父元素的背景颜色显示出来
+        */
+
+        /* div的后代元素, 都会被设置成红色 */
+        div {
+            color: red;
+            background-color: hotpink;
+        }
+
+        /* 子类重写了继承的颜色 */
+        p {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span>好好学习</span><br>
+        <span>天天向上</span>
+        <p>hello world</p>
+        <p>你好, 世界</p>
+    </div>
+</body>
+</html>
