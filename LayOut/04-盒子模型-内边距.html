@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: #bfa;
+        border: 10px blue solid;
+
+        /* 
+            设置内边距
+                和border-width一样, 可以设置四个值, 两个值, 三个值
+                也可以使用padding-top, padding-left, padding-right, padding-bottom分别设置四个内边距
+
+                一个盒子的可见框的大小= 内容区 + 内边距 + 边框; 注意这里是可见框的大小
+         */
+        padding: 20px;
+    }
+
+    /* 使用子标签把父标签的内容区全部撑满, 注意智慧撑满内容区, 不会撑内边距 */
+    .inner{
+        width: 100%;
+        height: 100%;
+        background-color: red;
+    }
+</style>
+
+<body>
+    <div class="box1">
+        <div class="inner"></div>
+    </div>
+</body>
+
+</html>
