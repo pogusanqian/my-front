@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.3.0/jszip.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+</head>
+
+<body>
+    <button onclick="zipImags()">批量压缩图片</button>
+</body>
+<script>
+
+    function zipImags() {
+        console.log('===========start');
+        console.time('zipImags');
+        // 设置元素属性常量
+        const bigImgWidth = 702,
+            bigImgHeight = 1032,
+            smallImgWidth = 480,
+            smallImgHeight = 480,
+            textWidth = 100,
+            ExxtHeight = 100;
+
+        // 设置canvase画布
+        const canvas = document.createElement('canvas');
+        canvas.width = bigImgWidth;
+        canvas.height = bigImgHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+        ctx.font = " 24px PingFangSC ";
+
+        // 创建一个zip对象, 用来进行压缩下载
+        const zip = new JSZip();
+        // 只有这个值为0的时候, 才进行下载
+        let fileNumberFlage = 10;
+
+        const img1 = new Image();
+        img1.src = '../source/imgs/社群背景图.png';
+        img1.onload = onloadImg;
+        // 压缩批量图片
+        for (let i = 0; i < fileNumberFlage; i++) {
+            
+            // TODO 这里加载的img标签太多了
+            const img2 = new Image();
+            img2.src = '../source/imgs/美女1.jpg';
+            img2.onload = onloadImg;
+
+            // 这里是onload加载完之后的回调函数
+            function onloadImg() {
+                if (img1.complete && img2.complete) {
+                    console.log('========================');
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    // 进行渲染
+                    ctx.drawImage(img1, 0, 0, bigImgWidth, bigImgHeight);
+                    ctx.drawImage(img2, 111, 351, smallImgWidth, smallImgHeight);
+                    ctx.fillText(`${i}_美女`, 280, 843);
+                    // 清空对象
+                    // img2 = null;
+
+                    // 往压缩zip中添加
+                    canvas.toBlob(data => {
+                        zip.file(`${i}_美女.png`, data, { base64: true });
+                        --fileNumberFlage;
+                    });
+                }
+            }
+        }
+
+        // 这里其实是有问题的, 就是定时器和所有的onload函数不知道是谁先执行完
+        const timer = setInterval(() => {
+            if (!fileNumberFlage) {
+                clearInterval(timer)
+                zip.generateAsync({ type: "blob" }).then(content => {
+                    saveAs(content, "example.zip");
+                    console.timeEnd('zipImags');
+                });
+            }
+        }, 1000);
+
+    }
+
+
+</script>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #mycanvas {
+        border: 1px solid black;
+        margin: auto;
+    }
+</style>
+
+<body>
+    <canvas id="mycanvas" width="800px" height="800px">
+        请升级浏览器, 不支持canvas标签
+    </canvas>
+</body>
+<script>
+    const canvas = document.getElementById('mycanvas');
+    const ctx = canvas.getContext('2d');
+    // 设置偏移量
+    let flag = 0;
+    // 使用定时器, 动画效果; canvas的变成思想就是 清屏=>更新=>渲染
+    setInterval(() => {
+        ctx.fillStyle = 'red';
+        // 这里如果不清屏的话, 就会成为一个滚动条, 因为下次的元素会追加拼接到上一个元素之后
+        ctx.clearRect(0, 0, 800, 800);
+        flag = flag < 800 ? flag + 10 : 0;
+        ctx.fillRect(flag, 200, 50, 300);
+    }, 30)
+
+</script>
+
+</html>
