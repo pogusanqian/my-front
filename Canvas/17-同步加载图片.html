@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.3.0/jszip.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+
+<body></body>
+
+<script>
+    async function initImgSync(src) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.onload = () => resolve(img);
+            img.src = src;
+        })
+    }
+
+    async function syncToBlog(canvas) {
+        return new Promise((resolve, reject) => {
+            canvas.toBlob(buffer => resolve(buffer))
+        })
+    }
+    async function getQrCodeCanvas(backgroundImg, qrCodeImg, text) {
+        // 设置图片元素常量
+        const backgroundWidth = 702,
+            backgroundHeight = 1032,
+            qrcodeWidth = 480,
+            qrcodeHeight = 480;
+
+        // 设置canvas信息
+        const canvas = document.createElement('canvas');
+        canvas.width = backgroundWidth;
+        canvas.height = backgroundHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+        ctx.font = " 24px PingFangSC ";
+
+        // 进行渲染
+        ctx.drawImage(backgroundImg, 0, 0, backgroundWidth, backgroundHeight);
+        ctx.drawImage(qrCodeImg, 111, 351, qrcodeWidth, qrcodeHeight);
+        ctx.fillText(text, 280, 843);
+        return canvas;
+    }
+
+    function downImg(dataURL, imgeName) {
+        const a = document.createElement("a");
+        a.href = dataURL;
+        a.download = imgeName;
+        a.click();
+    }
+
+    async function downQrCodeImg() {
+        const img1 = await initImgSync('../source/imgs/社群背景图.png');
+        const img2 = await initImgSync('../source/imgs/美女1.jpg');
+        const canvas = await getQrCodeCanvas(img1, img2, '美女_1001');
+        downImg(canvas.toDataURL(), '美女');
+    }
+
+    async function zipQrCodeImgs() {
+        console.time('zip')
+        const backgroundSrc = '../source/imgs/社群背景图.png';
+        const qrSrc = '../source/imgs/美女1.jpg';
+        const qrCodeSrcArr = [...Array(10).keys()].map(() => qrSrc);
+
+        const backgroundImg = await initImgSync(backgroundSrc);
+        const qrcodeImgArr = await Promise.all(qrCodeSrcArr.map(async item => await initImgSync(item)));
+        const canvasArr = await Promise.all(qrcodeImgArr.map(async (item, index) => await getQrCodeCanvas(backgroundImg, item, `${index}_美女`)))
+
+        // zip下载
+        const zip = new JSZip();
+        const blobArr = await Promise.all(canvasArr.map(async (item, index) => await syncToBlog(item)))
+        blobArr.forEach((item, index) => zip.file(`${index}_美女.png`, item, { base64: true }))
+
+        const content = await zip.generateAsync({
+            type: "blob",
+            compression: "DEFLATE",
+            compressionOptions: {
+                level: 1
+            }
+        });
+        // 这个方法时一个异步的下载文件
+        saveAs(content, "example.zip");
+        // alert('下载完成')
+        console.timeEnd('zip');
+    }
+
+    // downQrCodeImg();
+    zipQrCodeImgs();
+</script>
+
+</html>
