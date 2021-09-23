@@ -39,37 +39,25 @@
         // 只有这个值为0的时候, 才进行下载, 会被定时器扫描
         let fileNumberFlage = 100;
 
-        // 压缩批量图片
-        for (let i = 0; i < fileNumberFlage; i++) {
-            /**
-             * 这里的img1是不能提取出去的, 因为如果提取出去之后, img1只会加载1次, 
-             *    if (img1.complete && img2.complete) {}的判断逻辑就会有问题
-             * 如果不想重复加载img1的话, 只能先加载img1, 然后再加载img1之后再在img2的回调函数中处理
-             */
-            const img1 = new Image();
-            img1.src = '../source/imgs/社群背景图.png';
-            img1.onload = onloadImg;
-
-            const img2 = new Image();
-            img2.src = '../source/imgs/美女1.jpg';
-            img2.onload = onloadImg;
-
-            function onloadImg() {
-                console.log(img1.complete, img2.complete);
-                if (img1.complete && img2.complete) {
+        const img1 = new Image();
+        img1.src = '../source/imgs/社群背景图.png';
+        img1.onload = () => {
+            [...Array(fileNumberFlage).keys()].forEach((item, index) => {
+                const img2 = new Image();
+                img2.src = '../source/imgs/美女1.jpg';
+                img2.onload = () => {
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     // 进行渲染
                     ctx.drawImage(img1, 0, 0, bigImgWidth, bigImgHeight);
                     ctx.drawImage(img2, 111, 351, smallImgWidth, smallImgHeight);
-                    ctx.fillText(`${i}_美女`, 280, 843);
-
+                    ctx.fillText(`${index}_美女`, 280, 843);
                     // 往压缩zip中添加
                     canvas.toBlob(data => {
-                        zip.file(`${i}_美女.png`, data, { base64: true });
+                        zip.file(`${index}_美女.png`, data, { base64: true });
                         --fileNumberFlage;
                     });
                 }
-            }
+            })
         }
 
         const timer = setInterval(() => {
@@ -77,11 +65,9 @@
                 console.timeEnd('压缩前');
                 clearInterval(timer);
                 console.time('压缩中');
-                // 整个压缩时间长, 主要原因就是这个generateAsync转换成blob太耗费时间了, 
-                // 再node中generateNodeStream会快非常多, 但是node中的文字=>svg=>图片又会很慢
+                // 优化之后怎么还变慢了呢?
                 zip.generateAsync({
                     type: "blob",
-                    streamFiles: true,
                     compression: "DEFLATE",
                     compressionOptions: {
                         // 表示压缩等级, 1~9, 越大时间越慢
