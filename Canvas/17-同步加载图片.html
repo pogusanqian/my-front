@@ -9,6 +9,8 @@
 </head>
 <script src="https://cdn.bootcdn.net/ajax/libs/jszip/3.3.0/jszip.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/FileSaver.js/2.0.2/FileSaver.min.js"></script>
+<!-- 注意这里是core.min.js, 如果只是min.js下载的excle打不开 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.2/xlsx.core.min.js"></script>
 
 <body></body>
 
@@ -26,6 +28,7 @@
             canvas.toBlob(buffer => resolve(buffer))
         })
     }
+
     async function getQrCodeCanvas(backgroundImg, qrCodeImg, text) {
         // 设置图片元素常量
         const backgroundWidth = 702,
@@ -90,8 +93,51 @@
         console.timeEnd('zip');
     }
 
+    async function downExcle() {
+        const wb = XLSX.utils.book_new();
+        const title = { f_age: '年龄', f_name: '姓名', f_sex: '性别' };
+        const data = [
+            { f_name: '张三', f_age: 23, f_sex: '男' },
+            { f_name: '张三', f_age: 5, f_sex: '女' },
+        ];
+        data.splice(0, 0, title);
+        const ws = XLSX.utils.json_to_sheet(data, {
+            skipHeader: true, // 不要表头
+        });
+        XLSX.utils.book_append_sheet(wb, ws);
+        // 直接下载excle文件,
+        XLSX.writeFile(wb, 'hell.xlsx');
+    }
+
+    async function zipExcle() {
+        const zip = new JSZip();
+        const wb = XLSX.utils.book_new();
+        const title = { f_age: '年龄', f_name: '姓名', f_sex: '性别' };
+        const data = [
+            { f_name: '张三', f_age: 23, f_sex: '男' },
+            { f_name: '张三', f_age: 5, f_sex: '女' },
+        ];
+        data.splice(0, 0, title);
+        const ws = XLSX.utils.json_to_sheet(data, {
+            skipHeader: true, // 不要表头
+        });
+        XLSX.utils.book_append_sheet(wb, ws);
+        const wopts = { bookType: 'xlsx', bookSST: false, type: 'array' };
+        const wbout = XLSX.write(wb, wopts);
+
+        zip.file('haha.xlsx', wbout);
+        const content = await zip.generateAsync({
+            type: "blob"
+        });
+        // 这个方法时一个异步的下载文件, 通过javasript引入的
+        saveAs(content, "example.zip");
+    }
+
+
     // downQrCodeImg();
-    zipQrCodeImgs();
+    // zipQrCodeImgs();
+    // downExcle();
+    zipExcle();
 </script>
 
 </html>
