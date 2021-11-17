@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../source/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <!-- 双向数据绑定只能用于form表单中的value属性值, 所以v-model:value可以简写成v-model, 如果使用v-model绑定的不是form表单的值, 则会报错-->
+        单项数据绑定: <input type="text" :value="name"/>
+        双向数据绑定: <input type="text" v-model:value="address"/>
+        <!-- 错误的双向数据绑定: <span v-model="name"></span> -->
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false; 
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            name: '河南理工大学',
+            address: '河南焦作市sss',
+        }
+    })
+</script>
+</html>

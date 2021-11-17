@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../source/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <!-- v-bind是单项绑定的, 只能将实例中的数据绑定到容器中, v-bind:可以简写成: -->
+        <a v-bind:href="url">点击去{{name}}</a>
+        <a :href="url">点击去{{name}}</a>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false; 
+    new Vue({
+        el: '#demo',
+        data: {
+            name: '百度',
+            url:"http://www.baidu.com"
+        }
+    })
+</script>
+</html>

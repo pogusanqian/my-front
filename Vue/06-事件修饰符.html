@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../source/vue.js"></script>
+    <style>
+        *{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        Vue中的事件修饰符:
+            prevent: 阻止默认事件
+            stop: 阻止事件冒泡
+            once: 事件只触发一次
+            capture: 使用事件的捕获模式(默认时冒泡形式的)
+            self: 只有当event.target是当前元素时, 才会触发事件
+            passive: 立即执行默认事件
+     -->
+    <div id="demo">
+        <!-- 点击a标签会触发一个事件, 进行href跳转; prevent可以阻止默认事件的发生, 只触发我们的click事件 -->
+        <a href="http://www.baidu.com" @click.prevent="show1">阻止默认事件</a>
+
+        <!-- 点击button按钮, 也会触发div中的click事件, 使用stop阻止事件冒泡 -->
+        <div @click="show2">
+            <button @click.stop="show1">事件冒泡</button>
+        </div>
+
+        <button @click.once="show1">只触发一次事件</button>
+
+        <!-- 默认是冒泡形式, 先触发show1, 然后再触发show2; 注意他是添加再了show2上, 而不是show1上 -->
+        <div @click.capture="show2">
+            <button @click="show1">捕获模式</button>
+        </div>
+
+        <!-- 通过事件冒泡show2方法的event任然是show1方法的event; 我们可以通过self属性阻止show2事件的执行 -->
+        <div @click.self="show2">
+            <button @click="show1">Self</button>
+        </div>
+
+        <!-- h5默认的时先执行点击事件, 然后再执行默认事件, 这里的测试不是很好, 教程中使用的时滚轮 -->
+        <a href="http://www.baidu.com" @click="fun">立即执行默认事件</a>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#demo',
+        methods: {
+            show1(e) {
+                console.log('我是show1');
+                console.log(e.target);
+            },
+            show2(e) {
+                console.log('我是show2');
+                console.log(e.target);
+            },
+            fun() {
+                for (let index = 0; index < 10000; index++) {
+                    console.log('==')
+                }
+                console.log('结束')
+            }
+        }
+    })
+</script>
+
+</html>

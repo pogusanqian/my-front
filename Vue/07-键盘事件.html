@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../source/vue.js"></script>
+    <style>
+        *{
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        1. Vue中常用的别名
+                enter: 别名
+                delete: 删除
+                esc: 退出
+                space: 空格
+                tab: 换行, tab键比较特殊, 使用keyup事件无法触发, 因为tab会换行, 如果换成keydown事件就行了
+                up: 上
+                down: 下
+                left: 左
+                right: 右
+        2. Vue中如果没有提供别名, 可以使用键盘的key值去绑定, 但要注意格式时kebab-case,例如大小写的key名称为CapsLock就要转换成caps-lock
+        3. 系统修饰键 Ctrl Shift Alt Win
+            keyup时: 需要使用Ctrl + *一次性按两个键来触发, *可以表示任意的键, 但是注意Ctrl + * 还是触发默认的事件, 例如我们按Ctrl + S
+            keydown时: 正常使用
+        4. 键盘事件后面可以.key也可以是keyCode值, 只不过keyCode值在最新的H5规范中被废弃了, 虽然现在浏览器还只是keyCode值, 长远考虑还是不要使用code
+     -->
+    <div id="demo">
+        <input placeholder="回车提示" @keyup.enter="show1"><br>
+        <input placeholder="Ctrl + Y" @keyup.ctrl.y="show1"><br>
+        <input placeholder="回车提示" @keyup.13="show1"><br>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#demo',
+        methods: {
+            show1(e) {
+                // if (e.keyCode === 13)  return;  // keyCode可以用来表示键盘对应的码值, key可以打出名字Enter
+                console.log('我是show1');
+            },
+        }
+    })
+</script>
+
+</html>
