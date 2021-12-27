@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documet</title>
+    <!-- reset.css 直接去除了浏览器的默认样式(通常用这个), normalize.css 重新设置了一下默认样式 -->
+    <!-- <link rel="stylesheet" href="../source/css/normalize.css"> -->
+    <link rel="stylesheet" href="../source/css/reset.css">
+</head>
+<style>
+    /* 浏览器本身对于标签其实是有一定样式的, 比如body标签默认有8px的外边距, p标签和ul标签默认有1em的外边距,
+        ul还有40的padding, 在真实的项目中, 是要去除掉浏览器的默认样式 */
+    .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: burlywood;
+    }
+
+    /* 简单写法去除掉浏览器默认样式; 如果没有设置list-style, 则有序列表的标号其实只是被隐藏了,并没有去掉 */
+    * {
+        margin: 0;
+        padding: 0;
+        /* 去除项目符号 */
+        list-style: none;
+    } 
+</style>
+
+<body>
+    <div class='box1'></div>
+    <p>段落1</p>
+    <p>段落2</p>
+    <p>段落3</p>
+    <ul>
+        <li>张三</li>
+        <li>李四</li>
+        <li>王五</li>
+        <li>赵六</li>
+    </ul>
+</body>
+
+</html>

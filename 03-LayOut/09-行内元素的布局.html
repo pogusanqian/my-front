@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 
+            1.行内元素的宽高不起作用
+            2.行内元素可以设置padding, 垂直方向不会影响页面的布局(div的布局没有变, 但是span设置了padding, 就会把一部分的div覆盖掉)
+            3.行内元素可以设置border, 垂直方向的border不会影响页面的布局(div的布局没有变, 但是span设置了padding, 就会把一部分的div覆盖掉)
+            4.行内元素可以设置margin, 垂直方向的margin不会影响页面的布局(div的布局没有变, 所以margin-top或margin-buttom其实是没有起作用)
+        */
+        span {
+            width: 800px;
+            height: 800px;
+            background-color: #bfa;
+            padding: 100px;
+            /* border: 100px solid red; */
+            /* margin: 100px; */
+        }
+
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <span>张三</span>
+    <div></div>
+</body>
+
+</html>

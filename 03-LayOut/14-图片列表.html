@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css">
+    <style>
+        body {
+            background-color: #faebd7;
+        }
+
+        ul {
+            /* 这里必须添加上px单位 */
+            width: 190px;
+            height: 470px;
+            overflow: hidden;
+            margin: 100px auto;
+        }
+
+        /* 不设置最后一个li的外边距, 其实这里不用写not的, 因为我们的ul使用的是hidden, 会将多出的部分进行裁剪 */
+        li:not(:last-child) {
+            margin-bottom: 10px;
+        }
+
+        img {
+            /* img的宽高和div的宽高不一样,  img的宽高是用来进行缩放原生图片的 */
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        需求: 写个图片列表, 图片上有超链接, 点击可以跳转到其他地方
+            1. 使用ul搭建骨架, 图片使用image标签包住
+            2. 调整具体的样式
+                2.1 先设置ul的宽高, 超出的部分进行裁剪
+                2.2 设置图片的宽高, 并设置背景颜色
+                2.3 设置图片之间的间距(外边距)
+     -->
+    <ul>
+        <li><a href="javascript:;"><img src="../source/exercise/img/01/1.jpg" alt="没有找到图片"></a></li>
+        <li><a href="javascript:;"><img src="../source/exercise/img/01/2.jpg" alt="没有找到图片"></a></li>
+        <li><a href="javascript:;"><img src="../source/exercise/img/01/3.jpg" alt="没有找到图片"></a></li>
+    </ul>
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css">
+    <style>
+        body {
+            background: #bfa;
+        }
+
+        .news-warpper {
+            /* 如果不设置宽度, 只设置margin是auto的话, 是没有办法居中的; 因为不设置width的话, width的默认值也是auto */
+            width: 300px;
+            height: 357px;
+            /* 这里不要使用hidden了, hidden会将溢出content区域的内容进行裁剪 */
+            /* overflow: hidden;  */
+            border-top: solid 1px blue;
+            margin: 100px auto;
+        }
+
+        .news-title {
+            /* 行内块, 边框的高度和文字的高度一致 */
+            display: inline-block;
+            height: 40px;
+            border-top: solid 1px red;
+            margin-top: -1px;
+        }
+
+        .news-img {
+            height: 150px;
+        }
+
+        .news-img a {
+            text-decoration: none;
+        }
+
+        .news-img h3 {
+            color: #fff;
+            /* todo 标题这里设置了外边距, 为什么没有影响到图片呢?  */
+            margin-top: -30px;
+            padding-left: 20px;
+
+            /* 超链接的下划线只能在超链接哪里去除 */
+            /* text-decoration: none; */
+        }
+
+        .news-list {
+            margin-top: 20px;
+        }
+
+        .news-list li:not(:last-child) {
+            margin-bottom: 17px;
+        }
+
+        .news-list li::before {
+            content: '■';
+            color: rgb(218, 218, 218);
+            font-size: 12px;
+            margin-right: 4px;
+        }
+
+        .news-list li a {
+            font-size: 14px;
+        }
+        .news-list li a:hover {
+            color: red;
+        }
+    </style>
+</head>
+
+<!-- 
+    需求: 创建一个网易新闻栏
+        1. 整体布局骨架
+        2. 设置背景色和最外部容器
+        3. 设置titile成为标题栏(行内块)
+        4. 设置图片标题
+        5. 设置新闻列表
+ -->
+
+<body>
+    <div class="news-warpper">
+        <h2 class="news-title">体育</h2>
+        <div class="news-img">
+            <a href="#">
+                <img src="../source/exercise/img/03/1.jpeg" alt="费德勒">
+                <h3>
+                    费德勒首负迪米 扶额头不满发挥
+                </h3>
+                </img>
+            </a>
+        </div>
+        <ul class="news-list">
+            <li>
+                <a href="#">乔治:我爱LA 喜欢和LBJ一起打球</a>
+            </li>
+            <li>
+                <a href="#">格林:3年前降薪就在等KD 特制T恤嘲讽LBJ</a>
+            </li>
+            <li>
+                <a href="#">塔克4000双鞋让保罗羡慕嫉妒 乔丹被震惊</a>
+            </li>
+            <li>
+                <a href="#">CBA下季新赛制:常规赛4组循环 增至46轮</a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>
