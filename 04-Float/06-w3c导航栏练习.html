@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>W3C导航栏</title>
+    <link rel="stylesheet" href="../source/css/reset.css">
+    <style>
+        ul {
+            width: 1210px;
+            height: 48px;
+            background-color: #e8e7e3;
+            margin: 100px auto;
+        }
+
+        ul>li {
+            float: left;
+            /* 使用行高撑开块元素, 这样设置的文字使水平居中的 */
+            line-height: 48px;
+        }
+
+        a {
+            display: block;
+            text-decoration: none;
+            color: #777777;
+            font-size: 18px;
+            padding: 0 39px;
+        }
+
+        a:last-child {
+            padding: 0 39px 0 39.9px;
+        }
+
+        a:hover {
+            color: #d7d6d2;
+            background-color: #3f3f3f;
+        }
+    </style>
+</head>
+
+<!-- 
+    需求: 模拟w3c的导航栏, 导航栏点击空白元素是可以进行跳转的
+        1. 采用ur>li布局
+        2. 将li转换成浮动元素, 进行水平方向布局, 并设置高度使文字水平方向居中
+        3. 设置超链接成块元素, 点击空白的地方可以进行跳转, 并设置元素的内边距
+ -->
+
+<body>
+    <ul>
+        <li><a href="#">HTML/CSS</a></li>
+        <li><a href="#">Browser Side</a></li>
+        <li><a href="#">Server Side</a></li>
+        <li><a href="#">Programming</a></li>
+        <li><a href="#">XML</a></li>
+        <li><a href="#">Web Building</a></li>
+        <li><a href="#">Reference</a></li>
+    </ul>
+</body>
+
+</html>

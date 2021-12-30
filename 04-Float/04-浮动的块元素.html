@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            background-color: blue;
+        }
+        .box2 {
+            /* 
+                浮动块元素特点
+                    1. 块元素不在独占1行; box3替代了box2在文档流中的位置, 然后box2浮动在box3上, 由于浮动元素是不会覆盖文字的, 所以"你好"不会被覆盖
+                    2. 浮动的块元素默认的宽度和高度有内容撑开, 也可以通过width和height设置
+             */
+            background-color: red;
+            float: left;
+        }
+        .box3 {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">hello</div>
+    <div class="box2">world</div>
+    <div class="box3">你好</div>
+</body>
+</html>

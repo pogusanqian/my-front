@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高度塌陷</title>
+    <style>
+        .outer {
+            border: red 10px solid;
+        }
+        .inner {
+            width: 200px;
+            height: 200px;
+            background-color: grey;
+            float: left;
+        }
+
+        .outer::after {
+            /* after默认是行内元素, 是无法撑开布局的 */
+            display: block;
+            /* content这个内容属性必须写 */
+            content: '';
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+</body>
+</html>

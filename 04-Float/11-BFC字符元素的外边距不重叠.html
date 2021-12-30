@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 400px;
+            height: 400px;
+            background-color: red;
+            /* 如果不设置BFC的话, 设置box2的外边距其实就是设置box1的外边距, 因为在文档流中子元素和父元素的外边距是重叠的 */
+            overflow: hidden;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background-color: black;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+    </div>
+    
+</body>
+</html>

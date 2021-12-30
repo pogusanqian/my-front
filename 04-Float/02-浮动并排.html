@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .superbox {
+            width: 1000px;
+            height: 1000px;
+            background-color: grey;
+            margin: 100px auto;
+        }
+
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            float: left;
+        }
+
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: blue;
+            float: left;
+        }
+
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            float: right;
+        }
+    </style>
+</head>
+
+<!-- 
+    浮动元素特点
+        1. 浮动元素脱离文档流, 不在占据文档流的位置
+        2. 设置浮动后, 元素会向父元素左侧或者右侧移动
+        3. 浮动元素默认不会从父元素中宽度中移出
+        4. 浮动元素向做或者向右移动的时候, 不会超过前面的浮动元素
+
+    浮动的主要所用就是设置水平方向布局
+ -->
+<body>
+    <div class="superbox">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+</body>
+</html>

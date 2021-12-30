@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            /* 
+                设置浮动之后, 元素会从文档流中脱离出来, 元素也不在具有外边距(不需要满足水平方向布局等式了), 所以下方的box2会代替浮动元素的位置
+                需要注意的是, 浮动元素是在文档流上方的, 如果box1和box2具有相同的大小, 那么box1会将box2进行覆盖
+            */
+            float: left;
+        }
+
+        .box2{
+            width: 300px;
+            height: 300px;
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>
