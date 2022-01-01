@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 10000px;
+        }
+
+        .box1 {
+            height: 50px;
+            background-color: red;
+            margin-top: 600px;
+
+            /* 
+                粘滞定位: 当元素达到一定高度时,便会被固定
+                浏览器兼容性不是很好, 不支持IE
+             */
+            position: sticky;
+            top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1"></div>
+</body>
+
+</html>
