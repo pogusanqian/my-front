@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* font-face可以引用服务器中的字体, 但是又几个问题
+            1. 向用户提供了字体, 会有版权问题
+            2. 首次加载时需要耗费时间
+            3. 字体格式, 又的浏览器可能bu支持ttf字体
+
+        */
+        @font-face {
+            font-family: 'myfont';
+            src: url('../source/font/ZCOOLKuaiLe-Regular.ttf');
+        }
+
+        p {
+            color: red;
+            font-size: 40px;
+            /* font-family: 'Microsoft YaHei', arial, 'Hiragino Sans GB', sans-serif; */
+            font-family: myfont;
+        }
+    </style>
+</head>
+<!-- 
+    font-family(字体族): 指定浏览器使用哪种字段, 常用的是下面三种
+        serif  衬线字体
+        sans-serif 非衬线字体
+        monospace 等宽字体
+    'Microsoft YaHei', arial, 'Hiragino Sans GB', sans-serif告诉浏览器先使用YaHei字体, 如果浏览器没有使用arial, 
+    如果都没有就使用非衬线字体( 衬线, 非衬线, 等宽是字体的大分类, 并不是指具体的字体), 至于使用哪种非衬线字体, 则由浏览器决定
+    所以不同的浏览器可能会使用不同的非衬线字体; YaHei字体是一个具体的字体
+
+    使用font-family引入的字体是不会有版权问题的, 因为font-family并没有给用户提供字体, 而是建议浏览器使用这种字体
+ -->
+
+<body>
+    <p>好好学习，天天向上。 Hello World;</p>
+</body>
+
+</html>

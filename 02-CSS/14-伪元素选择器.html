@@ -24,9 +24,13 @@
     }
 
 
-    /* 给div前面添加hello, 注意要以字符串表示; 另外添加的hello在浏览器中是无法选中的, 因为这是通过css添加的 */
+    /* 
+        给div前面添加hello, 注意要以字符串表示;
+        另外添加的hello在浏览器中是无法选中的, 因为这是通过css添加的;
+        无法使用伪元素添加标签, CSS只能改变布局的样式, 但是不能改变HTML的骨架
+    */
     div::before {
-        content: 'hello';
+        content: "<a src></a>";
         color: red;
     }
 

@@ -1,0 +1,30 @@
+{
+  "id": "3113961",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "13744032",
+      "name": "vue",
+      "font_class": "vue",
+      "unicode": "e69a",
+      "unicode_decimal": 59034
+    },
+    {
+      "icon_id": "16034462",
+      "name": "vuejs-line",
+      "font_class": "vuejs-line",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "24697967",
+      "name": "vuejs-fill",
+      "font_class": "vuejs-fill",
+      "unicode": "eb14",
+      "unicode_decimal": 60180
+    }
+  ]
+}
