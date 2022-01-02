@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            font-size: 50px;
+            width: 200px;
+            height: 200px;
+            float: left;
+            background-color: #bfa;
+        }
+
+        .box1 {
+            background-image: radial-gradient(red, yellow)
+        }
+
+        .box2 {
+            background-image: radial-gradient(ellipse, red, yellow)
+        }
+
+        .box3 {
+            background-image: radial-gradient(closest-side, red, yellow)
+        }
+
+        .box4 {
+            background-image: radial-gradient(30px 60px, red, yellow)
+        }
+
+        .box5 {
+            background-image: radial-gradient(closest-side at 30px 30px, red, yellow)
+        }
+
+    </style>
+</head>
+
+<!-- 
+     radial-gradient(): 径向渐变(放射性的效果)
+        放射形状:如果元素是正方向, 就会渐变成圆形; 如果元素是长方形, 就渐变成椭圆形; 可以手动设置
+            circle 圆形
+            ellipse 椭圆
+            closest-side 近边	
+            closest-corner 近角
+            farthest-side 远边
+            farthest-corner 远角
+        放射位置: 放射半径大小
+            background-image: radial-gradient(30px 60px, red, yellow)
+        放射位置: 
+
+ -->
+<body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+    <div class="box4">4</div>
+    <div class="box5">5</div>
+    <div class="box6">6</div>
+</body>
+
+</html>

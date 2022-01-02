@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box1 {
+        width: 500px;
+        height: 500px;
+        background-color: #bfa;
+        background-image: url("../source/imgs/font-imgs/06/1.png");
+    }
+
+    .box2 {
+        width: 128px;
+        height: 128px;
+        background-color: #bfa;
+        background-image: url('../source/imgs/font-imgs/06/1.png');
+    }
+
+    .box3 {
+        width: 500px;
+        height: 500px;
+        background-color: #bfa;
+        background-image: url('../source/imgs/font-imgs/06/2.jpg');
+        background-repeat: no-repeat;
+        /* background-position: center; */
+        background-position: -400px 0;
+    }
+</style>
+
+<!-- 
+    background-image 设置背景图片 
+        可以同时设置背景图片和背景颜色，这样背景颜色将会成为图片的背景色
+        如果背景的图片小于元素，则背景图片会自动在元素中平铺将元素铺满
+        如果背景的图片大于元素，将会一个部分背景无法完全显示
+        如果背景图片和元素一样大，则会直接正常显示
+
+    background-repeat 用来设置背景的重复方式
+        repeat 默认值 ， 背景会沿着x轴 y轴双方向重复
+        repeat-x 沿着x轴方向重复
+        repeat-y 沿着y轴方向重复
+        no-repeat 背景图片不重复
+
+    background-position 用来设置背景图片的位置
+        通过 top left right bottom center 几个表示方位的词来设置背景图片的位置; 使用方位词时必须要同时指定两个值，如果只写一个则第二个默认就是center
+        通过偏移量来指定背景图片的位置:水平方向的偏移量 垂直方向变量
+            -100px（将图片相对容器左移100px，这意味着图片中部的100px内容将出现在容器中）
+-->
+<body>
+    <div class="box1"></div><hr>
+    <div class="box2"></div><hr>
+    <div class="box3"></div><hr>
+
+    
+</body>
+</html>

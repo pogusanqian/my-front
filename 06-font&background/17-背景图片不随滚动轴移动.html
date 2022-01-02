@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .outer {
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            overflow: scroll;
+        }
+        .inner {
+            width: 500px;
+            height: 10000px;
+            background-image: url("../source/imgs/font-imgs/06/1.png");
+            background-origin: content-box;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+    </style>
+</head>
+
+<!-- 
+    background-attachment: 背景图片是否跟随元素移动
+            scroll 默认值 背景图片虽滚动周滚动
+            fixed 背景会固定在页面中，不会随元素移动
+ -->
+<body>
+    <div class="outer">
+        <div class="inner">
+            <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam aut, odio iusto accusantium ipsum aliquid omnis facere sapiente, nobis vel dicta alias ducimus. Repellat similique unde eius tempore, quia quo.Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium, accusamus quibusdam. Adipisci in dolorem qui accusantium accusamus voluptatibus magnam nesciunt minus enim quaerat! Quidem, rem. Ipsum amet praesentium enim aliquid!Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam provident repellendus ipsum dolorum optio quo, iure eveniet beatae cupiditate rerum minus corporis illum aliquam illo ut quidem aliquid expedita deserunt.</span>
+        </div>
+    </div>
+</body>
+
+</html>

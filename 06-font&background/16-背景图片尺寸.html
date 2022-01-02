@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 500px;
+            height: 500px;
+            background-color: #bfa;
+            margin: 10px;
+        }
+
+        .box1 {
+            background-image: url("../source/imgs/font-imgs/06/2.jpg");
+            background-size: cover;
+        }
+
+        .box2 {
+            background-image: url("../source/imgs/font-imgs/06/2.jpg");
+            background-size: contain;
+        }
+
+        .box3 {
+            background-image: url("../source/imgs/font-imgs/06/2.jpg");
+            background-size: 100px auto;
+        }
+
+        .box4 {
+            background-image: url("../source/imgs/font-imgs/06/2.jpg");
+            background-size: auto 100px;
+        }
+
+        .box5 {
+            background-image: url("../source/imgs/font-imgs/06/2.jpg");
+            background-size: auto;
+        }
+
+        .box6 {
+            width: 1920px;
+            height: 1080px;
+            background-image: url("../source/imgs/font-imgs/06/2.jpg");
+            background-size: contain;
+        }
+
+        .box7 {
+            width: 192px;
+            height: 108px;
+            background-image: url("../source/imgs/font-imgs/06/2.jpg");
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<!-- 
+    background-size 设置背景图片的大小
+        第一个值表示宽度 第二个值表示高度 如果只写一个，则第二个值默认是 auto
+        cover 图片的比例不变，将元素铺满(如果div框的比例和图片的宽高比例不相同, 就会造成一部分丢失)
+        contain 图片比例不变，将图片在元素中完整显示(没有设置no-repeat的话, 便会出现平铺)
+
+        所以div框的宽高比例必须和图片的宽高比例相同, 才能将图片完整的展示在div框中
+ -->
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+    <div class="box4"></div>
+    <div class="box5"></div>
+    <div class="box6"></div>
+    <div class="box7"></div>
+</body>
+
+</html>
