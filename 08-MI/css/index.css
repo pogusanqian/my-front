@@ -1,0 +1,152 @@
+/* 顶部导航栏容器 */
+.topbar-wrapper {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #333;
+    font-size: 12px;
+}
+
+/* 导航栏设置 */
+.topbar a {
+    font-size: 12px;
+    color: #b0b0b0;
+    /* 这里不用在设置高度了, 因为行高就是设置的40px */
+    display: block; 
+}
+
+.topbar a:hover {
+    color: #fff;
+}
+
+.topbar .line {
+    color: #424242;
+    margin: 0 8px;
+}
+
+/* 左侧导航栏 */
+.topbar li {
+    float: left;
+}
+
+.app {
+    position: relative;
+}
+
+.service .qrcode {
+    width: 124px;
+    /* 通过height+overflow+transition实现动态的出现和消失 */
+    height: 0px;
+    overflow: hidden;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .3);
+    position: absolute;
+    left: -40px;
+    /* 表示高度发生变化时, 用0.3s的时间过度 */
+    transition: height 0.3s;
+}
+
+/* 生成一个三角, 还是动态生成 */
+.service .app:hover::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top: none; 
+    border-bottom-color: #fff;
+    bottom: 0;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+
+.service .app:hover .qrcode{
+    height: 148px;
+}
+
+.service .qrcode img {
+    width: 90px;
+    /* 这里设置auto不会自动居中; 因为img是替换元素, 不属于块元素, 不适用水平等式, 也不是行内元素, text-align:center也不行 */
+    margin: 17px;
+    margin-bottom: 10px;
+}
+
+.service .qrcode span {
+    /* 由于qrcode的背景色是白色, 当鼠标移入a标签是, 字体也会变为白色, 造成span内的字体隐藏 */
+    color: black;
+}
+
+/* 右侧导航栏, 注意这里user-info块是进行了右浮动, 但是内部的li是左浮 */
+.user-info,
+.shop-cart{
+    float: right;
+}
+
+.shop-cart {
+    margin-left: 25px;
+}
+
+.shop-cart a {
+    width: 120px;
+    background-color: #424242;
+    text-align: center;
+} 
+
+.shop-cart a i {
+    margin-right: 2px;
+}
+
+.shop-cart:hover a{
+    background-color: #fff;
+    color: #ff6700;
+}
+
+/* 设置Header */
+.header-wrapper {}
+
+.header {
+    height: 100px;
+    background-color: #bfa;
+}
+
+.header .logo {
+    float: left;
+    width: 55px;
+    height: 55px;
+    overflow: hidden;
+    margin-top: 22px;
+    position: relative;
+    /* 缩进以达到隐藏文字: 小米官网是给seo搜索使用的 */
+    text-indent: -1000px;
+}
+
+.header .logo a {
+    position: absolute;
+    left: 0;
+    width: 55px;
+    height: 55px;
+    background-color: #ff6700;
+    transition: left 0.3s;
+}
+
+.header .logo .mi {
+    background-image: url(../img/mi-logo.png);
+}
+
+.header .logo .home {
+    background-image: url(../img/mi-home.png);
+    left: -55px;
+}
+
+.header .logo:hover .mi {
+    left: 55px;
+}
+
+.header .logo:hover .home {
+    left: 0;
+}
+
