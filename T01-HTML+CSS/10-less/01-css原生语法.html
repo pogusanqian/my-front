@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html {
+            --size: 300px;
+            --color: #bfa;
+        }
+
+        .box1 {
+            width: var(--size);
+            height: var(--size);
+            background-color: var(--color);
+        }
+
+        .box2 {
+            width: calc(300px*2);
+            height: 300px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<!-- 
+    1. CSS原生语法支持定义变量以及函数, 只不过兼容性不是很好
+    2. 在html类中中定义变量, 使用--开头
+    3. 使用var函数引用变量, 还可以使用calc计算变量
+ -->
+
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+
+</html>

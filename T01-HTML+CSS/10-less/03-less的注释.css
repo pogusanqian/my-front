@@ -1,0 +1,4 @@
+/* 多行注释会被解析到css文件中*/
+div {
+  background-color: #bfa;
+}

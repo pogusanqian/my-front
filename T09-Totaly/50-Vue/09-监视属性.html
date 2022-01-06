@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="../../T01-HTML+CSS/source/vue.js"></script>
+    <style>
+        * {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <span>今天天气很{{weather}}</span>
+        <button @click="isHot=!isHot">切换天气</button>
+    </div>
+</body>
+<script>
+    Vue.config.productionTip = false;
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            weather: '炎热',
+            isHot: true,
+        },
+        watch: {
+            isHot: {
+                immediate: true, // 初始化的时候, 让handler执行一下
+                handler(newValue, trueValue) {
+                    this.weather = newValue ? '炎热' : '凉爽';
+                }
+            }
+        }
+    })
+
+    // 直接在vm上, 设置监听属性
+    // vm.$watch('isHot', {
+    //     handler(newValue, trueValue) {
+    //         this.weather = newValue ? '炎热' : '凉爽';
+    //     }
+    // })
+</script>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小球下落</title>
+    <link rel="stylesheet" href="../source/css/reset.css">
+    <style>
+        .outer {
+            height: 800px;
+            border-bottom: 10px black solid;
+            overflow: hidden;
+        }
+
+        .box1 {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto;
+            border-radius: 50%;
+            background-color: brown;
+            animation: kf1 2s ease-in forwards;
+        }
+
+        @keyframes kf1 {
+            from {
+                margin-top: 0;
+            }
+
+            33%,
+            to {
+                margin-top: 750px;
+            }
+
+            66% {
+                margin-top: 400px;
+            }
+        }
+
+        .box2 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: goldenrod;
+            animation: kf2 1s ease-in infinite;
+        }
+
+        @keyframes kf2 {
+            from {
+                margin-top: 0;
+            }
+
+            to {
+                margin-top: 800px;
+            }
+        }
+    </style>
+</head>
+
+<!-- 
+    动画的相邻元素应给是有影响的, box1导致box2只能执行1一次
+    margin-left和margin-right会相会影响
+    margin-top和margin-bottom是不会相会影响的
+ -->
+
+<body>
+    <div class="outer">
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css">
+    <style>
+        .outer {
+            width: 800px;
+            height: 800px;
+            background-color: #bfa;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 200px;
+            background-color: silver;
+            animation-name: test;
+            animation-duration: 1s;
+            animation-delay: 3s;
+            animation-iteration-count: 3;
+            animation-direction: alternate;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes test {
+            from {
+                margin-left: 0;
+                background-color: red;
+            }
+
+            to {
+                margin-left: 700px;
+                background-color: black;
+            }
+            
+        }
+    </style>
+</head>
+
+<!-- 
+    动画和过渡类似, 都是可以实现一些动态的效果, 不同的是过渡需要在某个属性发生变化时才会触发, 动画可以自动触发动态效果
+    设置动画效果，必须先要设置一个关键帧，关键帧设置了动画执行每一个步骤;
+
+    @keyframes: 设置关键帧; from: 表示开始, to: 表示结束
+    animation-name: 表示给元素绑定上关键帧(只有这一个元素不行, 还必须指定时间)
+    animation-duration: 动画执行的时间
+    animation-delay: 动画的延迟
+    animation-timing-function: 动画的加速方式
+    animation-iteration-count: 动画执行的次数, 可以使用infinite表示无限执行; 
+    animation-direction: 动画运行的方向
+                    normal: 从from => to, 默认值
+                    reverse: 从to => form
+                    alternate: 从from => to, 返回时从to => from
+                    alternate-reverse: 从to => from, 返回时从from => to
+    animation-play-state: 动画的执行状态
+                    running 动画执行(默认值)
+                    paused 动画暂停
+    animation-fill-mode: 动画的填充方式
+                    none  动画执行完毕元素回到原来位置(默认值)
+                    forwards 动画执行完毕元素会停止在动画结束的位置(可以设置执行的奇偶数, 决定其位置)
+                    backwards 动画延时等待时，元素就会处于开始位置(可以通过背景颜色来提现出来, 等待的收显示的式from的红色)
+                    both 结合了forwards 和 backwards
+    animation: 统一设置, 注意第一个秒表示的式duration而不是delay
+ -->
+
+<body>
+    <div class="outer">
+        <div class="box1"></div>
+    </div>
+</body>
+</html>

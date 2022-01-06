@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="../../T01-HTML+CSS/source/css/reset.css">
+<style>
+    /* 
+        只有块级元素才能使用, margin: auto进行水平居中
+        行内元素的水平居中对它的父级使用text-align:center
+        canvas是行内元素
+    */
+    canvas {
+        background-color: gray;
+    }
+
+    .box1{
+        /* 如果div设置了宽度, canvas却别div大, 则div的宽高是不会变的, 而是被子元素进行了覆盖 */
+        /* width: 300px; */
+        /* height: 600px; */
+        /* background-color: blueviolet; */
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="box1">
+        <canvas width="800px" height="800px"></canvas>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .clock {
+            width: 1024px;
+            height: 1024px;
+            border-radius: 50%;
+            border: 3px solid black;
+            margin: 0 auto;
+            position: relative;
+            background-image: url("../source/imgs/font-imgs/13/bg.png");
+        }
+
+        .clock>div {
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        .hour-wrapper {
+            width: 50%;
+            height: 50%;
+            border-radius: 50%;
+            animation: runKey 43200s linear infinite;
+        }
+
+        .hour {
+            width: 6px;
+            height: 50%;
+            background-color: black;
+            margin: 0 auto;
+        }
+
+        .min-wrapper {
+            width: 65%;
+            height: 65%;
+            border-radius: 50%;
+            animation: runKey 3600s linear infinite;
+        }
+
+        .min {
+            width: 4px;
+            height: 50%;
+            background-color: blue;
+            margin: 0 auto;
+        }
+
+
+        .second-wrapper {
+            width: 80%;
+            height: 80%;
+            border-radius: 50%;
+            animation: runKey 60s steps(60) infinite;
+        }
+
+        .second {
+            width: 2px;
+            height: 50%;
+            background-color: red;
+            margin: 0 auto;
+        }
+
+        @keyframes runKey {
+            from {
+                transform: rotateZ(0);
+            }
+
+            to {
+                transform: rotateZ(360deg);
+            }
+            
+        }
+    </style>
+</head>
+
+<!-- 
+    钟表采用的思路是使用旋转进行表针的移动, 只不过旋转都是从中心出发; 所以这里使用了一个div进行包裹指针; 这样旋转div用来带动表针
+ -->
+
+<body>
+    <div class="clock">
+        <div class="hour-wrapper">
+            <div class="hour"></div>
+        </div>
+
+        <div class="min-wrapper">
+            <div class="min"></div>
+        </div>
+
+        <div class="second-wrapper">
+            <div class="second"></div>
+        </div>
+    </div>
+</body>
+
+</html>

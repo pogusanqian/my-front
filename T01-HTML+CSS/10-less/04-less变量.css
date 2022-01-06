@@ -1,0 +1,13 @@
+div {
+  width: 100px;
+  height: 200px;
+}
+.box1 {
+  width: 100px;
+  height: 100px;
+  background-image: url("source\imgs\美女2.jpg");
+}
+div {
+  width: 600px;
+  height: 600px;
+}

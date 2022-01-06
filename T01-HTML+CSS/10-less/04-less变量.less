@@ -1,0 +1,26 @@
+// 使用@声明变量, 先声明的变量会被后声明的变量给覆盖, 可以在任意位置声明变量(通常我们会创建一个专门的less文件存放变量)
+@num1: 10px;
+@num2: 20px;
+@num1: 100px;
+div {
+    @num2: 200px;
+    width: @num1;
+    height: @num2;
+}
+
+// 引用变量时, 直接使用@即可; 但是作为类名，或者一部分值使用时必须以 @{变量名} 的形式使用; 变量可以使用, 然后再声明
+.@{name} {
+    width: @num3;
+    height: @num3;
+    background-image: url("@{str}");
+}
+@name: box1;
+@num3: 100px;
+@str: "source\imgs\美女2.jpg";
+
+
+// 属性为变量, 使用$为前缀(注意这里的div并不会覆盖上面的div, 会原样解析)
+div {
+    width: 600px;
+    height: $width;
+}

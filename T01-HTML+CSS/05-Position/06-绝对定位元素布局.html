@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            width: 600px;
+            height: 600px;
+            background-color: #bfa;
+            position: relative;
+        }
+
+        .box2 {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            background-color: blue;
+            position: absolute;
+            left: auto;
+            right: 0;
+            top: auto;
+            bottom: 0;
+        }
+
+        .box3 {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            background-color: red;
+            /* 设置成水平垂直居中 */
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<!-- 
+    绝对定元素水平方向布局: left + margin-left + border-left + padding-left + width + padding-right + border-right + margin-right + right = 包含块的内容区的宽度        1. 如果9个值中没有auto则自动调整right值以使等式满足, 如果有auto，则自动调整auto的值以使等式满足
+                        left, right的优先级要高于margen和width的优先级
+    绝对定元素垂直方向布局: top + margin-top/bottom + padding-top/bottom + border-top/bottom + height = 包含块的高度
+ -->
+<body>
+    <div class="box1">
+        <div class="box2"></div>
+        <div class="box3"></div>
+    </div>
+</body>
+
+</html>
