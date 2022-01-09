@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    事件: 表示文档对象或浏览器窗口发生特定交互的瞬间, 如鼠标点击, 键盘下按等等; 
+         或者说事件就是用户和浏览器之间的交互
+ -->
+
+<body>
+
+    <!-- 再有单击事件的时候, 双击事件是没有起作用的 -->
+    <button id="btn1" onclick="alert('喜欢')" ondblclick="alert('超喜欢')">按钮</button>
+    <button id="btn2">按钮2</button>
+</body>
+
+<script>
+    const btn2 = document.getElementById('btn2');
+    btn2.onclick = function () {
+        alert('好好学习, 天天向上');
+    }
+</script>
+
+</html>
