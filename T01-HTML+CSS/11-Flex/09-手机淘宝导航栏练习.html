@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css">
+
+    <style>
+        .nav-inner{
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .nav-inner .item{
+            width: 18%;
+            text-align: center;
+        }
+
+        .nav-inner .item img{
+            width: 100%;
+        }
+
+        .nav-inner .item a{
+            color: #333;
+            text-decoration: none;
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<!-- 
+    1. 因为手机屏幕大小不一样, 所以这里就不设置宽度了, 而是设置成了弹性容器
+    2. 弹性元素大小不会自动伸缩; 设置弹性元素自动填充, flex: auto; 
+       注意当按Ctrl + = 放大浏览器时, 会出现五个图片只显示一个的情况,
+       此时弹性元素仍然时自动缩放的, 是因为放大的倍数太大, 视口不能完全显示, 会出现一个滚动条, 拉动一下即可
+    3. 设置图片的大小和包含块的大小一样, 这是为了防止图片显示原本的大小, 进而溢出; 
+        弹性容器只能约束他的子元素(弹性元素), 后代元素是约束不了的
+    4. 设置图片大小跟随父元素一块成比例变动; 其实我们设置flex: auto;本质就是为了设置flex-grow: 1;
+        当将将item的width设置成15%, 就会根据父元素进行缩放, 所以就不用再写flex:auto了; 
+ -->
+
+<body>
+    <!-- 创建一个外层的容器 -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/1.png">
+                    <span>天猫</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/2.png">
+                    <span>聚划算</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/3.png">
+                    <span>天猫国际</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/4.png">
+                    <span>外卖</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/5.png">
+                    <span>天猫超市</span>
+                </a>
+            </div>
+        </div>
+        <div class="nav-inner">
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/6.png">
+                    <span>充值中心</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/7.png">
+                    <span>飞猪旅行</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/8.png">
+                    <span>领金币</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/9.png">
+                    <span>拍卖</span>
+                </a>
+            </div>
+            <div class="item">
+                <a href="#">
+                    <img src="../source/imgs/font-imgs/16/10.png">
+                    <span>分类</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</body>
+
+</html>

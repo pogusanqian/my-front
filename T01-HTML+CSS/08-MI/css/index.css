@@ -134,11 +134,11 @@
 }
 
 .header .logo .mi {
-    background-image: url(T01-HTML+CSS/08-MI/img/mi-logo.png);
+    background-image: url("../img/mi-logo.png");
 }
 
 .header .logo .home {
-    background-image: url(T01-HTML+CSS/08-MI/img/mi-home.png);
+    background-image: url("../img/mi-home.png");
     left: -55px;
 }
 

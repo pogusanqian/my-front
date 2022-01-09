@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .box1 {
+            width: 400px;
+            height: 400px;
+            border: black 10px solid;
+            display: flex;
+        }
+
+        .box2 {
+            width: 600px;
+            height: 600px;
+            border: brown 10px solid;
+            background-color: brown;
+        }
+
+        .box3 {
+            width: 800px;
+            height: 800px;
+            background-color: gray;
+        }
+    </style>
+</head>
+
+<!-- 
+    1. 当弹性元素比弹性容器宽高都大时, 会进行收缩, 但是为什么只收缩了宽度, 并没有收缩高度呢?
+        这个宽高的收缩和弹性元素的主轴有关系, 如果时row, 则收缩款, 如果是column, 则收缩高
+    
+    2. 弹性容器无法缩放弹性元素的子元素, 附庸的附庸不是我的附庸
+       而且此时box1缩减的box2的宽度也被box3搞失效了
+ -->
+<body>
+    <div class="box1">
+        <div class="box2">
+            <div class="box3"></div>
+        </div>
+    </div>
+</body>
+
+</html>
