@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../sources/js/data.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .mytable {
+            width: 80%;
+            border: 1px solid black;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        .mytable td {
+            border: 1px solid black;
+            height: 20px;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .mytable tr:nth-child(odd) {
+            background-color: #bfa;
+        }
+
+        .mytable tr:first-child {
+            background-color: red;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .mySearch {
+            display: flex;
+            background: gray;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mySearch">
+        <button onclick="search()">搜索</button>
+    </div>
+    <table class="mytable"></table>
+</body>
+
+<script>
+    renderTable(data.msg);
+    renderSearch(data.msg[0]);
+
+    // 动态生成table表格
+    function renderTable(tableData) {
+        const mytable = document.getElementsByClassName('mytable')[0];
+        mytable.firstChild && mytable.removeChild(mytable.firstChild);
+        const tbody = mytable.createTBody();
+        tableData.forEach(item => {
+            const tr = tbody.insertRow();
+            Object.values(item).forEach(value => tr.insertCell().innerHTML = value);
+        });
+    }
+
+    // 动态生成搜索栏
+    function renderSearch(title) {
+        const mySearch = document.getElementsByClassName('mySearch')[0];
+        for (const [key, value] of Object.entries(title)) {
+            const div = document.createElement('div');
+            const input = document.createElement('input');
+            const info = document.createTextNode(value + ': ');
+            input.setAttribute('id', key);
+            mySearch.appendChild(div);
+            div.appendChild(info);
+            div.append(input);
+        }
+    }
+
+    // 添加搜索方法
+    function search() {
+        const tableData = data.msg.filter(item => {
+            return Object.keys(item).every(key => {
+                const documentValue = document.getElementById(key).value;
+                if (documentValue != '') return String(item[key]).includes(documentValue);
+                return true;
+            });
+        });
+        // 动态渲染html
+        tableData[0] !== data.msg[0] && tableData.unshift(data.msg[0]);
+        renderTable(tableData);
+    }
+</script>
+
+</html>

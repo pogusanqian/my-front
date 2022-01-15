@@ -38,12 +38,12 @@
             btn1.onclick = function () {
                 const index = img.src.slice(-5, -4);
                 img.src = img.src.replace(/(.)(.{4}$)/, (match, p1, p2) => (p1 == 1 ? 5 : --p1) + p2);
-            }
+            };
 
             btn2.onclick = function () {
                 const index = img.src.slice(-5, -4);
-                img.src = img.src.replace(/(.)(.{4}$)/,  (match, p1, p2) => (p1 == 5 ? 1 : ++p1) + p2);
-            }
+                img.src = img.src.replace(/(.)(.{4}$)/, (match, p1, p2) => (p1 == 5 ? 1 : ++p1) + p2);
+            };
         }
     </script>
 </head>
