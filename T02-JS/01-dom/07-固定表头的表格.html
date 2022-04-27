@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 动态表头的实现思路: 使用粘滞定位动态显示隐藏的表头 -->
+  <style>
+    p {
+      width: 50%;
+      margin: 0 auto;
+      font-size: 40px;
+    }
+
+    table {
+      width: 100%;
+      border: 1px solid black;
+      margin: 0 auto;
+      border-collapse: collapse;
+      /* 表格和列的宽度通过表格的宽度来设置, 某一列的宽度仅由该列首行的单元格决定; 可以实现隐藏表头和表格宽度完全重合 */
+      table-layout: fixed;
+    }
+
+    td {
+      border: 1px solid black;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    tr:nth-child(2n+1) {
+      background-color: #ceeaf9;
+    }
+
+    tr:first-child {
+      background-color: #94d0f1;
+      font-weight: bold;
+      font-size: 15px;
+    }
+
+    .table1 {
+      position: sticky;
+      top: 0px;
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <p>高三一班学生信息表</p>
+  <table class="table1"></table>
+  <table class="table2"></table>
+</body>
+
+<script>
+  // 获取数据
+  const student = { name: '张三', age: 23, sex: '男' };
+  const data = [{ name: '姓名', age: '年龄', sex: '性别' }];
+  for (let index = 0; index < 1000; index++) {
+    data.push(student);
+  }
+
+  // 补充表头表格数据
+  const table1 = document.querySelector(".table1");
+  const tr = table1.createTBody().insertRow();
+  Object.values(data[0]).forEach(value => tr.insertCell().innerHTML = value);
+
+  // 动态生成table表格
+  const mytable = document.querySelector(".table2");
+  const tbody = mytable.createTBody();
+  data.forEach(item => {
+    const tr = tbody.insertRow();
+    Object.values(item).forEach(value => tr.insertCell().innerHTML = value);
+  });
+
+  // 滚轮滚动事件
+  window.onscroll = function () {
+    if (document.documentElement.scrollTop >= 100) {
+      table1.style.display = "inline-table";
+    } else {
+      table1.style.display = "none";
+    }
+  }
+</script>
+
+</html>
