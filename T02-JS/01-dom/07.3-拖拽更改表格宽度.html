@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>拖拽更改表格宽度</title>
+
+  <style>
+    table {
+      width: 100%;
+      border: 1px solid black;
+      margin: 0 auto;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    td {
+      border: 1px solid black;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    tr:nth-child(2n+1) {
+      background-color: #ceeaf9;
+    }
+
+    tr:first-child {
+      background-color: #94d0f1;
+      font-weight: bold;
+      font-size: 15px;
+    }
+  </style>
+</head>
+
+<body>
+  <table>
+    <tr>
+      <td>姓名</td>
+      <td>年龄</td>
+      <td>性别</td>
+    </tr>
+    <tr>
+      <td>张三</td>
+      <td>23</td>
+      <td>男</td>
+    </tr>
+    <tr>
+      <td>李四</td>
+      <td>24</td>
+      <td>女</td>
+    </tr>
+  </table>
+</body>
+
+<script>
+  const table = document.querySelector('table');
+  for (const titleCell of table.rows[0].cells) {
+    // 添加鼠标下按的标识符
+    titleCell.onmousedown = () => titleCell.isMouseDown = true;
+    titleCell.onmouseup = () => titleCell.isMouseDown = false;
+    titleCell.onmouseout = () => titleCell.isMouseDown = false;
+
+    titleCell.onmousemove = function () {
+      const changeFlag = this.offsetWidth - event.offsetX < 30;
+      // 更改光标样式以及表格宽度
+      this.style.cursor = changeFlag ? 'col-resize' : 'default';
+      if (this.isMouseDown && changeFlag) this.width = event.offsetX;
+    };
+  }
+</script>
+
+</html>
