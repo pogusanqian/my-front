@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: yellow;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      const box1 = document.getElementById("box1");
+      const btn01 = document.getElementById("btn01");
+      btn01.onclick = function () {
+        /*
+         * 1. 通过currentStyle属性获取元素的当前显示的样式
+         *    currentStyle只有IE浏览器支持, 其他的浏览器都不支持
+         *    如果当前元素没有设置该样式, 则获取它的默认值
+         * 
+         * 2. 通过getComputedStyle()读取元素的当前显示样式, 这个方法是window的方法, 可以直接使用
+         * 	  如果获取的样式没有设置, 则会获取到真实的值, 而不是默认值(没有设置width, 它不会获取到auto, 而是一个长度)
+         *    但是该方法不支持IE8及以下的浏览器
+         * 
+         * 3. 通过currentStyle和getComputedStyle()读取到的样式都是只读的, 不能修改, 如果要修改必须通过style属性
+         */
+        console.log('style: ', box1.style.width); // style读取的样式是内联样式
+        // console.log('currentStyle: ', box1.currentStyle.width);
+        console.log('getComputedStyle', getComputedStyle(box1).width);
+        console.log('getStyle', getStyle(box1, "width"));
+      };
+
+    };
+
+    // 兼容性读取样式的方法
+    function getStyle(element, name) {
+      if (window.getComputedStyle) { //正常浏览器的方式, 具有getComputedStyle()方法
+        return getComputedStyle(element)[name];
+      } else { //IE8的方式, 没有getComputedStyle()方法
+        return element.currentStyle[name];
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button id="btn01">读取样式</button>
+  <br /><br />
+  <div id="box1"></div>
+</body>
+
+</html>
