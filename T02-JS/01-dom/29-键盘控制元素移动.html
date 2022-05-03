@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style type="text/css">
+    #box1 {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+
+  <script type="text/javascript">
+
+    window.onload = function () {
+      document.onkeydown = function (event) {
+        // 根据alt键控制移速
+        const speed = event.altKey ? 50 : 10;
+        switch (event.keyCode) {
+          case 37: // 向左
+            box1.style.left = box1.offsetLeft - speed + "px";
+            break;
+          case 39: // 向右
+            box1.style.left = box1.offsetLeft + speed + "px";
+            break;
+          case 38: // 向上
+            box1.style.top = box1.offsetTop - speed + "px";
+            break;
+          case 40: // 向下
+            box1.style.top = box1.offsetTop + speed + "px";
+            break;
+        }
+      };
+    };
+  </script>
+</head>
+
+<body>
+  <div id="box1"></div>
+</body>
+
+</html>

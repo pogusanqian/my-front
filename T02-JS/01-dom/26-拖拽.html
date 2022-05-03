@@ -39,14 +39,24 @@
         // 给document添加鼠标释放事件
         document.onmouseup = (ervent) => {
           document.onmousemove = null;
-          document.onmouseup = null;
+          document.onmouseup = null; // 如果onmouseup没有其他逻辑的话, 不取消也可以
         };
+
+        	/*
+					 * 当我们拖拽一个网页中的内容时，浏览器会默认去搜索引擎中搜索内容，
+					 * 此时会导致拖拽功能的异常，这个是浏览器提供的默认行为，
+					 * 如果不希望发生这个行为，则可以通过return false来取消默认行为
+           * 在最新版的chrome中, 是不用false的, 浏览器自动做了优化
+					 * 但是这招对IE8不起作用
+					 */
+        return false;
       };
     }
   </script>
 </head>
 
 <body>
+  张三的歌
   <div class="box1"></div>
 </body>
 

@@ -63,10 +63,13 @@
     titleCell.onmouseout = () => titleCell.isMouseDown = false;
 
     titleCell.onmousemove = function () {
-      const changeFlag = this.offsetWidth - event.offsetX < 30;
+      const width = Number(getComputedStyle(this).width.replace(/px/, ''));
+      const changeFlag = width - event.offsetX < 30;
       // 更改光标样式以及表格宽度
       this.style.cursor = changeFlag ? 'col-resize' : 'default';
-      if (this.isMouseDown && changeFlag) this.width = event.offsetX;
+      if (this.isMouseDown && changeFlag) {
+        this.style.width = width + event.movementX + 'px';
+      }
     };
   }
 </script>

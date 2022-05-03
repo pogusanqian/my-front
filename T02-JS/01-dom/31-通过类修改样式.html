@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/class.js"></script>
+  <style>
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+    }
+
+    .box2 {
+      width: 400px;
+      height: 400px;
+      background-color: red;
+    }
+  </style>
+
+  <script>
+    window.onload = function () {
+      /**
+       * 直接通过className属性修改元素的样式要比直接通过style属性单独设置内敛样式要强
+       * 可以实现标签和行为的分离, 也就是JS和CSS的分离
+       * 另外浏览器在性能方面也更强, 浏览器只需要重新渲染页面一次
+       */ 
+      document.querySelector('button').onclick = function () {
+        resetClass(document.querySelector('div'), 'box2');
+      };
+    }
+  </script>
+</head>
+
+<body>
+  <button>通过类修改div样式</button>
+  <div class="box1"></div>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 200px;
+      width: 200px;
+      background-color: aqua;
+    }
+  </style>
+
+  <script>
+    window.onload = () => {
+      /**
+       * 1. 获取不支持onmousewheel事件, 获取的鼠标滚动使用的使addEventListener('DOMMouseScroll')实现的
+       * 2. 火狐浏览器可以使用event.preventDefault()取消鼠标滚动的默认事件
+       */ 
+      document.querySelector('.box').onmousewheel = function (event) {
+        // 向上滚动wheelDelta是一个正数
+        this.style.height = this.clientHeight - event.wheelDelta + 'px';
+        // 浏览器默认div框会随着滚动条的滚动而变动; 返回false则取消默认行为
+        return false;
+      };
+    }
+  </script>
+</head>
+
+<body>
+  <div class="box">张三的歌</div>
+</body>
+
+</html>
