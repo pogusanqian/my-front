@@ -1,0 +1,50 @@
+@CHARSET "UTF-8";
+
+/* 整体设置菜单 */
+div.menu {
+  width: 300px;
+  margin: 0 auto;
+  color: #fff;
+  font: Arial, sans-serif 12px;
+}
+
+/* 设置每一个小菜单块 */
+div.menu div {
+  overflow: hidden;
+  background: url('../imgs/二级菜单/title.gif') repeat-x;
+}
+
+/* 设置二级菜单内容折叠, 主要就是通过这一个collapsed类进行样式的更改, 这一个类就相当于是一个标识 */
+div.menu div.collapsed {
+  height: 25px;
+}
+
+/* 设置二级菜单的标题 */
+div.menu div span {
+  display: block;
+  height: 15px;
+  line-height: 15px;
+  padding: 5px 25px;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  background-image: url('../imgs/二级菜单/expanded.gif');
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* 设置二级菜单的内容 */
+div.menu div a {
+  color: #066;
+  display: block;
+  padding: 5px 10px;
+  background: #eee;
+  border-bottom: 1px solid #ddd;
+  text-decoration: none;
+}
+
+/* 给标签添加上监听事件 */
+div.menu div a:hover {
+  background: #066 url('../imgs/二级菜单/linkarrow.gif') no-repeat right center;
+  color: #fff;
+  text-decoration: none;
+}

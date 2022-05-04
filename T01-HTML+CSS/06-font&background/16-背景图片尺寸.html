@@ -16,17 +16,17 @@
 
         .box1 {
             background-image: url("../source/imgs/font-imgs/06/2.jpg");
-            background-size: cover;
+            background-size: 100px 100px;
         }
 
         .box2 {
             background-image: url("../source/imgs/font-imgs/06/2.jpg");
-            background-size: contain;
+            background-size: cover;
         }
 
         .box3 {
             background-image: url("../source/imgs/font-imgs/06/2.jpg");
-            background-size: 100px auto;
+            background-size: contain;
         }
 
         .box4 {
@@ -38,29 +38,17 @@
             background-image: url("../source/imgs/font-imgs/06/2.jpg");
             background-size: auto;
         }
-
-        .box6 {
-            width: 1920px;
-            height: 1080px;
-            background-image: url("../source/imgs/font-imgs/06/2.jpg");
-            background-size: contain;
-        }
-
-        .box7 {
-            width: 192px;
-            height: 108px;
-            background-image: url("../source/imgs/font-imgs/06/2.jpg");
-            background-size: contain;
-        }
     </style>
 </head>
 
 <!-- 
     background-size 设置背景图片的大小
-        第一个值表示宽度 第二个值表示高度 如果只写一个，则第二个值默认是 auto
-        cover 图片的比例不变，将元素铺满(如果div框的比例和图片的宽高比例不相同, 就会造成一部分丢失)
-        contain 图片比例不变，将图片在元素中完整显示(没有设置no-repeat的话, 便会出现平铺)
-
+        通过值设置: 第一个值表示宽度 第二个值表示高度 如果只写一个，则第二个值默认是auto
+           设置的是CSS像素,所以图片会完整的展示在图片中, 只不过宽高的缩放比例是不一样的, 可能宽缩小了5倍, 但是长度是10倍
+        cover: 缩放背景图片以完全覆盖背景区, 可能背景图片部分看不见
+            宽高都是按照相同的比例进行缩放的
+        contain: 缩放背景图片以完全装入背景区, 可能背景区部分空白(没有设置no-repeat的话, 便会出现平铺)
+            宽高都是按照相同的比例进行缩放的
         所以div框的宽高比例必须和图片的宽高比例相同, 才能将图片完整的展示在div框中
  -->
 

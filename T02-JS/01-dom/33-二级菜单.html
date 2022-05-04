@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>二级菜单</title>
+  <!-- <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/reseter.css/2.0.0/minireseter.css" rel="stylesheet"> -->
+  <link rel="stylesheet" type="text/css" href="../sources/css/二级菜单.css">
+  <script src="../sources/js/tools.js"></script>
+  <script>
+    function updateTitle(elementObj, calssName) {
+      // 获取目标end值, 然后再重新设height的内敛样式成最初的高度, 最后再由动画渐变
+      const begin = elementObj.offsetHeight;
+      toggleClass(elementObj, calssName);
+      const end = elementObj.offsetHeight;
+      elementObj.style.height = begin + "px";
+      // 动画的效果其实使通过内敛样式生效的; 当动画效果执行完毕后, 将内敛样式清空, 此时起作用的时css文件中的样式
+      transitionMove(elementObj, 'height', end, 10, () => elementObj.style.height = "");
+    }
+
+    window.onload = function () {
+      const collapsedName = 'collapsed';
+      const titles = document.querySelectorAll('.menu div span');
+      // item变量被使用在了点击事件中, 所以当for循环结束时, 这个变量是不会释放的; const声明的是块级作用域, 与const不同
+      for (const item of titles) {
+        item.onclick = () => {
+          const titleParent = item.parentNode;
+          // 更改原本展开的元素
+          const notCollapsedEle = document.querySelector(`.menu div:not(.${collapsedName})`);
+          if (notCollapsedEle && titleParent !== notCollapsedEle) {
+            updateTitle(notCollapsedEle, collapsedName);
+          }
+          // 更改当前的点击元素
+          updateTitle(titleParent, collapsedName);
+        };
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <!-- 
+    1. 先整体布局出菜单
+        - 用一个大div表示整个菜单栏
+        - 用四个小div表示一级菜单区域, 通过小div的高度来设置菜单的折叠情况
+        - 用span标签表示一级菜单的内容
+        - 用超链接表示二级菜单内容(将span和a标签设置成块元素, 让其垂直布局)
+    2. 添加折叠事件
+    3. 添加折叠的动画效果, 这种动画效果由内敛样式来生成, 并不是外部CSS文件
+  -->
+  <div class="menu">
+    <div>
+      <span>前端</span>
+      <a href="#">HTML入门到精通</a>
+      <a href="#">CSS</a>
+      <a href="#">JavaScript</a>
+      <a href="#">Vue开发</a>
+    </div>
+    <div class="collapsed">
+      <span>后端</span>
+      <a href="#">Node</a>
+      <a href="#">Java</a>
+      <a href="#">GoLang入门到精通</a>
+    </div>
+    <div class="collapsed">
+      <span>数据库</span>
+      <a href="#">MySQL</a>
+      <a href="#">Mongo</a>
+      <a href="#">Redis</a>
+    </div>
+    <div class="collapsed">
+      <span>运维部署</span>
+      <a href="#">Linux</a>
+      <a href="#">云服务</a>
+      <a href="#">K8S集群</a>
+      <a href="#">Docker容器</a>
+    </div>
+  </div>
+</body>
+
+</html>

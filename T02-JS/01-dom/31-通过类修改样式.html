@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <script src="./js/class.js"></script>
+  <script src="../sources/js/tools.js"></script>
   <style>
     .box1 {
       width: 200px;
@@ -29,7 +29,7 @@
        * 另外浏览器在性能方面也更强, 浏览器只需要重新渲染页面一次
        */ 
       document.querySelector('button').onclick = function () {
-        resetClass(document.querySelector('div'), 'box2');
+        toggleClass(document.querySelector('div'), 'box2');
       };
     }
   </script>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-jQuery函数和jQuery对象</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    /**
+     * 1. jQuery包暴漏了两个属性在window对象上, 分别是jQuery和$, 这两个属性指向的其实是一个地址引用window.jQuery = window.$ = jQuery
+     * 2. $()成为jQuery的核心函数, 简称jQuery函数
+     * 3. 使用jQuery()获取的对象成为jQuery核心对象, 简称jQuery对象, jQuery对象是一个伪数组对象, 里面可能有一个元素, 也可能有多个元素
+     * 4. jQuery对象的变量名称一般使用$开头, 用来和普通对象进行区分
+     */
+    console.log(jQuery);
+    console.log($());
+    console.log(window.jQuery === window.$);
+  </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

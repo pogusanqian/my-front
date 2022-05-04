@@ -63,7 +63,7 @@
     titleCell.onmouseout = () => titleCell.isMouseDown = false;
 
     titleCell.onmousemove = function () {
-      const width = Number(getComputedStyle(this).width.replace(/px/, ''));
+      const width = parseInt(getComputedStyle(this).width);
       const changeFlag = width - event.offsetX < 30;
       // 更改光标样式以及表格宽度
       this.style.cursor = changeFlag ? 'col-resize' : 'default';
