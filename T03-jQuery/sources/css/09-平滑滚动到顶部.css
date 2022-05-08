@@ -1,0 +1,12 @@
+#to_top {
+  width: 30px;
+  height: 40px;
+  font: 14px/20px arial;
+  text-align: center;
+  background: #06c;
+  position: fixed;
+  cursor: pointer;
+  color: #fff;
+  left: 1050px;
+  top: 500px;
+}
