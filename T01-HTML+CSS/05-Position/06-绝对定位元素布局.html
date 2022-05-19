@@ -42,10 +42,12 @@
 </head>
 
 <!-- 
-    绝对定元素水平方向布局: left + margin-left + border-left + padding-left + width + padding-right + border-right + margin-right + right = 包含块的内容区的宽度        1. 如果9个值中没有auto则自动调整right值以使等式满足, 如果有auto，则自动调整auto的值以使等式满足
-                        left, right的优先级要高于margen和width的优先级
+    绝对定元素水平方向布局: left + margin-top/bottom + padding-top/bottom + border-top/bottom + right = 包含块的内容区的宽度
     绝对定元素垂直方向布局: top + margin-top/bottom + padding-top/bottom + border-top/bottom + height = 包含块的高度
+     1. 如果9个值中没有auto则自动调整right值以使等式满足, 如果有auto，则自动调整auto的值以使等式满足
+     2. left, right的优先级要高于margen和width的优先级
  -->
+
 <body>
     <div class="box1">
         <div class="box2"></div>

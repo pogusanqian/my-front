@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div,
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<!-- 
+  1. 宽高原本的比例时581: 970, 当宽高比例如果不是581:970时, 就会感觉图片的宽高不成比例, 会有一种皱巴的感觉 
+  2. 如果想让图片完整展示的话, 就不要设置div的宽高; div的宽高由img撑开
+  3. 如果要等比缩放图片时, 容器的宽高比例一定要和图片一样
+  4. 当只设置图片的高度是300px时, 图片的宽度会等比缩放到180px
+-->
+
+<body>
+  <div>
+    <img src="../source/imgs/美女1.jpg" alt="">
+  </div>
+</body>
+
+</html>

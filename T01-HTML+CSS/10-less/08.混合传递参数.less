@@ -1,0 +1,17 @@
+@name1: 张三;
+@name2: 李四;
+
+.common(@myname: @name1) {
+  width: 200px;
+  value: @myname;
+}
+
+.box1 {
+  // 不传递参数, 使用的是默认值
+  .common();
+}
+
+.box2 {
+  // 传递参数
+  .common(@name2);
+}

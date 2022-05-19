@@ -5,11 +5,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reseter.css/2.0.0/reseter.min.css"
+    integrity="sha512-gCJkkUMGTe73+FMwog6gIBCVJIMXRoc21l6/IPCuzxCex/1sxvO8ctb6Zd4/WWs2UMqmtnDrAdhJht5pEY0LXg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Document</title>
   <style>
     table {
       width: 100%;
-      border: 1px solid black;
       margin: 0 auto;
       border-collapse: collapse;
       table-layout: fixed;
@@ -38,18 +40,12 @@
       font-weight: bold;
       font-size: 15px;
     }
-
-    .table1 {
-      position: sticky;
-      top: 0px;
-      display: none;
-    }
   </style>
 </head>
 
 <body>
-  <table class="table1"></table>
-  <table class="table2"></table>
+  <h1>高三一班学生信息</h1>
+  <table class="table"></table>
 </body>
 
 <script>
@@ -67,27 +63,17 @@
     data.push(student);
   }
 
-  // 补充表头表格数据
-  const table1 = document.querySelector(".table1");
-  const tr = table1.createTBody().insertRow();
-  Object.values(data[0]).forEach(value => tr.insertCell().innerHTML = value);
-
   // 动态生成table表格
-  const mytable = document.querySelector(".table2");
+  const mytable = document.querySelector(".table");
   const tbody = mytable.createTBody();
   data.forEach(item => {
     const tr = tbody.insertRow();
     Object.values(item).forEach(value => tr.insertCell().innerHTML = value);
   });
 
-  // 滚轮滚动事件
-  window.onscroll = function () {
-    if (document.documentElement.scrollTop >= 100) {
-      table1.style.display = "inline-table";
-    } else {
-      table1.style.display = "none";
-    }
-  }
+  // 动态设置表头样式
+  mytable.rows.item(0).style.position = 'sticky';
+  mytable.rows.item(0).style.top = '-1px';
 </script>
 
 </html>

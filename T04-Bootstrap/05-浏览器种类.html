@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+    integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
+    integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+  <script src="https://fastly.jsdelivr.net/npm/jquery@1.12.4/dist/jquery.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+
+  <style>
+    /* 自定义类, 防止将bootstrap中的样式覆盖掉 */
+    .daum-carousel-inner,
+    .daum-carousel-inner img {
+      width: 100%;
+      height: 500px;
+    }
+
+    .daum-carousel {
+      margin-top: 50px;
+    }
+
+    .daum-suolue {
+      margin-top: 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+          data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">现代浏览器博物馆</a>
+      </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="#">综述 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">概述</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+              aria-expanded="false">种类 <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">Chrome</a></li>
+              <li><a href="#">FireFox</a></li>
+              <li><a href="#">Safari</a></li>
+              <li><a href="#">Opear</a></li>
+              <li><a href="#">IE</a></li>
+            </ul>
+          </li>
+          <li><a href="javascript:;" data-toggle="modal" data-target="#myModal">关于</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 轮播图, data-ride中data表示和js有关, 是一种动态交互的属性 -->
+  <div id="carousel-example-generic" class="carousel slide daum-carousel" data-ride="carousel" data-interval="1000">
+    <ol class="carousel-indicators">
+      <!-- 小圆点 -->
+      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+      <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+    </ol>
+
+    <!-- 图片内容 -->
+    <div class="carousel-inner daum-carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="./sources/imgs/chrome-big.jpg" alt="...">
+        <div class="carousel-caption">Chrome</div>
+      </div>
+      <div class="item">
+        <img src="./sources/imgs/firefox-big.jpg" alt="...">
+        <div class="carousel-caption">FireFox</div>
+      </div>
+      <div class="item">
+        <img src="./sources/imgs/safari-big.jpg" alt="...">
+        <div class="carousel-caption">Safari</div>
+      </div>
+      <div class="item">
+        <img src="./sources/imgs/opera-big.jpg" alt="...">
+        <div class="carousel-caption">Opear</div>
+      </div>
+      <div class="item">
+        <img src="./sources/imgs/ie-big.jpg" alt="...">
+        <div class="carousel-caption">IE</div>
+      </div>
+    </div>
+
+    <!-- glyphicon glyphicon-chevron表示的是两个箭头ICON字体 -->
+    <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+
+  <!-- 缩略图 -->
+  <div class="container daum-suolue">
+    <div class="row">
+      <div class="col-md-4 text-center ">
+        <img src="./sources/imgs/chrome-logo-small.jpg" alt="...">
+        <div class="caption">
+          <h3>Chrom</h3>
+          <p>Google Chrome，又称Google浏览器，是一个由Google（谷歌）公司开发的网页浏览器。</p>
+          <p><a href="javascript:;" class="btn btn-primary" role="button">点击下载</a> </p>
+        </div>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <img src="./sources/imgs/firefox-logo-small.jpg" alt="...">
+        <div class="caption">
+          <h3>FireFox</h3>
+          <p>Mozilla Firefox，中文名通常称为“火狐”或“火狐浏览器”，是一个开源网页浏览器。</p>
+          <p><a href="javascript:;" class="btn btn-primary" role="button">点击下载</a> </p>
+        </div>
+      </div>
+
+      <div class="col-md-4 text-center">
+        <img src="./sources/imgs/safari-logo-small.jpg" alt="...">
+        <div class="caption">
+          <h3>Safari</h3>
+          <p>Safari，是苹果计算机的最新操作系统Mac OS X中的浏览器。</p>
+          <p><a href="javascript:;" class="btn btn-primary" role="button">点击下载</a> </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 线条 -->
+  <div class="container">
+    <hr>
+  </div>
+
+  <!-- 标签页 -->
+  <div class="container">
+    <ul class="nav nav-tabs" role="tablist">
+      <li role="presentation" class="active"><a href="#chrom" aria-controls="chrom" role="tab" data-toggle="tab">Chrom</a></li>
+      <li role="presentation"><a href="#firefox" aria-controls="firefox" role="tab" data-toggle="tab">FireFox</a></li>
+      <li role="presentation"><a href="#ie" aria-controls="ie" role="tab" data-toggle="tab">IE</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <!-- 如果由active, 则div就会进行展示 -->
+      <div role="tabpanel" class="tab-pane active" id="chrom">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-7">
+              <h3>Chorm</h3>
+              由Google 打造的浏览器下载Chrome 由Google 打造 利用Google 的强大功能浏览网页 通过Gmail、Google Pay 和 Google 助理等 Google 应用,Chrome
+              可帮助您保持工作效率并充分利用您的浏览器
+            </div>
+            <div class="col-md-5">
+              <img src="./sources/imgs/chrome-logo.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="firefox">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-7">
+              <h3>FireFox</h3>
+              其使用Gecko排版引擎, 支持多种操作系统,如Windows、macOS及GNU/Linux等。Firefox有两个升级渠道: 快速发布版和延长支持版;
+              快速发布版每四周发布一个主要版本, 此四周期间会有修复崩溃和安全隐患的小版本。延长支持版每42周发布一个主要版本, 期间至少每四周才有修复崩溃、安全隐患和政策更新相关的小版本。
+            </div>
+            <div class="col-md-5">
+              <img src="./sources/imgs/firefox-logo.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane" id="ie">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-7">
+              <h3>IE</h3>
+              Internet Explorer，原称Microsoft Internet Explorer(6版本以前)和Windows Internet Explorer(7，8，9，10版本)，
+              简称IE，是美国微软公司推出的一款网页浏览器。它采用的排版引擎(俗称内核)为Trident。
+            </div>
+            <div class="col-md-5">
+              <img src="./sources/imgs/ie-logo.jpg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- 模态窗口 -->
+  <div class="modal fade" tabindex="-1" role="dialog" id="myModal">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">浏览器介绍</h4>
+        </div>
+        <div class="modal-body">
+          <p>你好, 世界</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
