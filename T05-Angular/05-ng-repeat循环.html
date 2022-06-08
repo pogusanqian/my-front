@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>05-ng-repeat循环</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+  <script>
+    angular.module('App', []).controller('con', function ($scope) {
+      $scope.students = [
+        { name: '张三', age: 23 },
+        { name: '李四', age: 24 },
+        { name: '王五', age: 25 },
+      ];
+    })
+  </script>
+</head>
+
+<!-- 
+  ng-repeat： 遍历数组显示数据， 数组有几个元素就会产生几个新的作用域
+      * $index:  元素下标
+      * $first:  下标是否是第一个元素
+      * $last:   下标是否是最后一个元素
+      * $middle: 下标是否是中间元素
+      * $odd:    下标是否是奇数
+      * $even:   下标是否是偶数
+ -->
+<body ng-app="App">
+  <div ng-controller="con">
+    <ul>
+      <li ng-repeat="stu in students">{{stu.name + $index + $first}}</li>
+    </ul>
+  </div>
+</body>
+
+</html>

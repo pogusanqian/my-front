@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>06-ng-bind解决闪屏</title>
+</head>
+<!-- 
+  页面出现闪屏的原因: 浏览器在加载{{stu.name}}表达式时, 还没有加载angular框架, 所以{{stu.name}}就按照字符串展示了
+ -->
+<body ng-app="App">
+  <div ng-controller="con">
+    <ul>
+      <li ng-repeat="stu in students">{{stu.name }}</li>
+    </ul>
+  </div>
+</body>
+
+<script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+<script>
+  angular.module('App', []).controller('con', function ($scope) {
+    $scope.students = [
+      { name: '张三', age: 23 },
+      { name: '李四', age: 24 },
+      { name: '王五', age: 25 },
+    ];
+  })
+</script>
+
+</html>

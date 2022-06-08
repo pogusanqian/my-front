@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-ng-style</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+  <script>
+    angular.module('App', []).controller('con', function ($scope) {
+      $scope.things = [
+        { name: '吃饭', isChecked: false },
+        { name: '睡觉', isChecked: false },
+        { name: '打豆豆', isChecked: false },
+      ];
+
+      $scope.save = () => $scope.things.unshift({ name: $scope.thing, isChecked: false });
+      $scope.delete = () => $scope.things = $scope.things.filter(item => !item.isChecked);
+    })
+  </script>
+</head>
+
+<body ng-app="App">
+  <div ng-controller="con">
+    <h2>备忘录</h2>
+
+    <div>
+      <input type="text" ng-model="thing">
+      <button ng-click="save()">保存</button>
+    </div>
+
+    <div ng-repeat="item in things">
+      <input type="checkbox" ng-model="item.isChecked"> {{item.name}}
+    </div>
+
+    <button ng-click="delete()">删除选中</button>
+  </div>
+</body>
+
+</html>

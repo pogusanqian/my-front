@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>04-ng-click指令</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+  <script>
+    angular.module('App', []).controller('con', function ($scope) {
+      $scope.num = 20;
+      $scope.price = 30;
+      $scope.total = $scope.num * $scope.price;
+      $scope.calc = () => $scope.total = $scope.num * $scope.price;
+    })
+  </script>
+</head>
+
+<body ng-app="App">
+  <div ng-controller="con">
+    数量: <input type="number" ng-model="num">
+    价格: <input type="number" ng-model="price">
+    <button ng-click="calc()">计算</button><br>
+    总价: {{total}}
+  </div>
+</body>
+
+</html>

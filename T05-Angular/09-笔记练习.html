@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-ng-style</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+  <script>
+    angular.module('App', []).controller('con', function ($scope) {
+      $scope.getCount = () => 100 - ($scope.message?.length || 0);
+
+      $scope.save = () => {
+        localStorage.setItem('note', $scope.message);
+        $scope.message = '';
+      };
+
+      $scope.read = () => $scope.message = localStorage.getItem('note');
+      $scope.remove = () => localStorage.removeItem('note');
+    });
+  </script>
+</head>
+
+<body ng-app="App">
+  <div ng-controller="con">
+    <h2>我的笔记</h2>
+    <textarea ng-model="message"></textarea><br>
+    <button ng-click="save()">保存</button>
+    <button ng-click="read()">读取</button>
+    <button ng-click="remove()">删除</button><br>
+    <span>剩余字数: {{getCount()}}</span>
+  </div>
+</body>
+
+</html>

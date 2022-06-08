@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-ng-style</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+  <script>
+    angular.module('App', []).controller('con', function ($scope) {
+      // 定义样式
+      $scope.mystyle= {
+        width: '200px',
+        height: '200px',
+        background: 'red',
+      };
+
+      // 鼠标移入事件, 想要获取event参数, 必须在ng-mouseouve事件中进行传参
+      $scope.over = function(event) {
+        console.log(event);
+        this.mystyle.background = 'blue';
+      }
+
+      // 鼠标移出事件
+      $scope.leave = () => $scope.mystyle.background = 'red';
+    })
+  </script>
+</head>
+
+<!-- 
+  * ng-mouseover: 此指令不会覆盖元素的原生onmouseover事件, 事件触发ng-mouseover表达式与原生的onmouseover事件将都会执行
+ -->
+<body ng-app="App">
+  <div ng-controller="con" ng-style="mystyle" ng-mouseover="over($event)" ng-mouseleave="leave()"></div>
+</body>
+
+</html>

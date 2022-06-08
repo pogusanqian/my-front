@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-动态显示输入内容</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+</head>
+
+<!-- 
+  1. 单页面应用(SPA): single page application
+        * 将所有活动局限在一个页面
+        * 局部刷新页面数据
+        * 使用ajax技术路由
+  2. ng-app: 标识作用, angular会自动管理当前标签所包含的整个区域, 并且会自动创建根作用域对象($rootScope), ng-app可以设置属性值, 也可以不写
+  3. ng-model: 将当前输入框的值与当前作用域对象的username属性关联; 实现双向绑定View <=> Model
+  4. ng-init初始化设置属性值
+  5. {{}}: 获取当前作用域对象的指定属性; 单项绑定 Model => View
+
+  Angular框架没有采用才做dom进行数据交互, 而是采用了一种数据绑定的思想
+ -->
+
+<body ng-app ng-init="username='张三'">
+  <input type="input" ng-model="username">
+  <p>输入的内容: {{username}}</p>
+</body>
+
+</html>

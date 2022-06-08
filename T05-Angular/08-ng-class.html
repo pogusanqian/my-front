@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>07-ng-style</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+
+  <style>
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+
+    .box2 {
+      width: 400px;
+      height: 400px;
+      background-color: gray;
+    }
+  </style>
+  <script>
+    angular.module('App', []).controller('con', function ($scope) {
+
+    });
+  </script>
+</head>
+
+<body ng-app="App">
+  <div ng-controller="con" ng-class="{box1: false, box2: true}"></div>
+</body>
+
+</html>

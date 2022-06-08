@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>02-作用域对象和控制器对象</title>
+  <script src="http://cdn.bootcss.com/angular.js/1.2.29/angular.min.js"></script>
+  <script>
+    function MyController($scope) {
+      // 初始化属性和方法
+      $scope.firstName = '李';
+      $scope.lastName = '世民';
+      // $scope.age = 300;
+      $scope.getName = () => $scope.firstName + $scope.lastName;
+    }
+  </script>
+</head>
+
+<!-- 
+  作用域对象: 一个js实例对象, ng-app指令默认会创建一个根作用域对象($rootScope)
+  控制器对象:
+    * 控制器就是一个JavaScript对象, 由标准构造函数创建
+    * ng-controller="MyController"相当于是new MyController()创建了一个对象
+    * Angular在创建控制器对象的同时, 会创建一个新的作用域对象$scope, 此作用域对象是根作用域对象属性; 子作用域对象可以继承父作用域对象的属性
+    * 控制器构造函数的形参变量必须是$scope, 不然就会报错
+    * 控制器对象的引入方式在不同的Angular版本中由不同的方式, 此案例事件只能适用与低版本angular框架
+ -->
+
+<body ng-app ng-init="age=23">
+  <div ng-controller="MyController">
+    姓氏: <input type="text" ng-model="firstName"><br>
+    名称: <input type="text" ng-model="lastName"><br>
+    姓名: {{getName()}}<br>
+    年龄:{{age}}
+  </div>
+</body>
+
+</html>
