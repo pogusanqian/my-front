@@ -8,7 +8,7 @@
 
     window.onload = function () {
       const u1 = document.getElementById("u1");
-      
+
       //点击按钮以后添加超链接
       document.getElementById("btn01").onclick = function () {
         const li = document.createElement("li");
@@ -24,8 +24,9 @@
        *  - 指将事件统一绑定给元素的共同的祖先元素, 这样当后代元素上的事件触发时, 会一直冒泡到祖先元素
        *    从而通过祖先元素的响应函数来处理事件; 
        *  - 事件委派是利用了冒泡, 通过委派可以减少事件绑定的次数, 提高程序的性能
+       *  - event.target表示的是发生事件的元素, 也就是子元素而不是父元素
        */
-      u1.onclick = (event) => alert("我是ul的单击响应函数");
+      u1.onclick = (event) => alert(event.target.outerHTML);
     };
 
   </script>

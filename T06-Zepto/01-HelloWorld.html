@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>01-HelloWorld</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: aqua;
+    }
+  </style>
+
+<!-- 
+  zepto是移动端开发框架, 是jquery的轻量级代替品, API及语句同jquery相似, 但文件更小(可压缩至8KB), 是目前功能完备的库中, 最小的一个
+      针对的是移动端
+      轻量级, 压缩版本只有8KB
+      语法大部分同jquery一样, 学习成本低, 上手快, 同jquery一样以$作为核心函数和核心对象
+      响应执行快
+ -->
+  <script>
+    $(() => {
+      // touchstart事件是移动端的触屏事件
+      $('.box').on('touchstart', () => alert('我是zepto'));
+    })
+  </script>
+</head>
+
+<body>
+  <div class="box"></div>
+</body>
+
+</html>
