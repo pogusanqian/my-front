@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+<body>
+    <div id="demo">
+        <!--默认传递一个event事件对象 -->
+        <button v-on:click="show1">按钮1</button>
+        <!-- 如果传递参数时, 可以使用$event来传递event对象, $event可以放到参数的任何位置; v-on:指令可以使用@来表示 -->
+        <button @click="show2($event, 66)">按钮2</button>
+    </div>
+</body>
+<script>
+    const vm = new Vue({
+        el: '#demo',
+        data: {
+            name: '河南理工大学',
+            address: '河南焦作市',
+        },
+        // show1, show2方法其实也可以写在data属性中, 但是这种方法不对, 因为data属于数据代理, 会生成对应的时getter, setter
+        // 另外methods中的方法不要写成箭头函数, 因为这些方法都是应该由vm实例对象调用
+        methods: {
+            show1(event) {
+                console.log(event.target);
+            },
+            show2(event, num) {
+                console.log(num, event);
+            }    
+        }
+    })
+</script>
+</html>

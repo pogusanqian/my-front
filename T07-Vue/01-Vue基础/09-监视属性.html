@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script type="text/javascript" src="../../T01-HTML+CSS/source/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
     <style>
         * {
             margin-top: 30px;
@@ -21,7 +21,6 @@
     </div>
 </body>
 <script>
-    Vue.config.productionTip = false;
     const vm = new Vue({
         el: '#demo',
         data: {
@@ -36,7 +35,7 @@
                 }
             }
         }
-    })
+    });
 
     // 直接在vm上, 设置监听属性
     // vm.$watch('isHot', {
