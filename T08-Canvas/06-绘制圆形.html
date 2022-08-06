@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-绘制圆形</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+
+        canvas {
+            border: 1px solid black;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = 'red';
+            ctx.fillStyle = 'red'
+            ctx.lineWidth = 10;
+
+            // true表示逆时针画圆, false表示顺时针(默认值)
+            // 起始点是圆心水平方向的右边, 终点是水平旋转的角度
+            ctx.arc(50, 150, 50, 0, Math.PI / 2 * 1.3, false);
+            ctx.stroke();
+
+            ctx.beginPath()
+            ctx.arc(250, 150, 50, 0, Math.PI / 2 * 1.3, true);
+            ctx.stroke()
+
+            ctx.beginPath()
+            ctx.arc(450, 150, 50, 0, Math.PI * 2, true);
+            ctx.fill()
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="800px" height="300px"></canvas>
+</body>
+
+</html>

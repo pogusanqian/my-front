@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10-文字渲染</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+
+        canvas {
+            border: 1px solid black;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // arial这个字体族属性不能少, 字体宽度和字体大小则是可选的
+            ctx.font = 'bold 50px arial';
+
+            // 设置字体阴影
+            ctx.shadowColor = 'red';
+            ctx.shadowBlur = 3;
+            ctx.shadowOffsetX = 5;
+            ctx.shadowOffsetY = 5;
+
+            // 填充字体
+            ctx.fillText('HELLO', 100, 100);
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

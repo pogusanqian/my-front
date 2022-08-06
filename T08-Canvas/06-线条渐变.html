@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>06-线条渐变</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+
+        canvas {
+            border: 1px solid black;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+
+            // 创建线性渐变对象
+            const gradient = ctx.createLinearGradient(200, 0, 200, 300);
+            gradient.addColorStop(0.2, 'red');
+            gradient.addColorStop(0.5, 'yellow');
+            gradient.addColorStop(0.8, 'green');
+
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 300, 300);
+        }
+    </script>
+</head>
+<!-- 
+    线性渐变: 创建一个水平, 垂直或者对角线的填充图案
+    径向渐变: 自中心点创建一个放射状填充图案
+ -->
+
+<body>
+    <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

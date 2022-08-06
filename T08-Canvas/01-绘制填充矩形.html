@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01-绘制填充矩形</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            // 获取上下文, canvas的所有操作都是通过上下文操作的, 分两种, 一种是2d上下文, 一种是3d上下文
+            const ctx = canvas.getContext('2d');
+            // 设置填充颜色(默认颜色是黑色), 也可以填写rgba表达式(注意是字符串)
+            ctx.fillStyle = 'red';
+            // 填充矩形
+            ctx.fillRect(100, 100, 100, 100);
+        }
+    </script>
+</head>
+
+<body>
+    <!-- canvas标签必须设置width和height属性, 只在css中设置是不起作用的 -->
+    <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>19-save&restore</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
+</head>
+
+
+<body>
+    <canvas width="800px" height="800px"></canvas>
+</body>
+<script>
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    ctx.beginPath();
+    ctx.fillStyle = 'red';
+    ctx.save(); // 将颜色, 线宽等属性保存到栈中
+    ctx.fillRect(200, 200, 100, 100);
+
+    ctx.beginPath();
+    ctx.fillStyle = 'blue';
+    ctx.save();
+    ctx.fillRect(200, 400, 100, 100);
+
+    ctx.fillStyle = 'black';
+
+    ctx.beginPath();
+    ctx.restore(); // 取出栈中保存的属性(后进先出)
+    ctx.fillRect(400, 200, 100, 100);
+
+    ctx.beginPath();
+    ctx.restore();
+    ctx.fillRect(400, 400, 100, 100)
+</script>
+
+</html>

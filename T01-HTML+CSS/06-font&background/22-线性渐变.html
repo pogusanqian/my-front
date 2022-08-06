@@ -22,20 +22,24 @@
             background-image: linear-gradient(to right, red, yellow);
         }
 
-        
+
         .box3 {
             background-image: linear-gradient(to right top, red, yellow);
         }
 
         .box4 {
-            /* 红色占30, 黄色占100, 中间的70属于渐变 */
-            background-image: linear-gradient(red 30px, yellow 100px);
+            /* 0->50属于红色, 150->200属于黄色, 50->150属于渐变色; 50也可以使用百分比表示*/
+            background-image: linear-gradient(red 50px, yellow 150px);
         }
 
         .box5 {
-            background-image: repeating-linear-gradient(red, yellow , blue 50px) ;
+            /* 平铺渐变, 100px表示红黄蓝一次渐变的长度 */
+            background-image: repeating-linear-gradient(red, yellow, blue 100px);
         }
 
+        .box6 {
+            background-image: linear-gradient(red 25%, yellow 75%);
+        }
     </style>
 </head>
 
@@ -57,6 +61,7 @@
 
     渐变对于老版本IE浏览器兼容性不好
  -->
+
 <body>
     <div class="box1">1</div>
     <div class="box2">2</div>

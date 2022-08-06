@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>12-反向裁剪</title>
+  <style>
+    body {
+      background-color: burlywood;
+    }
+
+    canvas {
+      border: 1px solid black;
+      margin: 100px;
+    }
+  </style>
+  <script>
+    window.onload = () => {
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+
+      ctx.beginPath();
+      ctx.rect(0, 0, 300, 300); //顺时针方向
+      ctx.arc(150, 150, 50, 0, Math.PI * 2, true); // 逆时针方向
+      ctx.clip();
+
+      ctx.beginPath();
+      ctx.rect(0, 0, 300, 300);
+      ctx.fillStyle = 'red';
+      ctx.fill();
+    }
+  </script>
+</head>
+
+<body>
+  <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

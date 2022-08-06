@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03-清除矩形区域</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+
+        canvas {
+            border: 1px solid black;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.fillStyle = 'red';
+            ctx.fillRect(100, 100, 100, 100);
+            // 清除指定区域内的颜色(设置成了透明色)
+            ctx.clearRect(120, 120, 60, 60);
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

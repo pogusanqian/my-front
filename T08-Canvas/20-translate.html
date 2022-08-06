@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-translate</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
+</head>
+
+
+<body>
+    <canvas width="800px" height="800px"></canvas>
+</body>
+<script>
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    // 对所有图形都进行平移操作
+    // ctx.save();
+    ctx.translate(0, 50);
+    ctx.fillStyle = 'red';
+    ctx.fillRect(0, 0, 100, 100);
+    ctx.fillRect(200, 0, 100, 100);
+    ctx.fillRect(400, 0, 100, 100);
+
+
+    ctx.fillStyle = 'blue';
+    // 在原有平移的基础上再次进行了平移(可以使用save和restore()消除这种平移状态)
+    // ctx.restore()
+    ctx.translate(0, 50);
+    ctx.fillRect(100, 0, 100, 100);
+    ctx.fillRect(300, 0, 100, 100);
+    ctx.fillRect(500, 0, 100, 100);
+</script>
+
+</html>

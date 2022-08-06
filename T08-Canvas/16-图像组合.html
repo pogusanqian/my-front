@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16-图像组合</title>
+    <style>
+        body {
+            background-color: bisque;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+
+            ctx.beginPath();
+            ctx.fillStyle = 'black';
+            ctx.fillRect(50, 50, 50, 50);
+
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.fillStyle = 'green';
+            ctx.arc(100, 100, 50, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    </script>
+</head>
+
+<!-- 
+    老图像: 画布已经存在的图像
+    新图像: 即将画到画布上的图像
+    globalCompositeOperation: 设置图像合成时的类型
+        source-over: 重叠区域新图像覆盖老图像(默认值)
+        destination-over: 重叠区域老图像覆盖新图像(新图像的图层在老图像的下面)
+
+        source-atop: 新图像只显示与老图像重叠的部分(新图像只能画在老图像中, 越界的不做任何处理)
+        destination-atop: 老图像只能显示与新图像重叠的部分
+
+        source-in: 只显示新图像和老图像重叠的部分
+        destination-in: 只显示老图像和新图像重叠的部分
+
+        source-out: 只显示新图像没有和老图像重叠的部分
+        destination-out: 只显示老图像没有和新图像重叠的部分(可以用于反向裁剪)
+ -->
+
+<body>
+    <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

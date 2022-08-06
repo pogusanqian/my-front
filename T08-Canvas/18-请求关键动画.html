@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>18-请求关键动画</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="800px" height="800px"></canvas>
+</body>
+<script>
+    const canvas = document.querySelector('canvas');
+    const ctx = canvas.getContext('2d');
+
+    let flag = 0;
+    function move() {
+        ctx.fillStyle = 'red';
+        ctx.clearRect(0, 0, 800, 800);
+        flag = flag < 800 ? flag + 10 : 0;
+        ctx.fillRect(flag, 200, 50, 300);
+        // 请求关键帧动画不是递归, 所以这里不会造成内存溢出
+        // 请求关键帧相对于定时器不会有丢帧的问题
+        // 定时器是手动设置了时间间隔, 关键帧则是由系统计算时间间隔
+        window.requestAnimationFrame(move);
+    }
+    move()
+
+</script>
+
+</html>

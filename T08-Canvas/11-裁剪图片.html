@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-裁剪图片</title>
+  <style>
+    body {
+      background-color: burlywood;
+    }
+
+    canvas {
+      border: 1px solid black;
+      margin: 100px;
+    }
+  </style>
+  <script>
+    async function initImg(src) {
+      const img = document.createElement('img');
+      return new Promise(resove => {
+        img.src = src;
+        img.onload = () => resove(img);
+      });
+    }
+
+    window.onload = async () => {
+      const canvas = document.querySelector('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = await initImg('source/imgs/美女2.jpg');
+
+      // 对画板进行裁剪; 裁剪之后所有的操作只能再未被裁剪的部分上进行, 裁剪的区域会保持原来的样子, 不会在被任何操作
+      ctx.arc(150, 150, 150, 0, Math.PI * 2);
+      ctx.clip();
+
+      // 填充图片
+      ctx.drawImage(img, 0, 0, 300, 300);
+    }
+  </script>
+</head>
+
+<body>
+  <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

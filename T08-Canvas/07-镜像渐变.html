@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>07-镜像渐变</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+
+        canvas {
+            border: 1px solid black;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+
+
+            // 创建线性渐变对象(前三个参数表示第一个圆的圆心(x坐标,有坐标), 半径)
+            const gradient = ctx.createRadialGradient(150, 150, 150, 150, 150, 50);
+            // 高度: 0->20%是红色, 20%->50%是红色渐变成黄色, 50%->80%是黄色->绿色, 80%->100全是绿色
+            gradient.addColorStop(0, 'red');
+            gradient.addColorStop(1, 'yellow');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, 800, 500);
+        }
+    </script>
+</head>
+<!-- 
+    线性渐变: 创建一个水平, 垂直或者对角线的填充图案
+    径向渐变: 自中心点创建一个放射状填充图案
+ -->
+
+<body>
+    <canvas width="300px" height="300px"></canvas>
+</body>
+
+</html>

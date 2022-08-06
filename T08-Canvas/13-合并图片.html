@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>13-合并图片.html</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
+    <script>
+        async function initImg(src) {
+            const img = document.createElement('img');
+            return new Promise(resove => {
+                img.src = src;
+                img.onload = () => resove(img);
+            });
+        }
+
+        window.onload = async () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+            const img1 = await initImg('source/imgs/社群背景图.png');
+            const img2 = await initImg('source/imgs/美女2.jpg');
+
+            // 填充图片
+            ctx.drawImage(img1, 0, 0, 702, 1032);
+            ctx.drawImage(img2, 111, 351, 480, 480);
+            // 填充文字
+            ctx.fillStyle = 'red';
+            ctx.font = "24px PingFangSC";
+            ctx.fillText('美女-1001', 280, 880, 142, 40);
+        }
+
+    </script>
+</head>
+
+<body>
+    <canvas  width="702" height="1032px"></canvas>
+</body>
+
+</html>

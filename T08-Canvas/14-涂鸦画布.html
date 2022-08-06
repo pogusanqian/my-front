@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-涂鸦画布</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
+
+    <script>
+        window.onload = () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+            ctx.strokeStyle = 'red';
+            ctx.lineWidth = 10;
+
+            canvas.onmousedown = event => {
+                // 获取鼠标相对于画布的坐标
+                const x = event.clientX - canvas.offsetLeft;
+                const y = event.clientY - canvas.offsetTop;
+
+                ctx.beginPath();
+                ctx.moveTo(x, y);
+
+                canvas.onmousemove = event => {
+                    const x = event.clientX - canvas.offsetLeft;
+                    const y = event.clientY - canvas.offsetTop;
+                    ctx.lineTo(x, y);
+                    ctx.stroke();
+                };
+
+                window.onmouseup = () => canvas.onmousemove = null;
+            };
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="800px" height="800px"></canvas>
+</body>
+
+</html>

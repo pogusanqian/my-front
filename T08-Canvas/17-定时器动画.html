@@ -5,22 +5,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>17-定时器动画</title>
+    <style>
+        canvas {
+            border: 1px solid black;
+            margin: auto;
+        }
+    </style>
 </head>
-<style>
-    #mycanvas {
-        border: 1px solid black;
-        margin: auto;
-    }
-</style>
+
 
 <body>
-    <canvas id="mycanvas" width="800px" height="800px">
-        请升级浏览器, 不支持canvas标签
-    </canvas>
+    <canvas width="800px" height="800px"></canvas>
 </body>
 <script>
-    const canvas = document.getElementById('mycanvas');
+    const canvas = document.querySelector('canvas');
     const ctx = canvas.getContext('2d');
     // 设置偏移量
     let flag = 0;

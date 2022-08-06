@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09-重复渲染图片</title>
+    <style>
+        body {
+            background-color: burlywood;
+        }
+
+        canvas {
+            border: 1px solid black;
+            margin: 100px;
+        }
+    </style>
+    <script>
+        async function initImg(src) {
+            const img = document.createElement('img');
+            return new Promise(resove => {
+                img.src = src;
+                img.onload = () => resove(img);
+            });
+        }
+
+        window.onload = async () => {
+            const canvas = document.querySelector('canvas');
+            const ctx = canvas.getContext('2d');
+            // 这里加载的图片尺寸必须要比我们fill填充的尺寸小才能进行repeat
+            const img = await initImg('source/imgs/小图标.png');
+            ctx.fillStyle = ctx.createPattern(img, 'repeat');
+            ctx.fillRect(0, 0, 300, 300);
+
+            // 大图片进行了裁剪并没有进行平铺
+            const img2 = await initImg('source/imgs/美女2.jpg');
+            ctx.fillStyle = ctx.createPattern(img2, 'repeat');
+            ctx.fillRect(300, 0, 300, 300);
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="800px" height="800px"></canvas>
+</body>
+
+</html>
