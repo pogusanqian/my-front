@@ -9,21 +9,21 @@
   <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
 </head>
 
+<!-- 
+    M: 数据模型, 其实就是data中的数据; 这些数据会被vue采用代理的形式挂载到vm属性上
+    V: 视图, 就是dom对象
+    vm: 视图模型, 创建的vue对象; dom和数据的绑定就是通过vm实现的
+ -->
+
 <body>
-  <div id="demo">
-    <!-- v-bind是单项绑定的, 只能将实例中的数据绑定到容器中, v-bind:可以简写成: -->
-    <a v-bind:href="url">点击去{{name}}</a>
-    <a :href="url">点击去{{name}}</a>
-    <div :style="flag==2 ? 'color: red' : 'color:green'">你好</div>
-  </div>
+  <div id="demo">{{name}}</div>
 </body>
 <script>
-  new Vue({
+  const vm = new Vue({
     el: '#demo',
     data: {
-      flag: 1,
-      name: '百度',
-      url: "http://www.baidu.com"
+      name: '河南理工大学',
+      address: '河南焦作市',
     }
   })
 </script>

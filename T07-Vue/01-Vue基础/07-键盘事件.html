@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
-    <style>
-        * {
-            margin-top: 30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+  <style>
+    * {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- 
+  <!-- 
         1. Vue中常用的别名
                 enter: 回车
                 delete: 删除
@@ -32,21 +32,21 @@
             keyup时: 需要和其他键位组合使用, 如Ctrl + S; 注意ctrl + s本身具有保存事件同样会触发
         4. 键盘事件后面可以.key也可以是keyCode值, 只不过keyCode值在最新的H5规范中被废弃了, 虽然现在浏览器还只是keyCode值, 长远考虑还是不要使用code
      -->
-    <div id="demo">
-        <input placeholder="回车提示" @keyup.enter="show1"><br>
-        <input placeholder="Ctrl + S" @keydown.ctrl.s="show1"><br>
-        <input placeholder="回车提示" @keyup.13="show1"><br>
-    </div>
+  <div id="demo">
+    <input placeholder="回车提示" @keyup.enter="show1"><br>
+    <input placeholder="Ctrl + S" @keydown.ctrl.s="show1"><br>
+    <input placeholder="回车提示" @keyup.13="show1"><br>
+  </div>
 </body>
 <script>
-    const vm = new Vue({
-        el: '#demo',
-        methods: {
-            show1(e) {
-                console.log('我是show1');
-            },
-        }
-    })
+  const vm = new Vue({
+    el: '#demo',
+    methods: {
+      show1(e) {
+        console.log('我是show1');
+      },
+    }
+  })
 </script>
 
 </html>

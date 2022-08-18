@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>16-收集表单数据</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+
+<!-- 
+	1. radio: v-model绑定的时value值, 在radio选项中, 如果不填写value值的话, 则获取的数据时null
+	2. checbox:
+		* 没有配置input的value属性, 那么收集的就是checked的属性值(true或fase), 
+			因为是双向绑定, 当学习的checked影响到data值后, data值又会反过来影响打游戏和吃饭的渲染, 就会出现选择学习, 吃饭打游戏也被选中
+		* 如果v-mode的初始话值是非数组, 那么收集的依然是checked的值
+			如果v-mode初始化值是数组, 那么收集的就是value组成的数组
+  3. v-model的三个修饰符：
+		trim：输入首尾空格过滤
+		number：输入字符串转为有效的数字
+		lazy：当输入框失去焦点时, 才将数据框中的值和data进行绑定
+ -->
+
+<body>
+	<div id="root">
+		<!-- prevent: 阻止默认事件(即提交表单) -->
+		<form @submit.prevent="submit">
+			账号：<input type="text" v-model:value.trim="userInfo.account"><br>
+			密码：<input type="password" v-model:value.trim="userInfo.password"><br>
+			年龄：<input type="number" v-model.number="userInfo.age"><br>
+			性别：
+			男<input type="radio" name="sex" v-model="userInfo.sex" value="男">
+			女<input type="radio" name="sex" v-model="userInfo.sex" value="女"><br>
+			爱好：
+			学习<input type="checkbox" v-model="userInfo.hobby" value="学习">
+			打游戏<input type="checkbox" v-model="userInfo.hobby" value="打游戏">
+			吃饭<input type="checkbox" v-model="userInfo.hobby" value="吃饭">
+			<br>
+			所属校区
+			<select v-model="userInfo.city">
+				<option value="">请选择校区</option>
+				<option value="beijing">北京</option>
+				<option value="shanghai">上海</option>
+				<option value="shenzhen">深圳</option>
+				<option value="wuhan">武汉</option>
+			</select>
+			<br>
+			其他信息：
+			<textarea v-model.lazy="userInfo.other"></textarea><br>
+			<input type="checkbox" v-model="userInfo.agree">阅读并接受<a href="http://www.pogusanqian.com">《用户协议》</a>
+			<button>提交</button>
+		</form>
+	</div>
+</body>
+
+<script type="text/javascript">
+	new Vue({
+		el: '#root',
+		data: {
+			userInfo: {
+				account: '',
+				password: '',
+				age: 18,
+				sex: '男',
+				hobby: [],
+				city: 'beijing',
+				other: '',
+				agree: ''
+			}
+		},
+		methods: {
+			submit() {
+				console.log(JSON.stringify(this.userInfo));
+			}
+		}
+	})
+</script>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>10-监视属性异步返回</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+
+<body>
+  <div id="demo">
+    姓: <input type="text" v-model="firstName"><br>
+    名: <input type="text" v-model="lastName"><br>
+    全称: <span>{{fullName}}</span><br>
+  </div>
+</body>
+<script>
+  const vm = new Vue({
+    el: '#demo',
+    data: function () {
+      return {
+        firstName: '张',
+        lastName: '三',
+        fullName: '张三'
+      };
+    },
+    watch: {
+      firstName() {
+        // 这种异步监听属性值使用计算属性是无法实现的
+        // this表示当前函数的运行环境; 箭头函数没有自己的this, 它的this继承自外部函数的作用域
+        // 定时器中是箭头函数, this指向vue; 定时器是普通函数, 则this是window
+        setTimeout(() => {
+          this.fullName = this.firstName + this.lastName;
+        }, 1000);
+      },
+      lastName() {
+        setTimeout(() => {
+          this.fullName = this.firstName + this.lastName;
+        }, 1000);
+      },
+    }
+  })
+</script>
+
+</html>

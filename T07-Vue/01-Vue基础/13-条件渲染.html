@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>13-条件渲染</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+
+<!-- 
+  v-show: 将display设置成none, 把dom元素进行了隐藏
+  v-if: 将dom元素进行了删除, v-else-if不能使用标签打断
+  template标签是vue进行解析使用的, 并不会真正的渲染到dom中
+ -->
+
+<body>
+  <div id="demo">
+    <div v-if="true">张三</div>
+    <div v-show="false">李四</div>
+
+    <div v-if="false">Hello</div>
+    <div v-else-if="false">World</div>
+    <div v-else="true">世界</div>
+
+    <template v-show="true">
+      <div>北京</div>
+      <div>上海</div>
+      <div>深圳</div>
+    </template>
+  </div>
+</body>
+<script>
+  const vm = new Vue({
+    el: '#demo'
+  })
+</script>
+
+</html>

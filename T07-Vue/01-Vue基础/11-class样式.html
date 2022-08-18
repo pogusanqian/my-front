@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>11-class样式</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+  <style>
+    .basic {
+      width: 200px;
+      height: 200px;
+    }
+
+    .class1 {
+      background-color: red;
+    }
+
+    .class2 {
+      border: 2px solid black;
+      font-size: 50px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="demo">
+    <div class="basic" :class="classStr">{{name}}</div><hr>
+    <div class="basic" :class="classArr">{{name}}</div><hr>
+    <div class="basic" :class="classObj">{{name}}</div>
+  </div>
+</body>
+<script>
+  const vm = new Vue({
+    el: '#demo',
+    data: function () {
+      return {
+        name: 'Vue',
+        classStr: 'class1',
+        classArr: ['class1', 'class2'],
+        classObj: {
+          class1: false,
+          class2: true,
+        }
+      };
+    }
+  })
+</script>
+
+</html>

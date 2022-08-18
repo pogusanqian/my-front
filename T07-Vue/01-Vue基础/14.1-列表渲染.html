@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>14-列表渲染</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+
+<body>
+  <div id="demo">
+    <ul>
+      <!-- 遍历数据, in关键字也可以使用of进行替换 -->
+      <li v-for="(item, index) in students">{{item.name}}_{{index}}</li>
+    </ul>
+    <hr>
+
+    <ul>
+      <!-- 遍历字符串 -->
+      <li v-for="(item, index) of schoolName">{{item}}</li>
+    </ul>
+    <hr>
+
+    <ul>
+      <!-- 迭代次数 -->
+      <li v-for="(num, index) of 3">{{num}}_张三_{{index}}</li>
+    </ul>
+  </div>
+</body>
+<script>
+  const vm = new Vue({
+    el: '#demo',
+    data() {
+      return {
+        schoolName: '河南理工大学',
+        students: [
+          { id: '1001', name: '张三' },
+          { id: '1002', name: '李四' },
+          { id: '1003', name: '王五' },
+          { id: '1004', name: '赵六' },
+        ],
+      };
+    },
+  })
+</script>
+
+</html>

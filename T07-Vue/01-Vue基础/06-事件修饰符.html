@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
-    <style>
-        * {
-            margin-top: 30px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+  <style>
+    * {
+      margin-top: 30px;
+    }
+  </style>
 </head>
 
 <body>
-    <!-- 
+  <!-- 
         Vue中的事件修饰符:
             prevent: 阻止默认事件
             stop: 阻止事件冒泡
@@ -24,48 +24,48 @@
             self: 只有当event.target是当前元素时, 才会触发事件
             passive: 立即执行默认事件
      -->
-    <div id="demo">
-        <!-- 点击a标签会触发一个事件, 进行href跳转; prevent可以阻止默认事件的发生, 只触发我们的click事件 -->
-        <a href="http://www.baidu.com" @click.prevent="show1">阻止默认事件</a>
+  <div id="demo">
+    <!-- 点击a标签会触发一个事件, 进行href跳转; prevent可以阻止默认事件的发生, 只触发我们的click事件 -->
+    <a href="http://www.baidu.com" @click.prevent="show1">阻止默认事件</a>
 
-        <!-- 点击button按钮, 也会触发div中的show2方法, 使用stop阻止事件冒泡 -->
-        <div @click="show2">
-            <button @click.stop="show1">事件冒泡</button>
-        </div>
-
-        <button @click.once="show1">只触发一次事件</button>
-
-        <!-- 冒泡形式, 先触发show1, 然后再触发show2; 捕获模式先触发show2在触发show1 -->
-        <div @click.capture="show2">
-            <button @click="show1">捕获模式</button>
-        </div>
-
-        <!-- 通过事件冒泡show2方法的event任然是show1方法的event; 我们可以通过self属性阻止show2事件的执行 -->
-        <div @click.self="show2">
-            <button @click="show1">Self</button>
-        </div>
-
-        <!-- h5默认的是先执行点击事件, 然后再执行默认事件, 这里的测试不是很好, 教程中使用的是滚轮 -->
-        <a href="http://www.baidu.com" @click="fun">立即执行默认事件</a>
+    <!-- 点击button按钮, 也会触发div中的show2方法, 使用stop阻止事件冒泡 -->
+    <div @click="show2">
+      <button @click.stop="show1">事件冒泡</button>
     </div>
+
+    <button @click.once="show1">只触发一次事件</button>
+
+    <!-- 冒泡形式, 先触发show1, 然后再触发show2; 捕获模式先触发show2在触发show1 -->
+    <div @click.capture="show2">
+      <button @click="show1">捕获模式</button>
+    </div>
+
+    <!-- 通过事件冒泡show2方法的event任然是show1方法的event; 我们可以通过self属性阻止show2事件的执行 -->
+    <div @click.self="show2">
+      <button @click="show1">Self</button>
+    </div>
+
+    <!-- h5默认的是先执行点击事件, 然后再执行默认事件, 这里的测试不是很好, 教程中使用的是滚轮 -->
+    <a href="http://www.baidu.com" @click="fun">立即执行默认事件</a>
+  </div>
 </body>
 <script>
-    const vm = new Vue({
-        el: '#demo',
-        methods: {
-            show1(e) {
-                console.log('我是show1');
-                console.log(e.target);
-            },
-            show2(e) {
-                console.log('我是show2');
-                console.log(e.target);
-            },
-            async fun() {
-                await fetch.get("http://www.bilibili.com");
-            }
-        }
-    })
+  const vm = new Vue({
+    el: '#demo',
+    methods: {
+      show1(e) {
+        console.log('我是show1');
+        console.log(e.target);
+      },
+      show2(e) {
+        console.log('我是show2');
+        console.log(e.target);
+      },
+      async fun() {
+        await fetch.get("http://www.bilibili.com");
+      }
+    }
+  })
 </script>
 
 </html>

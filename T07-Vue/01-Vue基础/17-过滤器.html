@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>17-过滤器</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+	<script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.11.5/dayjs.min.js"></script>
+</head>
+
+<body>
+	<div id="root">
+		<h2>显示格式化后的时间</h2>
+		<h3>计算属性: {{fmtTime}}</h3>
+		<h3>监视属性: {{getFmtTime()}}</h3>
+		<h3>过滤器实现: {{time | timeFormater}}</h3>
+		<h3>全局过滤器: {{time | timeFormater('YYYY_MM_DD') | mySlice}}</h3>
+		<!-- 属性值过滤的时候, 只用用于v-bind不能用于v-model -->
+		<div :name="msg | mySlice"></div>
+	</div>
+</body>
+
+<script type="text/javascript">
+	// 定义全局过滤器
+	Vue.filter('mySlice', function (value) {
+		return value.slice(0, 4);
+	});
+
+	new Vue({
+		el: '#root',
+		data: {
+			time: Date.now(),
+			msg: 'HelloWorld'
+		},
+		computed: {
+			fmtTime() {
+				return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss');
+			}
+		},
+		methods: {
+			getFmtTime() {
+				return dayjs(this.time).format('YYYY年MM月DD日 HH:mm:ss');
+			}
+		},
+		filters: {
+			timeFormater(value, str = 'YYYY年MM月DD日 HH:mm:ss') {
+				return dayjs(value).format(str);
+			}
+		}
+	});
+</script>
+
+</html>

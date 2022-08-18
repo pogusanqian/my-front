@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>自定义指令</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+
+<!-- 
+	自定义指定命名不要使用驼峰命名法, 因为vue会将其解析成小写
+-->
+
+<body>
+	<div id="root">
+		<h2>当前的n值是: <span v-text="n"></span> </h2>
+		<h2>放大10倍后的n值是: <span v-big="n"></span> </h2>
+		<button @click="n++">点我n+1</button>
+		<hr />
+		<input type="text" v-fbind:value="n">
+	</div>
+</body>
+
+<script type="text/javascript">
+	//定义全局指令
+	Vue.directive('myfbind', {
+		//指令与元素成功绑定时（一上来）
+		bind(element, binding) {
+			element.value = binding.value;
+		},
+		//指令所在元素被插入页面时
+		inserted(element, binding) {
+			element.focus();
+		},
+		//指令所在的模板被重新解析时
+		update(element, binding) {
+			element.value = binding.value;
+		}
+	});
+
+	new Vue({
+		el: '#root',
+		data: {
+			name: 'Vue',
+			n: 1
+		},
+		directives: {
+			// 调用时机: 1.指令与元素成功绑定时 2.指令所在的模板被重新解析时, 这里其实就是简写了bind和update两个时机
+			big(element, binding) {
+				console.log('big', this); // 注意自定义指令函数的this指向的都是window对象
+				element.innerText = binding.value * 10;
+			},
+			// 定义的指令名称必须使用小写, 不能使用驼峰命名
+			fbind: {
+				// 指令与元素成功绑定时
+				bind(element, binding) {
+					element.value = binding.value;
+				},
+				// 指令所在元素被插入页面时
+				inserted(element, binding) {
+					element.focus();
+				},
+				// 指令所在的模板被重新解析时
+				update(element, binding) {
+					element.value = binding.value;
+					element.focus();
+				}
+			}
+		}
+	})
+
+</script>
+
+</html>

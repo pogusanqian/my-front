@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8" />
+	<title>v-pre指令</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+
+<body>
+	<div id="root">
+		<!-- v-pre指令表示此标dom元素(及其后代元素)中没有使用vue解析, 会加快编译-->
+		<h2 v-pre>Vue其实很简单</h2>
+		<h2>当前的n值是:{{n}}</h2>
+		<button @click="n++">点我n+1</button>
+	</div>
+</body>
+
+<script type="text/javascript">
+	new Vue({
+		el: '#root',
+		data: {
+			n: 1
+		}
+	})
+</script>
+
+</html>
