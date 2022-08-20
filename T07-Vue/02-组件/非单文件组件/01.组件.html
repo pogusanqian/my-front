@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>基本使用</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+</head>
+<!-- 
+  Vue中使用组件的三大步骤: 创建组件, 注册组件, 使用组件
+    一. 创建组件: 使用Vue.extend(options)创建
+          组件不需要el挂载, 最终所有的组件都要经过一个vm的管理, 由vm中的el决定服务哪个容器
+          组件的data必须是一个函数, 避免组件被复用时, 多个组件使用的是同一个数据源
+          const student = Vue.extend(options) 可简写为：const student = options; 实例化组件对象可以交由vue隐式执行(注册组件)
+    二. 注册组件
+          1.局部注册: 靠new Vue的时候传入components选项
+          2.全局注册: 靠Vue.component('组件名',组件)
+
+    三. 使用组件 
+          <school></school>
+          <school/> 多个组件统一使用时, 只能渲染一个, 需要使用脚手架进行渲染
+
+  关于组件名:
+					首字母小写: 组件名是student => student, 引用的时候可以是<Student>, <student>, <STUDENT>, 主要是html标签不区分大小写
+					首字母大写: 组件名是Student => student, 引用的时候可以是<Student>, <student>, <STUDENT>
+          多单词大写: 组件名是STUDENT => s-t-u-d-e-n-t, 引用的时候需要是<s-t-u-d-e-n-t>
+          多单词大写: 组件名是STUDENT => student(vue脚手架环境), 引用的时候需要是<STUDENT>
+   可以在vm的$children属性中获取组件
+ -->
+
+<body>
+  <div id="root">
+    <h1>{{msg}}</h1>
+    <!-- 使用组件 -->
+    <hello></hello>
+    <student></student>
+  </div>
+  <hr>
+  <div id="root2">
+    <hello />
+    <!-- 后面的组件不能正确渲染, 需要在脚手架环境中才能正确渲染 -->
+    </hello />
+    </hello />
+    </hello />
+  </div>
+</body>
+
+<script type="text/javascript">
+  Vue.config.productionTip = false;
+
+  // 创建student组件
+  const student = Vue.extend({
+    // name: 'haha', /// 这个属性是给vue开发者工具使用的, 但是最新版的开发者工具已经设置了这种用法
+    template: `
+				<div>
+					<h2>学生姓名：{{studentName}}</h2>
+					<h2>学生年龄：{{age}}</h2>
+				</div>
+			`,
+    data() {
+      return {
+        studentName: '张三',
+        age: 18
+      };
+    }
+  });
+
+  // 创建hello组件
+  const hello = {
+    template: `
+				<div>	
+					<h2>你好啊！{{name}}</h2>
+				</div>
+			`,
+    data() {
+      return {
+        name: 'Tom'
+      };
+    }
+  };
+
+  // 全局注册组件(这里一定要写在vm创建之前, 不然vm找不到这个全局组件)
+  Vue.component('hello', hello);
+
+  // 创建vm, 并在vm中注册组件(局部注册主键)
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'root',
+      msg: '组件初见'
+    },
+    components: { // 注册组件
+      Student: student
+    }
+  });
+
+  new Vue({
+    el: '#root2',
+    data() {
+      return {
+        name: 'root2'
+      };
+    }
+  })
+</script>
+
+</html>

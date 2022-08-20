@@ -15,12 +15,12 @@
         如果一个vue实例对应了多个容器, 则vue实例只会挂载到第一个实例上
         如果一个容器对应了多个vue实例, 则容器只会加载第一个vue实例
     -->
-  <div id="demo1">姓名:{{name}} 年龄:{{age}}</div>
+  <div id="demo1" :name="name">姓名:{{name}} 年龄:{{age}}</div>
   <div id="demo2">姓名:{{name}} 年龄:{{age}}</div>
 </body>
 <script>
   Vue.config.productionTip = false; // 设置false阻止vue在启动时生成生产提示(因为我们使用的是开发版本)
-  // 使用el属性进行挂载
+  // 使用el属性进行挂载, demo1及其后台元素都可以进行vue双向绑定
   new Vue({
     el: '#demo1',
     data: {
