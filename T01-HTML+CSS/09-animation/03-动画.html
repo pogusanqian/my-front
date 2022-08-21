@@ -20,7 +20,7 @@
             animation-name: test;
             animation-duration: 1s;
             animation-delay: 1s;
-            animation-iteration-count: 3;
+            animation-iteration-count: infinite;
             animation-direction: alternate;
             animation-fill-mode: backwards;
         }
@@ -42,13 +42,18 @@
 
 <!-- 
     动画和过渡类似, 都是可以实现一些动态的效果, 不同的是过渡需要在某个属性发生变化时才会触发, 动画可以自动触发动态效果
-    设置动画效果，必须先要设置一个关键帧，关键帧设置了动画执行每一个步骤;
+    设置动画效果, 必须先要设置一个关键帧, 关键帧设置了动画执行每一个步骤
 
     @keyframes: 设置关键帧; from: 表示开始, to: 表示结束
     animation-name: 表示给元素绑定上关键帧(只有这一个元素不行, 还必须指定时间)
     animation-duration: 动画执行的时间
     animation-delay: 动画的延迟
     animation-timing-function: 动画的加速方式
+                    linear      动画从头到尾的速度是相同的
+                    ease(默认)  动画以低速开始，然后加快，在结束前变慢
+                    ease-in	    动画以低速开始	
+                    ease-out	动画以低速结束
+                    ease-in-out	动画以低速开始和结束
     animation-iteration-count: 动画执行的次数, 可以使用infinite表示无限执行; 
     animation-direction: 动画运行的方向
                     normal: 从from => to, 默认值
