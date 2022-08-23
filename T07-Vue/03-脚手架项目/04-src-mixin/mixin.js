@@ -3,7 +3,7 @@ export const hunhe = {
     return {
       country: '中国',
       name: '哈哈',
-    }
+    };
   },
   methods: {
     showName() {
@@ -14,12 +14,12 @@ export const hunhe = {
 
 export const hunhe2 = {
   mounted() {
-    console.log('混合中的mounted函数')
+    console.log('混合中的mounted函数');
   },
-}
+};
 
 export const hunhe3 = {
   created() {
-    console.log('混合中的created函数')
+    console.log('混合中的created函数');
   },
-}
+};

@@ -44,8 +44,8 @@
 			addSex() {
 				// this.student.sex = '男'; // 直接添加的sex属性是没有对应的setter, 只能改数据, 不能重新渲染dom
 				this.$set(this.student, 'sex', '男');
-			}, 
-			updateFriends(){
+			},
+			updateFriends() {
 				// this.friends[0] = 'lisi'; // 这种更改, 只是更改data, 并不能重新渲染数据
 				// this.$set(this.student, 'friends', ['lisi', 'wangwu']); // 可以整体进行更改
 				this.student.friends.splice(0, 1, 'lisi');

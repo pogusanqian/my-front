@@ -1,0 +1,41 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vue App</title>
+  <link rel="stylesheet" href="./css/bootstrap.css">
+</head>
+
+<!-- 
+  多页面应用: 在不同的页面之间进行跳转, 每一次页面的跳转会发生浏览器页面的刷新, 给用户造成的感觉不好, 另外代码不能复用, 冗余度高, 不容易维护
+  单页面应用: 因为在一个页面中, 不会存在重复的部分, 主要靠路由实现不同组件的展示
+ -->
+
+<body>
+  <div>
+    <div class="row">
+      <div class="col-xs-offset-2 col-xs-8">
+        <div class="page-header">
+          <h2>Vue Router Demo</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-2">
+        <div class="list-group">
+          <a class="list-group-item" href="./about.html">About</a>
+          <a class="list-group-item active" href="./home.html">Home</a>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div class="panel">
+          <div class="panel-body">
+            <h2>我是Home的内容</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
