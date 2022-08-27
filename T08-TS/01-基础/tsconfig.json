@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    // target 用来指定ts被编译为的ES的版本
+    "target": "es2015",
+    // module 指定要使用的模块化的规范
+    "module": "es2015",
+    // lib用来指定项目中要使用的库
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    // outDir 用来指定编译后文件所在的目录
+    "outDir": "./dist",
+    // "outFile": "./dist/app.js",  // 将代码合并为一个文件, 设置outFile后, 所有的全局作用域中的代码会合并到同一个文件中
+    // "allowJs": true, // 是否对js文件进行编译, 使用场景通常为项目中既有ts编写的,又有js编写
+    // "checkJs": true, // 是否检查js代码是否符合语法规范, 默认是false
+    // 是否移除注释
+    "removeComments": true,
+    // 不生成编译后的文件, 如果为true, 就表示只使用ts的语法检查
+    "noEmit": false,
+    // 当有错误时不生成编译后的文件
+    "noEmitOnError": false,
+    // 所有严格检查的总开关
+    "strict": true,
+    // 用来设置编译后的文件是否使用严格模式, 默认false
+    "alwaysStrict": true,
+    // 不允许隐式的any类型
+    "noImplicitAny": true,
+    // 不允许不明确类型的this
+    "noImplicitThis": true,
+    // 严格的检查空值
+    "strictNullChecks": true
+  }
+}
