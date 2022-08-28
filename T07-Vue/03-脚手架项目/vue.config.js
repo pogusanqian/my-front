@@ -5,7 +5,7 @@ module.exports = defineConfig({
   transpileDependencies: true,
   pages: {
     index: {
-      entry: '17_src_作用域插槽/main.js',
+      entry: '14_src_搜索gitHub/main.js',
     }
   },
   lintOnSave: false,

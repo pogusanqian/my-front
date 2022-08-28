@@ -17,10 +17,10 @@ function error() {
   console.log(data.name);
 }
 
-
 function success() {
   // 创建Observer构造函数(这里之模拟一层属性对象)
   function Observer(obj) {
+    // 正是因为vue2只是给初始化的key做了getter和setter, 所以才会后来添加的属性无法做到动态渲染
     Object.keys(obj).forEach((k) => {
       // 这里的this表示的是Observer的实例对象
       Object.defineProperty(this, k, {

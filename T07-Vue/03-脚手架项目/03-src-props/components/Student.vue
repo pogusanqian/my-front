@@ -17,7 +17,8 @@ export default {
 	data() {
 		return {
 			name: this.propName,
-			age: this.propAge,
+			// 没有使用props接收的属性, 可以从$attrs属性中获取; 如果被props接收了, 则$attrs中就没有这个只
+			age: this.$attrs.propAge,
 			stu: this.propStu
 		};
 	},
@@ -27,7 +28,7 @@ export default {
 		}
 	},
 	// 简单接收
-	// props: ['propName', 'propAge'],
+	props: ['propName'],
 
 	// 对数据类型做限制
 	// props: {
@@ -35,20 +36,20 @@ export default {
 	// 	propAge: Number,
 	// }
 
-	props: {
-		propName: {
-			type: String,
-			required: true,
-		},
-		propAge: {
-			type: Number,
-			default: 23,
-		},
-		propStu: {
-			typeof: Object,
-			default: {}
-		}
-	}
+	// props: {
+	// 	propName: {
+	// 		type: String,
+	// 		required: true,
+	// 	},
+	// 	propAge: {
+	// 		type: Number,
+	// 		default: 23,
+	// 	},
+	// 	propStu: {
+	// 		typeof: Object,
+	// 		default: {}
+	// 	}
+	// }
 };
 </script>
 
