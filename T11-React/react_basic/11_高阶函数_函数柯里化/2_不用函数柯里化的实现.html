@@ -1,0 +1,43 @@
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>2_不用函数柯里化的实现</title>
+	<script type="text/javascript" src="../js/react.development.js"></script>
+	<script type="text/javascript" src="../js/react-dom.development.js"></script>
+	<script type="text/javascript" src="../js/babel.min.js"></script>
+</head>
+
+<body>
+	<div id="test"></div>
+	<script type="text/babel">
+		class Login extends React.Component {
+			state = {
+				username: '',
+				password: '',
+			};
+
+			// 一次性获取到了多个参数, 便不再需要柯里化
+			saveFormData = (dataType, event) => this.setState({ [dataType]: event.target.value });
+
+			handleSubmit = (event) => {
+				event.preventDefault(); //阻止表单提交
+				const { username, password } = this.state;
+				alert(`你输入的用户名是：${username},你输入的密码是：${password}`);
+			};
+
+			render() {
+				return (
+					<form onSubmit={this.handleSubmit}>
+						用户名：<input onChange={event => this.saveFormData('username', event)} type="text" name="username" />
+						密码：<input onChange={event => this.saveFormData('password', event)} type="password" name="password" />
+						<button>登录</button>
+					</form>
+				);
+			}
+		}
+		ReactDOM.render(<Login />, document.getElementById('test'))
+	</script>
+</body>
+
+</html>
