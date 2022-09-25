@@ -2,7 +2,7 @@ import React from 'react';
 
 const province = () => {
   return (
-    <div>省份</div>
+    <h1>省份信息...</h1>
   );
 };
 

@@ -98,7 +98,6 @@ export const reqWeather = (city) => {
         // 如果失败了
         message.error('获取天气信息失败!')
       }
-
     })
   })
 }
