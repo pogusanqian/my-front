@@ -35,7 +35,6 @@ router.post('/login', (req, res) => {
           // 返回登陆成功信息(包含user)
           res.send({ status: 0, data: user });
         }
-
       } else {// 登陆失败
         res.send({ status: 1, msg: '用户名或密码不正确!' });
       }

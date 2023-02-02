@@ -2,7 +2,7 @@
 	<div class="container">
 
 		<Category title="游戏">
-			<!-- 将插槽中的值赋给scopObj变量, 也可以使用{games}直接结构获取子组件通过插槽传递过来的值 -->
+			<!-- 将插槽中的值赋给scopObj变量(父组件直接通过插槽, 获取到了子组件的值), 也可以使用{games}直接结构获取子组件通过插槽传递过来的值 -->
 			<template scope="scopObj">
 				<ul>
 					<li v-for="(item, index) in scopObj.games" :key="index">{{ item }}</li>

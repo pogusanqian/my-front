@@ -4,20 +4,36 @@
 <head>
 	<meta charset="UTF-8" />
 	<title>Document</title>
+	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
 </head>
 
 <body>
 	<button id="btn">点我创建一个输入框</button>
+	<div id="div1"></div>
+	<hr>
+	<div id="div2">
+		<button @click="addTxt">点我创建一个输入框</button>
+	</div>
 
 	<script type="text/javascript">
-		const btn = document.getElementById('btn');
-		btn.onclick = () => {
+		// 原生dom
+		document.getElementById('btn').onclick = () => {
 			const input = document.createElement('input');
 			input.value = 99;
-			document.body.appendChild(input);
-			// focus这种事件只能用于node节点添加到dom树之后, 否则不起作用
+			document.getElementById('div1').appendChild(input);
+			// focus事件使元素获取焦点, 只能用于node节点添加到dom树之后, 否则不起作用
 			input.focus();
-		}
+		};
+
+		// vue
+		new Vue({
+			el: '#div2',
+			methods: {
+				addTxt: function () {
+					
+				}
+			},
+		})
 	</script>
 </body>
 

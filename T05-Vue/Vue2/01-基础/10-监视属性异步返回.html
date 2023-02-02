@@ -28,17 +28,17 @@
     },
     watch: {
       firstName() {
-        // 这种异步监听属性值使用计算属性是无法实现的
+        // 这种异步监听属性值使用计算属性是无法实现的, 可以使用监听属性实现
         // this表示当前函数的运行环境; 箭头函数没有自己的this, 它的this继承自外部函数的作用域
         // 定时器中是箭头函数, this指向vue; 定时器是普通函数, 则this是window
         setTimeout(() => {
           this.fullName = this.firstName + this.lastName;
-        }, 1000);
+        }, 5000);
       },
       lastName() {
         setTimeout(() => {
           this.fullName = this.firstName + this.lastName;
-        }, 1000);
+        }, 5000);
       },
     }
   })

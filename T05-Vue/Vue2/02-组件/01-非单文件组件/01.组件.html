@@ -12,6 +12,7 @@
           组件不需要el挂载, 最终所有的组件都要经过一个vm的管理, 由vm中的el决定服务哪个容器
           组件的data必须是一个函数, 避免组件被复用时, 多个组件使用的是同一个数据源
           const student = Vue.extend(options) 可简写为：const student = options; 实例化组件对象可以交由vue隐式执行(注册组件)
+          
     二. 注册组件
           1.局部注册: 靠new Vue的时候传入components选项
           2.全局注册: 靠Vue.component('组件名',组件)
@@ -32,16 +33,14 @@
   <div id="root">
     <h1>{{msg}}</h1>
     <!-- 使用组件 -->
-    <hello></hello>
     <student></student>
   </div>
   <hr>
   <div id="root2">
-    <hello />
+    <my-hello/>
     <!-- 后面的组件不能正确渲染, 需要在脚手架环境中才能正确渲染 -->
-    </hello />
-    </hello />
-    </hello />
+    <my-hello />
+    <my-hello />
   </div>
 </body>
 
@@ -65,6 +64,18 @@
     }
   });
 
+  // 创建vm, 并在vm中注册组件(局部注册主键)
+  new Vue({
+    el: '#root',
+    data: {
+      name: 'root',
+      msg: '组件初见'
+    },
+    components: { // 注册组件
+      Student: student
+    }
+  });
+
   // 创建hello组件
   const hello = {
     template: `
@@ -80,19 +91,8 @@
   };
 
   // 全局注册组件(这里一定要写在vm创建之前, 不然vm找不到这个全局组件)
-  Vue.component('hello', hello);
-
-  // 创建vm, 并在vm中注册组件(局部注册主键)
-  new Vue({
-    el: '#root',
-    data: {
-      name: 'root',
-      msg: '组件初见'
-    },
-    components: { // 注册组件
-      Student: student
-    }
-  });
+  // myHello是组件名称, 使用的时候需要转换成my-hello
+  Vue.component('myHello', hello);
 
   new Vue({
     el: '#root2',

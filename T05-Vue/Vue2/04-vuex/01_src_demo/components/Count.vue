@@ -23,12 +23,14 @@ export default {
 	},
 	methods: {
 		increment() {
+			// commit直接调用mutations中的方法
 			this.$store.commit('JIA', this.n);
 		},
 		decrement() {
 			this.$store.commit('JIAN', this.n);
 		},
 		incrementOdd() {
+			// dispatch是调用actions中的方法
 			this.$store.dispatch('jiaOdd', this.n);
 		},
 		incrementWait() {

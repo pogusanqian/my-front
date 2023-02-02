@@ -1,5 +1,6 @@
 <template>
 	<div>
+		<!-- 使用组件 -->
 		<School></School>
 		<Student></Student>
 	</div>
@@ -12,6 +13,7 @@ import Student from './Student.vue';
 
 export default {
 	name: 'App',
+	// 将子组件挂在到父组件中(注册组件)
 	components: {
 		School,
 		Student
