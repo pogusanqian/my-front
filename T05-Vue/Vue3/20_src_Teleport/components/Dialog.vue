@@ -20,8 +20,9 @@ import { ref } from 'vue';
 export default {
 	name: 'Dialog',
 	setup() {
-		let isShow = ref(false);
-		return { isShow };
+		return {
+			isShow: ref(false)
+		};
 	}
 };
 </script>

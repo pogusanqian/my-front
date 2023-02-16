@@ -15,24 +15,17 @@ import { ref, reactive, toRefs, readonly, shallowReadonly } from 'vue';
 export default {
 	name: 'Demo',
 	setup() {
-		//数据
 		let sum = ref(0);
 		let person = reactive({
 			name: '张三',
 			age: 18,
-			job: {
-				j1: {
-					salary: 20
-				}
-			}
+			job: { j1: { salary: 20 } }
 		});
 
+		// readonly: 设置属性只读, 深层的salary属性不能修改
+		// shallowReadonly: 设置第一层级的属性只读, 但是深层的salary属性可以读取
 		person = readonly(person);
-		// person = shallowReadonly(person)
-		// sum = readonly(sum)
-		// sum = shallowReadonly(sum)
 
-		//返回一个对象（常用）
 		return {
 			sum,
 			...toRefs(person)

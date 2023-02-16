@@ -1,12 +1,5 @@
 <template>
-	<Demo @hello="showHelloMsg" msg="你好啊" school="尚硅谷">
-		<template v-slot:qwe>
-			<span>尚硅谷</span>
-		</template>
-		<template v-slot:asd>
-			<span>尚硅谷</span>
-		</template>
-	</Demo>
+	<Demo @hello="showHelloMsg" msg="你好" school="河南理工大学"></Demo>
 </template>
 
 <script>

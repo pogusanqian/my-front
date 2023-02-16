@@ -9,19 +9,19 @@
     <link rel="stylesheet" href="../source/css/reset.css">
     <style>
         html {
-            font-size: calc((100/700)*40vw);
+            font-size: calc((100/700)*16vw);
             /* font-size: 40px; */
         }
 
         div {
-            width: 100px;
-            height: 100px;
+            width: 375px;
+            height: 375px;
             background-color: #bfa;
         }
 
         .box2 {
-            width: calc(100/40rem);
-            height: calc(100/40rem);
+            width: calc(100rem/16);
+            height: calc(100rem/16);
             background-color: red;
         }
     </style>
@@ -39,6 +39,8 @@
     375px = 100vm
     1px = 100/375vm
     1vm = 375/100px
+
+    根据不同的屏幕大小(视口大小), 设置根元素的字体大小, 然后所有的布局元素又是和根元素的字体大小有关; 那么此时我们布局是会动态变化的
  -->
 
 <body>

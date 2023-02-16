@@ -1,6 +1,7 @@
 <template>
 	<div class="child">
-		<h3>我是Child组件（子）</h3>
+		<h3>Child组件{{ car }}</h3>
+		<hr>
 		<Son />
 	</div>
 </template>
@@ -11,10 +12,11 @@ import Son from './Son.vue';
 export default {
 	name: 'Child',
 	components: { Son },
-	/* setup(){
-		let x = inject('car')
-		console.log(x,'Child-----')
-	} */
+	setup() {
+		return {
+			car: inject('car')
+		};
+	}
 };
 </script>
 

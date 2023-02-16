@@ -10,39 +10,26 @@
 	<h2>薪资：{{ person.job.j1.salary }}K</h2>
 	<button @click="person.name += '~'">修改姓名</button>
 	<button @click="person.age++">增长年龄</button>
-	<button @click="person.job.j1.salary++">涨薪</button>
+<button @click="person.job.j1.salary++">涨薪</button>
 </template>
 
 <script>
-import { ref, reactive, watch, watchEffect } from 'vue';
+import { ref, reactive, watchEffect } from 'vue';
 export default {
 	name: 'Demo',
 	setup() {
-		//数据
 		let sum = ref(0);
 		let msg = ref('你好啊');
 		let person = reactive({
 			name: '张三',
 			age: 18,
-			job: {
-				j1: {
-					salary: 20
-				}
-			}
+			job: { j1: { salary: 20 } }
 		});
 
-		//监视
-		/* watch(sum,(newValue,oldValue)=>{
-			console.log('sum的值变化了',newValue,oldValue)
-		},{immediate:true}) */
+		// 这里用到了sum和salary属性, 那么当这两个属性发生变化时, 便会触发watchEffect函数
+		// 注意ref代理的对象, 需要使用value属性才能被监听到
+		watchEffect(() => console.log(sum.value, person.job.j1.salary));
 
-		watchEffect(() => {
-			const x1 = sum.value;
-			const x2 = person.job.j1.salary;
-			console.log('watchEffect所指定的回调执行了');
-		});
-
-		//返回一个对象（常用）
 		return {
 			sum,
 			msg,

@@ -1,15 +1,14 @@
 <template>
-	<h4>当前的x.y值是：{{ x.y }}</h4>
-	<button @click="x = { y: 888 }">点我替换x</button>
-	<button @click="x.y++">点我x.y++</button>
+	<h4>当前的年龄值是：{{ stu.age }}</h4>
+	<button @click="stu = { age: 100 }">整体替换</button>
+	<button @click="stu.age++">添加</button>
 	<hr>
-	<h4>{{ person }}</h4>
 	<h2>姓名：{{ name }}</h2>
 	<h2>年龄：{{ age }}</h2>
 	<h2>薪资：{{ job.j1.salary }}K</h2>
 	<button @click="name += '~'">修改姓名</button>
 	<button @click="age++">增长年龄</button>
-	<button @click="job.j1.salary++">涨薪</button>
+<button @click="job.j1.salary++">涨薪</button>
 </template>
 
 <script>
@@ -17,26 +16,17 @@ import { ref, reactive, toRef, toRefs, shallowReactive, shallowRef } from 'vue';
 export default {
 	name: 'Demo',
 	setup() {
-		//数据
-		// let person = shallowReactive({ //只考虑第一层数据的响应式
-		let person = reactive({
+		// 只考虑第一层数据的响应式; salary修改之后并不会显示在前端页面, 但是如果再次更改name值, 那么salary便会起作用了
+		let person = shallowReactive({
 			name: '张三',
 			age: 18,
-			job: {
-				j1: {
-					salary: 20
-				}
-			}
+			job: { j1: { salary: 20 } }
 		});
-		let x = shallowRef({
-			y: 0
-		});
-		console.log('******', x);
 
-		//返回一个对象（常用）
+		// 如果有一个对象数据，后续功能不会修改该对象中的属性，而是生新的对象来替换
+		let stu = shallowRef({ age: 0 });
 		return {
-			x,
-			person,
+			stu,
 			...toRefs(person)
 		};
 	}

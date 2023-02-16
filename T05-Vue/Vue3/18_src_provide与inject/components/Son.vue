@@ -1,6 +1,6 @@
 <template>
 	<div class="son">
-		<h3>我是Son组件（孙），{{ car.name }}--{{ car.price }}</h3>
+		<h3>Son组件{{ car }}</h3>
 	</div>
 </template>
 
@@ -9,8 +9,9 @@ import { inject } from 'vue';
 export default {
 	name: 'Son',
 	setup() {
-		let car = inject('car');
-		return { car };
+		return {
+			car: inject('car')
+		};
 	}
 };
 </script>

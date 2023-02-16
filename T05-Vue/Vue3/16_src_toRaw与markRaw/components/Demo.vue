@@ -20,25 +20,22 @@ import { ref, reactive, toRefs, toRaw, markRaw } from 'vue';
 export default {
 	name: 'Demo',
 	setup() {
-		//数据
 		let sum = ref(0);
 		let person = reactive({
 			name: '张三',
 			age: 18,
-			job: {
-				j1: {
-					salary: 20
-				}
-			}
+			job: { j1: { salary: 20 } }
 		});
 
 		function showRawPerson() {
 			const p = toRaw(person);
+			// 注意这里时将data改了, 但是前端页面却并没有修改
 			p.age++;
 			console.log(p);
 		}
 
 		function addCar() {
+			// 注意这里时将data改了, 但是前端页面却并没有修改
 			let car = { name: '奔驰', price: 40 };
 			person.car = markRaw(car);
 		}
@@ -48,7 +45,6 @@ export default {
 			console.log(person.car.price);
 		}
 
-		//返回一个对象（常用）
 		return {
 			sum,
 			person,

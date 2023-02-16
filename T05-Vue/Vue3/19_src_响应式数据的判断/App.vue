@@ -17,7 +17,6 @@ export default {
 		console.log(isProxy(car));
 		console.log(isProxy(sum));
 
-
 		return { ...toRefs(car) };
 	}
 };

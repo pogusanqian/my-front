@@ -1,6 +1,6 @@
 <template>
 	<div class="app">
-		<h3>我是App组件（祖），{{ name }}--{{ price }}</h3>
+		<h3>APP组件{{ name }}--{{ price }}</h3>
 		<Child />
 	</div>
 </template>
@@ -13,7 +13,8 @@ export default {
 	components: { Child },
 	setup() {
 		let car = reactive({ name: '奔驰', price: '40W' });
-		provide('car', car); //给自己的后代组件传递数据
+		// 组合式传递值, 可以代替propos
+		provide('car', car);
 		return { ...toRefs(car) };
 	}
 };

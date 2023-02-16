@@ -13,9 +13,12 @@
 </template>
 
 <script>
-// import Child from './components/Child'//静态引入
+// 直接静态引入
+// import Child from './components/Child';
+
+// 异步引入
 import { defineAsyncComponent } from 'vue';
-const Child = defineAsyncComponent(() => import('./components/Child')); //异步引入
+const Child = defineAsyncComponent(() => import('./components/Child'));
 export default {
 	name: 'App',
 	components: { Child },
