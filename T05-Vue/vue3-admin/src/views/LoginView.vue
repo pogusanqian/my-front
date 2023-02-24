@@ -18,7 +18,7 @@
   </div>
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import { login } from '@/request/api';
 import { useRouter } from 'vue-router';
 import { LoginData } from '@type/login';
@@ -36,61 +36,61 @@ export default defineComponent({
         {
           required: true,
           message: '请输入账号',
-          trigger: 'blur',
+          trigger: 'blur'
         },
         {
           min: 5,
           max: 10,
           message: '账号长度5~10',
-          trigger: 'blur',
-        },
+          trigger: 'blur'
+        }
       ],
       password: [
         {
           required: true,
           message: '请输入密码',
-          trigger: 'blur',
+          trigger: 'blur'
         },
         {
           min: 5,
           max: 10,
           message: '密码长度5~10',
-          trigger: 'blur',
-        },
-      ],
+          trigger: 'blur'
+        }
+      ]
     };
     // useRouter只能在setup函数中调用, 否则返回的就是undefined
     const router = useRouter();
     // 自定义校验规则
-    const submitForm = (formEl: FormInstance | undefined ) => {
-      if(!formEl) return;
+    const submitForm = (formEl: FormInstance | undefined) => {
+      if (!formEl) return;
       formEl.validate((valid) => {
         if (valid) {
-          login(data.ruleForm).then(res => {
+          login(data.ruleForm).then((res) => {
             console.log('===login响应=====', res);
             // 存储token
             localStorage.setItem('token', res.data.token);
             // 跳转首页
             router.push('/');
-          })
+          });
         } else {
           ElMessage.error('校验没有通过, 请重新填写参数');
           // 这里不返回fasle也没有什么影响
-          return false
+          return false;
         }
-      })
+      });
     };
     // 重置参数逻辑
     function resetForm(formEl: FormInstance | undefined) {
-      if(!formEl) return;
+      if (!formEl) return;
       formEl.resetFields();
     }
     return { ...toRefs(data), rules, ruleFormRef, submitForm, resetForm };
-  },
+  }
 });
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .login-box {
   width: 100%;
   height: 100%;
