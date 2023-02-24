@@ -96,7 +96,6 @@ export default defineComponent({
   height: 100%;
   background-image: url('@/assets/bj.jpg');
   background-size: 100%;
-  // 解决外边距重叠: padding: 1px; overflow: hidden;
   // 设置子元素垂直水平居中(子元素设置margin: auto)
   display: flex;
   // 设置文字水平居中
