@@ -4,7 +4,7 @@ export interface LoginFromInt {
 }
 
 export class LoginData {
-  ruleForm: LoginFromInt = {
+  form: LoginFromInt = {
     username: "",
     password: "",
   };

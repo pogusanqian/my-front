@@ -1,24 +1,4 @@
-# vue3-admin
+## 1. 注意事项
 
-## Project setup
-```
-npm install
-```
+* **@vue/cli-service包使用的dotenv版本太低, `不能加载多行配置数据, 需要手动修改package-lock.json的版本为最新`**
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

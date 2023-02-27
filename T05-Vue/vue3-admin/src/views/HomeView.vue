@@ -18,13 +18,8 @@
       <el-container>
         <el-aside width="200px">
           <!-- router属性需要开启之后, 才能进行点击路由, 而且el-menu-item中的index用来标识路径-->
-          <el-menu default-active="/user" class="el-menu-vertical-demo" background-color="#545c64" router>
-            <el-menu-item :index="item.path" v-for="item in routes" :key="item.path">
-              <el-icon>
-                <component :is="item.meta.icon" />
-              </el-icon>
-              <span>{{ item.meta.title }}</span>
-            </el-menu-item>
+          <el-menu default-active="/user" background-color="#545c64" router>
+            <MenuList :children="routes"></MenuList>
           </el-menu>
         </el-aside>
         <el-main><router-view /></el-main>
@@ -35,7 +30,10 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
-const routes = useRouter().getRoutes().filter((item) => item.meta.isShow);
+import { getMenuList } from '@/util/viewUtil';
+import MenuList from '@/components/MenuList.vue';
+
+const routes = getMenuList(useRouter().getRoutes());
 </script>
 
 <style lang="scss" scoped>

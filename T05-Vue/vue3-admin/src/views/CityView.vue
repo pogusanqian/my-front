@@ -26,12 +26,12 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue';
 import { GoodsData } from '@/type/goods';
-import request from '@/request';
+import axiosUtil from '@/util/axiosUtil';
 
 export default defineComponent({
   setup() {
     const data = reactive(new GoodsData());
-    request.get('/goods').then((res) => {
+    axiosUtil.get('/goods').then((res) => {
       data.goodsList = res.data.rows;
     });
     const onSubmit = () => {

@@ -4,6 +4,11 @@ import LoginView from '@/views/LoginView.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
+    path: '/login',
+    name: 'login',
+    component: LoginView
+  },
+  {
     path: '/',
     name: 'home',
     component: HomeView,
@@ -12,29 +17,63 @@ const routes: Array<RouteRecordRaw> = [
         path: 'user',
         name: 'user',
         meta: {
-          isShow: true,
-          title: '用户列表',
-          icon: 'User'
+          menuTitle: '用户信息',
+          menuIcon: 'User'
         },
         component: () => import(/* webpackChunkName: "user" */ '@/views/UserView.vue')
       },
       {
-        path: 'goods',
-        name: 'goods',
+        path: 'location',
+        name: 'location',
         meta: {
-          isShow: true,
-          title: '商品列表',
-          icon: 'Goods'
+          menuTitle: '区域信息',
+          menuIcon: 'Location'
         },
-        // 注意这里路由是进行了异步加载, 并且单独打了一个chunk
-        component: () => import(/* webpackChunkName: "goods" */ '@/views/GoodsView.vue')
+        children: [
+          {
+            path: 'city',
+            name: 'city',
+            meta: {
+              menuTitle: '城市',
+            },
+            component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
+          },
+          {
+            path: 'province',
+            name: 'province',
+            meta: {
+              menuTitle: '省份',
+            },
+            component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
+          },
+          {
+            path: 'school',
+            name: 'school',
+            meta: {
+              menuTitle: '学校信息',
+            },
+            children: [
+              {
+                path: 'beijingschool',
+                name: 'beijingschool',
+                meta: {
+                  menuTitle: '北京大学',
+                },
+                component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
+              },
+              {
+                path: 'henanschool',
+                name: 'henanschool',
+                meta: {
+                  menuTitle: '河南大学',
+                },
+                component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
+              },
+            ]
+          }
+        ]
       }
     ]
-  },
-  {
-    path: '/login',
-    name: 'login',
-    component: LoginView
   }
 ];
 
