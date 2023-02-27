@@ -2,6 +2,7 @@ module.exports = {
   root: true,
   env: {
     node: true,
+    // 解决vue3中defineProps全局变量的问题
     'vue/setup-compiler-macros': true
   },
   extends: [
@@ -13,11 +14,8 @@ module.exports = {
     ecmaVersion: 2020
   },
   globals: {
-    $ref: "readonly",
-    $computed: "readonly",
-    $shallowRef: "readonly",
-    $customRef: "readonly",
-    $toRef: "readonly"
+    // 解决vue3中不能使用$ref的问题, 注意还需要在tsconfig.json的type进行引入; 在env中设置'vue/ref-macros': true不起作用 
+    $ref: "readonly"
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

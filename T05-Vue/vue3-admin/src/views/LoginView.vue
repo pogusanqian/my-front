@@ -41,8 +41,7 @@ const rules = {
     { min: 5, message: '最少五位', trigger: 'blur' }
   ]
 };
-
-const submitForm = async (formEl: FormInstance | undefined) => {
+async function submitForm(formEl: FormInstance | undefined) {
   if (!formEl) return;
   // 校验form表单, 如果form表单没有通过校验, 便会抛出异常, 终止程序
   await formEl.validate();
@@ -52,7 +51,7 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   jsEncrypt.setPublicKey(publicKey);
   const password = jsEncrypt.encrypt(Date.now() + form.password);
   // 发起登录请求
-  const res = await axiosUtil.post('/login', {name: form.name, password});
+  const res = await axiosUtil.post('/login', { name: form.name, password });
   // 存储token
   localStorage.setItem('token', res.data.token);
   // 跳转首页

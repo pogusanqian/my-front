@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header>
+      <el-header class="header">
         <el-row :gutter="20">
           <el-col :span="4">
             <img src="@/assets/logo.png" class="logo" />
@@ -16,13 +16,13 @@
       </el-header>
 
       <el-container>
-        <el-aside width="200px">
+        <el-aside class="aside">
           <!-- router属性需要开启之后, 才能进行点击路由, 而且el-menu-item中的index用来标识路径-->
-          <el-menu default-active="/user" background-color="#545c64" router>
+          <el-menu class="menu" default-active="/user" router background-color="#545c64">
             <MenuList :children="routes"></MenuList>
           </el-menu>
         </el-aside>
-        <el-main><router-view /></el-main>
+        <el-main class="main"><router-view /></el-main>
       </el-container>
     </el-container>
   </div>
@@ -37,25 +37,30 @@ const routes = getMenuList(useRouter().getRoutes());
 </script>
 
 <style lang="scss" scoped>
-// el-header是element组件中的元素
-.el-header {
-  height: 80px;
+.header {
+  height: 8vh;
   background: #666;
 
   .logo {
-    height: 80px;
+    height: 8vh;
   }
 
   h2,
   .logout {
-    height: 80px;
+    height: 8vh;
     text-align: center;
-    line-height: 80px;
+    line-height: 8vh;
     color: #fff;
   }
 }
 
-.el-menu {
-  height: calc(100vh - 80px);
+.aside {
+  width: 10vw;
+  .menu {
+    height: calc(100vh - 8vh);
+  }
+}
+.main{
+  height: calc(100vh - 8vh);
 }
 </style>
