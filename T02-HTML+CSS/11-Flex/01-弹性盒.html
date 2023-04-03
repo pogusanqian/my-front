@@ -1,104 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
 
-        ul {
-            width: 800px;
-            border: 10px red solid;
-            margin-bottom: 30px;
-            display: flex;
-        }
+      ul {
+        /* width: 800px; */
+        border: 10px red solid;
+        margin-bottom: 30px;
+        display: flex;
+      }
 
-        li {
-            width: 100px;
-            height: 100px;
-        }
+      li {
+        width: 100px;
+        height: 100px;
+      }
 
-        .uu2 {
-            flex-direction: column-reverse
-        }
+      .yellow {
+        background-color: yellow;
+      }
+      .blue {
+        background-color: blue;
+      }
+      .green {
+        background-color: green;
+      }
 
-        .uu1>li:first-child,
-        .uu2>li:first-child {
-            background-color: blue;
-        }
-
-        .uu1>li:nth-child(2),
-        .uu2>li:nth-child(2) {
-            background-color: yellow;
-        }
-
-        .uu1>li:last-child,
-        .uu2>li:last-child {
-            background-color: green;
-        }
-
-        .uu3>li:first-child {
-            background-color: blue;
-            flex-grow:3;
-        }
-
-        .uu3>li:nth-child(2) {
-            background-color: yellow;
-            flex-grow:2;
-        }
-
-        .uu3>li:last-child {
-            background-color: green;
-            flex-grow:0;
-        }
-
-        .uu4>li:first-child {
-            width: 600px;
-            background-color: blue;
-            flex-shrink:1;
-        }
-
-        .uu4>li:nth-child(2) {
-            width: 600px;
-            background-color: yellow;
-            flex-shrink:1;
-        }
-
-        .uu4>li:last-child {
-            width: 600px;
-            background-color: green;
-            flex-shrink:1;
-        }
-
-        .uu5>li:first-child {
-            width: 600px;
-            background-color: blue;
-            flex-shrink:0;
-        }
-
-        .uu5>li:nth-child(2) {
-            width: 600px;
-            background-color: yellow;
-            flex-shrink:0;
-        }
-
-        .uu5>li:last-child {
-            width: 600px;
-            background-color: green;
-            flex-shrink:0;
-        }
+      .flex-direction {
+        flex-direction: column;
+      }
     </style>
-</head>
+  </head>
 
-
-<!-- 
+  <!-- 
     flex(弹性盒, 伸缩盒)是CSS中的又一种布局手段, 它主要用来代替浮动来完成页面的布局
     flex可以使元素具有弹性, 让元素可以跟随页面的大小的改变而改变
     要使用弹性盒, 必须先将一个元素设置为弹性容器
@@ -125,43 +67,43 @@
     当父元素有多余空间的时, 子元素会按照指定的比例进行扩充
         flex-grow 指定弹性元素的伸展的系数(为0时不变)
             0: 默认值, 不做任何伸展, 显示元素的原本大小
-            1. 按1比例伸展
+            1. 按1比例伸展; 子元素只要有一个元素是伸展的, 就能将整个父元素填满
         flex-shrink 指定弹性元素的收缩系数
-            0: 表示不做任何收缩, 显示元素的原本大小
+            0: 表示不做任何收缩, 显示元素的原本大小;
             1: 默认值, 按1比例收缩
+            如果元素不进行收缩, 那么子元素便有可能从父元素溢出; 就算设置了元素收缩, 如果基数太大, 也有可能溢出
     只有设置元素的缩放系数之后, 才会铺满弹性容器; 
 -->
 
-<body>
-    <ul class="uu1">
-        <li></li>
-        <li></li>
-        <li></li>
+  <body>
+    <ul>
+      <li class="blue">1</li>
+      <li class="yellow"></li>
+      <li class="green"></li>
     </ul>
 
-    <ul class="uu2">
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul class="flex-direction">
+      <li class="blue"></li>
+      <li class="yellow"></li>
+      <li class="green"></li>
     </ul>
 
-    <ul class="uu3">
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul>
+      <li class="blue"></li>
+      <li class="yellow" style="flex-grow: 2; margin: 0 50px;"></li>
+      <li class="green"></li>
     </ul>
 
-    <ul class="uu4">
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul>
+      <li class="blue" style="width: 1000px; flex-shrink: 1"></li>
+      <li class="yellow" style="flex-shrink: 1"></li>
+      <li class="green" style="flex-shrink: 1"></li>
     </ul>
 
-    <ul class="uu5">
-        <li></li>
-        <li></li>
-        <li></li>
+    <ul>
+      <li class="blue" style="width: 800px; flex-shrink: 0"></li>
+      <li class="yellow" style="width: 800px; flex-shrink: 0"></li>
+      <li class="green" style="width: 800px; flex-shrink: 1"></li>
     </ul>
-</body>
-
+  </body>
 </html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html add="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+    <style>
+      .outer {
+        width: 400px;
+        height: 400px;
+        overflow: auto;
+      }
+
+      .inner {
+        width: 800px;
+        height: 800px;
+        background: green;
+      }
+
+      /* 滚动条 */
+      ::-webkit-scrollbar {
+        width: 20px; /* 纵向滚动条 宽度 */
+        height: 15px; /* 横向滚动条 高度 */
+        background: pink; /* 整体背景 */
+        border-radius: 10px; /* 整体圆角 */
+      }
+      /* 滚动条两端的按钮 */
+      ::-webkit-scrollbar-button {
+        width: 30px;
+        height: 20px;
+        background: black;
+        border-radius: 10px;
+      }
+      /* 外层轨道 */
+      ::-webkit-scrollbar-track {
+        background: rgb(57, 19, 161);
+      }
+      /* 内层轨道，它会覆盖外层轨道的样式。 */
+      ::-webkit-scrollbar-track-piece {
+        background-color: red;
+      }
+      /* 滑块 */
+      ::-webkit-scrollbar-thumb {
+        background: #bec5ca;
+        min-height: 50px;
+        min-width: 50px;
+        border-radius: 10px; 
+      }
+      /* 6,边角，两个滚动条交汇处 */
+      ::-webkit-scrollbar-corner {
+        background: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="outer">
+      <div class="inner"></div>
+    </div>
+  </body>
+
+  <script>
+    document.querySelector('.inner').textContent = 'Hello\n'.repeat(100);
+  </script>
+</html>

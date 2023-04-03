@@ -1,4 +1,5 @@
 import { reactive, onMounted, onBeforeUnmount } from 'vue';
+
 export default function () {
 	let point = reactive({
 		x: 0,
