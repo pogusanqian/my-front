@@ -1,10 +1,18 @@
 const { defineConfig } = require('@vue/cli-service');
+const path = require('path');
+const fs = require('fs');
 
 module.exports = defineConfig({
   transpileDependencies: true,
   // 开发服务器设置
   devServer: {
-    port: 3000
+    host: 'localhost',
+    port: 3000,
+    https: {
+      key: fs.readFileSync('./src/assets/crts/server.key'),
+      cert: fs.readFileSync('./src/assets/crts/server.crt'),
+      passphrase: 'server'
+    }
   },
   // webpack配置
   configureWebpack: {
@@ -18,9 +26,12 @@ module.exports = defineConfig({
   },
   // vue3语法糖全局引入配置
   chainWebpack: (config) => {
-    config.module.rule('vue').use('vue-loader').tap((options) => ({
-      ...options,
-      reactivityTransform: true
-    }));
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        reactivityTransform: true
+      }));
   }
 });

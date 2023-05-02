@@ -34,42 +34,9 @@ const routes: Array<RouteRecordRaw> = [
             path: 'city',
             name: 'city',
             meta: {
-              menuTitle: '城市',
+              menuTitle: '城市'
             },
-            component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
-          },
-          {
-            path: 'province',
-            name: 'province',
-            meta: {
-              menuTitle: '省份',
-            },
-            component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
-          },
-          {
-            path: 'school',
-            name: 'school',
-            meta: {
-              menuTitle: '学校信息',
-            },
-            children: [
-              {
-                path: 'beijingschool',
-                name: 'beijingschool',
-                meta: {
-                  menuTitle: '北京大学',
-                },
-                component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
-              },
-              {
-                path: 'henanschool',
-                name: 'henanschool',
-                meta: {
-                  menuTitle: '河南大学',
-                },
-                component: () => import(/* webpackChunkName: "city" */ '@/views/CityView.vue')
-              },
-            ]
+            component: () => import('@/views/CityView.vue')
           }
         ]
       }
