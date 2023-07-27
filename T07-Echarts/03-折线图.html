@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>
+  </head>
+  <body>
+    <!-- 准备dom容器 -->
+    <div id="main" style="width: 800px; height: 800px"></div>
+  </body>
+
+  <script>
+    const myChart = echarts.init(document.getElementById('main'), null, { renderer: 'svg' });
+    let originData = [...Array(60)].map((item) => 0);
+
+    setInterval((item) => {
+      originData.push(Math.floor(Math.random() * 100));
+      if (originData.length === 120) {
+        originData = originData.splice(60);
+      }
+      const option = {
+        xAxis: {
+          show: false,
+          axisLabel: false,
+          data: [],
+        },
+        yAxis: {
+          show: false,
+        },
+        series: [
+          {
+            data: originData,
+            type: 'line',
+            smooth: true,
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }, 1000);
+  </script>
+</html>
