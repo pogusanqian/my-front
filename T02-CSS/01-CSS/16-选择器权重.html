@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* 
+        选择器权重:
+            内联样式(1000) > id选择器(100) > 类和伪类选择器(10) > 元素选择器(1) > 通配选择器(0) > 继承样式
+
+        比较选择器时, 需要将选择器的优先级进行相加, 谁大用谁; 如 #s1001 的优先级就没有p#s1001的优先级高
+        分组选择器时单独计算的, 因为他们每一个都是单独设置的;
+        注意, 选择器比重累加, 不能超过其数量级; 如类选择器, 在加也不能查过100
+        可以通过!important变成最高优先级, 比内联样式还要高(一般情况下不要用)
+
+        内联样式         1,0,0,0
+        id选择器         0,1,0,0
+        类和伪类         0,0,1,0
+        元素选择器       0,0,0,1
+        统配选择器       0,0,0,0
+    */
+
+    p#s1001 {
+      color: indigo;
+    }
+
+    #s1001 {
+      color: grey;
+    }
+
+    .haha {
+      color: red;
+    }
+
+    p {
+      color: green;
+    }
+
+    div {
+      color: blue !important;
+    }
+  </style>
+
+  <body>
+    <p class="haha" id="s1001">好好学习, 天天向上</p>
+    <div style="color: red">hello, world</div>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <script type="text/javascript">
+      /*
+       * Location: 该对象中封装了浏览器的地址栏的信息, 可以填写相对路径或网址跳跳转页面
+       *    assign(): 用来跳转到其他的页面, 作用和直接修改location一样
+       *    reload(): 用于重新加载当前页面, 作用和刷新按钮一样; 如果在方法中传递一个true, 则会强制清空缓存刷新页面
+       *    replace(): 可以使用一个新的页面替换当前页面,调用完毕也会跳转页面, 不会生成历史记录, 所以不能使用回退按钮回退
+       */
+      window.onload = function () {
+        console.log(location);
+        document.getElementById('btn').onclick = () => (location = 'http://www.baidu.com');
+      };
+    </script>
+  </head>
+
+  <body>
+    <h1>Location</h1>
+    <button id="btn">去百度</button>
+  </body>
+</html>

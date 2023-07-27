@@ -32,17 +32,17 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'js/main.js',
-    path: resolve(__dirname, 'build')
+    path: resolve(__dirname, 'build'),
   },
   module: {
     rules: [
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader']
+        use: ['style-loader', 'css-loader', 'less-loader'],
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -50,7 +50,6 @@ module.exports = {
         options: {
           limit: 8 * 1024,
           name: '[hash:10].[ext]',
-          // url-loader默认使用的es6模块解析, 而html-loader引入图片的方式commonjs
           esModule: false,
           outputPath: 'imgs',
         },
@@ -58,7 +57,7 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        loader: 'html-loader'
+        loader: 'html-loader',
       },
       {
         exclude: /\.(html|js|css|less|jpg|png|gif)$/,
@@ -69,13 +68,13 @@ module.exports = {
           esModule: false,
         },
         type: 'javascript/auto',
-      }
-    ]
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
-    })
+      template: './src/index.html',
+    }),
   ],
   devServer: {
     static: {
@@ -84,7 +83,6 @@ module.exports = {
     compress: true,
     port: 3000,
     open: true,
-    // 开启HMR功能(当修改了webpack配置，新配置要想生效，必须重新webpack服务)
     hot: true,
   },
 };

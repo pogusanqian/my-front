@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'main.js',
-    path: resolve(__dirname, 'build')
+    path: resolve(__dirname, 'build'),
   },
   module: {
     rules: [
@@ -18,7 +18,7 @@ module.exports = {
         loader: 'eslint-loader',
         options: {
           fix: true,
-        }
+        },
       },
       /**
         js兼容性处理 babel-loader @babel/core 
@@ -40,28 +40,28 @@ module.exports = {
             [
               '@babel/preset-env',
               {
-                useBuiltIns: 'usage',                 // 按需加载
-                corejs: { version: 3 },               // 指定core-js版本
+                useBuiltIns: 'usage', // 按需加载
+                corejs: { version: 3 }, // 指定core-js版本
                 // 指定兼容性做到哪个版本浏览器
                 targets: {
                   chrome: '60',
                   firefox: '60',
                   ie: '9',
                   safari: '10',
-                  edge: '17'
-                }
-              }
-            ]
-          ]
-        }
-      }
-    ]
+                  edge: '17',
+                },
+              },
+            ],
+          ],
+        },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
       collapseWhitespace: true,
-      removeComments: true
-    })
+      removeComments: true,
+    }),
   ],
 };

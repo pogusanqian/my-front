@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Insert title here</title>
+    <style type="text/css">
+      #areaDiv {
+        border: 1px solid black;
+        width: 300px;
+        height: 50px;
+        margin-bottom: 10px;
+      }
+
+      #showMsg {
+        border: 1px solid black;
+        width: 300px;
+        height: 20px;
+      }
+    </style>
+    <script type="text/javascript">
+      window.onload = function () {
+        const areaDiv = document.getElementById('areaDiv');
+        const showMsg = document.getElementById('showMsg');
+        /**
+         * 1. 在IE8及以下, 响应函数被触发时, 浏览器不会传递事件对象, 而是将事件对象作为window对象的属性保存的
+         * 2. 老版火狐浏览器不会将事件放到window.event属性中, 而是作为参数传递了过来
+         * 3. clientX可以获取鼠标指针的水平坐标
+         *    cilentY可以获取鼠标指针的垂直坐标
+         */
+        areaDiv.onmousemove = (event) => {
+          event = event || window.event; // 最新版的浏览器是不用考虑这种兼容性问题的
+          showMsg.innerHTML = `X: ${event.clientX}, Y:${event.clientY}`;
+        };
+      };
+    </script>
+  </head>
+
+  <body>
+    <div id="areaDiv"></div>
+    <div id="showMsg"></div>
+  </body>
+</html>

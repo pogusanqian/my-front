@@ -12,15 +12,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     name: 'home',
     component: HomeView,
+    redirect: '/user',
     children: [
       {
         path: 'user',
         name: 'user',
         meta: {
           menuTitle: '用户信息',
-          menuIcon: 'User'
+          menuIcon: 'user'
         },
-        component: () => import(/* webpackChunkName: "user" */ '@/views/UserView.vue')
+        component: () => import('@/views/UserView.vue')
       },
       {
         path: 'location',
@@ -47,6 +48,15 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
+});
+
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    to.path === '/login' ? router.push('/') : next();
+  } else {
+    to.path === '/login' ? next() : router.push('/login');
+  }
 });
 
 export default router;

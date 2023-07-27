@@ -9,7 +9,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'js/[name].[contenthash:10].js',
-    path: resolve(__dirname, 'build')
+    path: resolve(__dirname, 'build'),
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -17,11 +17,11 @@ module.exports = {
     }),
     // 告诉webpack哪些库不参与打包, 同时使用时的名称也得变
     new webpack.DllReferencePlugin({
-      manifest: resolve(__dirname, 'dll/manifest.json')
+      manifest: resolve(__dirname, 'dll/manifest.json'),
     }),
     // 将某个文件打包输出去, 并在html中自动引入该资源
     new AddAssetHtmlWebpackPlugin({
-      filepath: resolve(__dirname, 'dll/jquery.js')
-    })
+      filepath: resolve(__dirname, 'dll/jquery.js'),
+    }),
   ],
 };

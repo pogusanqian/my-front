@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>01-初识jQuery</title>
+    <!-- <script src="./sources/jQuery/jquery-3.6.0.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 原生JS操作DOM -->
+    <script>
+      window.onload = function () {
+        var btn = document.getElementById('btn1');
+        btn.onclick = function () {
+          alert(document.getElementById('username').value);
+        };
+      };
+    </script>
+
+    <!-- 
+    jQuery不同版本的差异:
+      1.x版本: 兼容老版本IE, 文件更大
+      2.x版本: 部分IE8以及一下不支持, 文件小, 执行效率高
+      3.x版本: 完全不支持IE8及一下版本, 提供了新的API; 另外提供了不包含ajax和effects两个模块的版本
+   -->
+    <script>
+      $(function () {
+        $('#btn2').click(function () {
+          alert($('#username').val());
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    用户名: <input type="text" id="username" />
+    <button id="btn1">确定(原生版)</button>
+    <button id="btn2">确定(jQuery版)</button>
+  </body>
+</html>

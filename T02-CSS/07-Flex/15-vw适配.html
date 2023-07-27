@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css" />
+    <style>
+      html {
+        /* font-size: calc((100/700)*16vw); */
+        font-size: 1px;
+      }
+
+      div {
+        width: 375px;
+        height: 375px;
+        background-color: #bfa;
+      }
+
+      .box2 {
+        width: calc(100rem / 16);
+        height: calc(100rem / 16);
+        background-color: red;
+      }
+    </style>
+  </head>
+  <!--
+    vw表示的是视口的宽度(viewport width), vw这个单位永远相当于视口宽度进行计算
+    100vw = 一个视口的宽度
+    1vw = 1%视口宽度
+
+    vm适配的原理
+        设置html的font-size=**vm, 然后容器的宽度使用rem来表示; rem表示的是字体的宽度
+        网页中的字体最小是12px, 如果设置的字体比12px小, 浏览器会自动将像素转换成12px, 但是可以设置网页中的字体是0px
+
+    使用vm适配的时候, 必须知道移动端视口的宽度是多少
+    375px = 100vm
+    1px = 100/375vm
+    1vm = 375/100px
+
+    根据不同的屏幕大小(视口大小), 设置根元素的字体大小, 然后所有的布局元素又是和根元素的字体大小有关; 那么此时我们布局是会动态变化的
+ -->
+
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </body>
+</html>

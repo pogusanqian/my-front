@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box1 {
+        width: 300px;
+        height: 300px;
+        background-color: orange;
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <!-- 
+    将元素设置成表格, 然后通过align设置成垂直居中; 
+    注意元素的水平方向居中, 只能通过margin: 0 auto设置
+ -->
+  <body>
+    <div class="box1">
+      <div class="box2"></div>
+    </div>
+  </body>
+</html>

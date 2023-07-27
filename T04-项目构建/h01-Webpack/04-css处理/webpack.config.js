@@ -7,7 +7,7 @@ const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 process.env.NODE_ENV = 'development';
 
 /**
- * 打包的样式放在js中的缺点:
+ * 打包的css样式放在js中的缺点:
  *      - js文件特别大, 加载起来比较慢
  *      - 由于css样式放在js中, 渲染样式时, 需要先加载js, 会造成渲染不及时, 出现闪屏的现象
  */
@@ -27,19 +27,19 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           // CSS兼容性处理postcss-loader postcss-preset-env, 在package.json中配置browerlist属性, 配置css兼容性
-          'postcss-loader'
-        ]
-      }
-    ]
+          'postcss-loader',
+        ],
+      },
+    ],
   },
   plugins: [
-    new HtmlWebpackPlugin({ template: './src/index.html', }),
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
     // 将css文件从打包的js文件中提取出来
     new MiniCssExtractPlugin({
       // 设置打包后, css文件的存放路径
-      filename: 'css/main.css'
+      filename: 'css/main.css',
     }),
     // 压缩css
     new OptimizeCssAssetsWebpackPlugin(),
-  ]
+  ],
 };

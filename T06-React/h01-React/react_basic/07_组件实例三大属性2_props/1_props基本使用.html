@@ -29,7 +29,7 @@
 		// 单个参数传递
 		ReactDOM.render(<Person name="jerry" age={19} sex="男" />, document.getElementById('test1'));
 
-		// 对象参数传递: js语法是不能直接展开对象, 这里之所以能展开使react单独做了处理
+		// 对象参数传递
 		const p = { name: '老刘', age: 18, sex: '女' };
 		ReactDOM.render(<Person {...p} />, document.getElementById('test2'));
 	</script>

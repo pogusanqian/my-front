@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(() => {
+        // html=innerHtml, text=innerText, val=value
+        console.log($('div').html(), $('div').text(), $('div').val());
+
+        // attr(): 操作属性值为非布尔值的属性, prop(): 专门操作属性值为布尔值的属性
+        $('div').attr('name', 'zhangsan');
+        $('div').attr({ age: 23, sex: true }); // 这里设置的是一个true字符串
+        $('select option').eq(2).prop('selected', true);
+
+        // eq()根据下标查找元素, index()根据元素查找下标
+      });
+    </script>
+  </head>
+
+  <body>
+    <div>
+      <span>张三的歌</span>
+    </div>
+    <div>你好, 世界</div>
+    <div>hello world</div>
+
+    <select>
+      <option value="1">北京</option>
+      <option value="2">天津</option>
+      <option value="3">河北</option></select
+    ><br />
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        position: absolute;
+      }
+
+      .box1 {
+        background-color: red;
+        z-index: 10;
+      }
+
+      .box2 {
+        background-color: blue;
+        left: 50px;
+        top: 50px;
+        z-index: 5;
+      }
+
+      .box3 {
+        background-color: green;
+        margin-top: 300px;
+        left: 100px;
+        top: 100px;
+        z-index: 3;
+      }
+
+      .box4 {
+        left: 100px;
+        top: 100px;
+        background-color: grey;
+        z-index: 1;
+      }
+    </style>
+  </head>
+
+  <!-- 
+    定位元素可以使用z-index设置那个元素在上面, index的值越大, 越在上面
+    父子元素时, 子元素永远在父元素之上, 和z-index无关
+ -->
+
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3">
+      父元素
+      <div class="box4">子元素</div>
+    </div>
+  </body>
+</html>

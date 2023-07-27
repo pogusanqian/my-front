@@ -6,4 +6,4 @@ console.log('===index执行=====');
  */
 import(/*webpackChunkName: 'show'*/ './show')
   .then((mod) => mod.show())
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));

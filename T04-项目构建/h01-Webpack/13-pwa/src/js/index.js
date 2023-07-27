@@ -1,6 +1,5 @@
 console.log('===index执行=====');
 
-
 // 注册serviceWorker, 处理兼容性问题
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {

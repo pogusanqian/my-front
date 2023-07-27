@@ -56,11 +56,13 @@ const routes = getMenuList(useRouter().getRoutes());
 
 .aside {
   width: 10vw;
+
   .menu {
     height: calc(100vh - 8vh);
   }
 }
-.main{
+
+.main {
   height: calc(100vh - 8vh);
 }
 </style>

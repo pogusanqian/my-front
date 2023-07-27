@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css" />
+
+    <style>
+      .img-list {
+        width: 590px;
+        height: 470px;
+        margin: 100px auto;
+        position: relative;
+      }
+
+      .img-list li {
+        position: absolute;
+      }
+
+      /* 通过图层等级来显示图层 */
+      .img-list li:nth-child(1) {
+        z-index: 1;
+      }
+
+      .point-list {
+        position: absolute;
+        z-index: 10;
+        left: 20px;
+        bottom: 40px;
+      }
+
+      .point-list > a {
+        /* 使用float:left, 直接将竖着排序改成了横着排序, 而且还将行内元素改成了块元素 */
+        float: left;
+        width: 10px;
+        height: 10px;
+        /* transparent表示的是完全透明的颜色, rgba(0,0,0,0)*/
+        border: 2px solid transparent;
+        /* 设置元素的背景（背景图片或颜色）是否延伸到边框、内边距盒子、内容盒子下面,这里设置的是背景颜色只铺满content区域*/
+        background-clip: content-box;
+        margin: 0 2px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+
+      .point-list > a.active,
+      .point-list > a:hover {
+        background-color: #fff;
+        /* 注意这个border会将通用设置的border进行一次覆盖 */
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+    </style>
+  </head>
+  <!-- 
+    需求: 创建了一个静态的轮播图, 图片上需要具有轮播按钮
+        1. 先加载img图片
+        2. 生成轮播点, 并进行布局
+        3. 第一个轮播点处于活动状态(覆盖已有边框, 并改变背景颜色)
+           注意这里要给所有的a都添加上边框, 不然他们不相等
+           只要保持活动状态的边框颜色和普通状态的边框不一样就行了
+ -->
+
+  <body>
+    <ul class="img-list">
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/1.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/2.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/3.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/4.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/5.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/6.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/7.jpg" /></a>
+      </li>
+      <li>
+        <a href="javascript:;"><img src="../source/imgs/font-imgs/05/8.jpg" /></a>
+      </li>
+
+      <div class="point-list">
+        <a href="javascript:;" class="active"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+        <a href="javascript:;"></a>
+      </div>
+    </ul>
+  </body>
+</html>

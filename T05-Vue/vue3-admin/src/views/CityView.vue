@@ -9,7 +9,7 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="query">查询</el-button>
-        <el-button type="primary" @click="dialogFlag = true">添加</el-button>
+        <el-button type="primary" @click="showEditPage(null)">添加</el-button>
       </el-form-item>
     </el-form>
 
@@ -22,9 +22,9 @@
       <el-table-column prop="operator" label="修改者" />
       <el-table-column prop="updateTime" label="创建时间" />
       <el-table-column fixed="right" label="操作">
-        <template #default>
-          <el-button type="primary" @click="update">修改</el-button>
-          <el-button type="danger" @click="destory">删除</el-button>
+        <template #default="scope">
+          <el-button type="primary" @click="showEditPage(scope.row.id)">修改</el-button>
+          <el-button type="danger" @click="destory(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -52,7 +52,7 @@
         <el-input v-model="form.operator" />
       </el-form-item>
       <el-form-item label-width="40%">
-        <el-button size="large" type="primary" @click="create">提交</el-button>
+        <el-button size="large" type="primary" @click="editData">提交</el-button>
       </el-form-item>
     </el-form>
   </el-dialog>
@@ -80,6 +80,9 @@ let pageSize = $ref(10);
 let pageSizes = [10, 50, 100];
 // 查询参数
 let params = $ref<Record<string, string | number>>({ name: '', code: '' });
+// 是否是编辑页
+let isEdit = false;
+let editId = 0;
 
 // 编辑页数据
 const formRef = $ref<FormInstance>();
@@ -113,6 +116,16 @@ const rules = {
 // 初始化查询数据
 query();
 
+async function showEditPage(id: number | null) {
+  if (id) {
+    const { data } = await axiosUtil.get(`${url}/${id}`);
+    form = data;
+    editId = id;
+    isEdit = true;
+  }
+  dialogFlag = true;
+}
+
 /**
  * 查询数据方法
  */
@@ -143,16 +156,23 @@ async function query() {
 /**
  * 添加数据
  */
-async function create() {
+async function editData() {
   try {
     loadingFlag = true;
-    await axiosUtil.post(url, form);
+    if (isEdit) {
+      await axiosUtil.put(`${url}/${editId}`, form);
+      editId = 0;
+      isEdit = false;
+    } else {
+      await axiosUtil.post(url, form);
+    }
     // 清空form数据
     form = JSON.parse(JSON.stringify(originForm));
     // 关闭dialogFlag
     dialogFlag = false;
+    await query();
     // 弹出提示消息
-    ElMessage.success('提交数据成功')
+    ElMessage.success('修改数据成功');
     loadingFlag = false;
   } catch (err) {
     loadingFlag = false
@@ -160,18 +180,13 @@ async function create() {
 }
 
 /**
- * 修改数据
- */
-function update() {
-  console.log('=======')
-}
-
-/**
  * 删除数据
  */
-function destory() {
-  console.log('==========')
+async function destory(id: number) {
+  await axiosUtil.delete(`${url}/${id}`);
+  await query();
 }
+
 </script>
 
 <style lang="scss" scoped>

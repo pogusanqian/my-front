@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>京东顶部导航栏</title>
+    <link rel="stylesheet" href="../source/css/reset.css" />
+    <link rel="stylesheet" href="../source/awesome/css/all.css" />
+
+    <style>
+      .body {
+        font: 12px 'Microsoft YaHei', sans-serif;
+      }
+
+      .top-bar-wrapper {
+        height: 30px;
+        line-height: 30px;
+        font-size: 12px;
+        border: 1px solid #ddd;
+        background-color: #e3e4e5;
+      }
+
+      .top-bar {
+        width: 1190px;
+        margin: auto;
+        position: relative;
+      }
+
+      /* 在top-bar中设置字体颜色会被超链接默认的字体颜色覆盖的, 只能单独领出来超链接a进行设置 */
+      .top-bar a {
+        color: #999;
+        text-decoration: none;
+      }
+
+      /* 超链接的字体颜色不能只单单的指定类, 还需要把标签名带上, 这里指定范围ul .red-light也行 */
+      .red-light,
+      a.red-light,
+      a:hover {
+        color: red;
+      }
+
+      .location {
+        float: left;
+      }
+
+      .shortcut {
+        float: right;
+      }
+
+      .shortcut li {
+        float: left;
+      }
+
+      .shortcut .line {
+        float: right;
+        width: 1px;
+        height: 10px;
+        background-color: rgb(204, 202, 202);
+        margin: 12px 12px;
+      }
+
+      .location .current-city {
+        padding: 0 10px;
+        /* 这个如果放在hover事件中, 会有一种抖动的交互效果 */
+        border: 1px solid rgb(204, 204, 204);
+        border-bottom: none;
+        position: relative;
+        z-index: 999;
+      }
+
+      .location:hover .current-city {
+        background-color: white;
+      }
+
+      .location .city-list {
+        display: none;
+        width: 320px;
+        height: 436px;
+        background-color: white;
+        border: 1px solid rgb(204, 204, 204);
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+        /* 通常而言, 弹框我们都会设置成相对定位, 使其脱离文档流, 不影响其他元素的布局 */
+        position: absolute;
+        top: 30px;
+        z-index: 99;
+      }
+
+      /* 当鼠标移入到location时，让city-list显示 */
+      .location:hover > .city-list {
+        display: block;
+      }
+    </style>
+  </head>
+  <!-- 
+    1. 整体布局分析, 将整个导航栏分成了四个div
+    2. 调整宏观的样式
+    3. 添加对应的icon图表
+    3. 调整微观的样式, 字体大小, 颜色, 各种行间距
+    4. 布局下拉框; 先设置动态弹框, 然后在设置具体的布局
+
+    这里有一点没有设计好, 分割线其实按照li来设置最好(老师就是这样设计的), 这样就一次浮动就可以了; 但是这个设计的是将分割线放到了li里面
+    body中的font-size为什么没有被top-bar-wrapper类继承呢?
+
+
+    父元素只要设定了高度, 不管子元素是不是浮动元素, 都不会造成父元素的高度塌陷
+ -->
+
+  <body>
+    <div class="top-bar-wrapper">
+      <div class="top-bar">
+        <div class="location">
+          <div class="current-city">
+            <i class="fas fa-map-marker-alt red-light"></i>
+            <a href="javascript:;">北京</a>
+          </div>
+
+          <div class="city-list"></div>
+        </div>
+
+        <div class="shortcut">
+          <ul>
+            <li><a href="javascript:;">你好, 请登录</a></li>
+            <li>
+              <a href="javascript:;" class="red-light">免费注册</a>
+              <i class="line"></i>
+            </li>
+            <li>
+              <a href="javascript:;">我的订单</a>
+              <i class="line"></i>
+            </li>
+            <li>
+              <a href="javascript:;">我的京东</a>
+              <i class="fas fa-angle-down"></i>
+              <i class="line"></i>
+            </li>
+            <li>
+              <a href="javascript:;">京东会员</a>
+            </li>
+            <li>
+              <a href="javascript:;" class="red-light">企业采购</a>
+              <i class="fas fa-angle-down"></i>
+              <i class="line"></i>
+            </li>
+            <li>
+              <a href="javascript:;">客户服务</a>
+              <i class="line"></i>
+            </li>
+            <li>
+              <a href="javascript:;">网站导航</a>
+              <i class="fas fa-angle-down"></i>
+              <i class="line"></i>
+            </li>
+            <li>
+              <a href="javascript:;">手机京东</a>
+              <i class="line"></i>
+            </li>
+            <li>
+              <a href="javascript:;">无障碍阅读</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -12,7 +12,7 @@ const app = createApp(App);
 // 注册路由
 app.use(router);
 // 引入Element组件
-app.use(ElementPlus, { locale: zhCn })
+app.use(ElementPlus, { locale: zhCn });
 // 全局引入Element中的ICON
 Object.entries(ElementPlusIconsVue).forEach(([key, component]) => app.component(key, component));
 // 挂载容器

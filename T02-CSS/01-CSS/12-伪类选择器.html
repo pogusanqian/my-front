@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      /* 将li的i第一个元素设置成红色, 即使后来张三前面添加了几个元素, 也是会动态变化 */
+      /* ul>li:first-child {
+            color: red;
+        } */
+
+      /* ul>li:last-child {
+            color: green ;
+        } */
+
+      /* 给定参数, 选择指定的元素; 如果查找不到, 便不会进行设置
+           首先找到所有当前元素的所有兄弟元素, 然后按照位置先后顺序从1开始排序, 最后选出第一个元素
+           所以ul>li:nth-child(1)选择得第一个元素是span;
+           lu>li和nth-child(1)相当于是并集选择器了, 由于是null, 便不会给任何元素设置css样式
+        */
+      ul > li:nth-child(1) {
+        color: blue;
+      }
+
+      /* 给定特殊值n, n表示0到正无穷, 可以用2n(even)表示偶数, 2n+1(odd)表示奇数 */
+      /* ul>li:nth-child(even) {
+            color:cadetblue ;
+        } */
+
+      /* 只查找同类元素, 也就是只找第一个li元素, 而不会找span元素 */
+      /* ul>li:first-of-type{ 
+            color: cadetblue;
+        } */
+
+      /* nth-of-type设置的是同类元素的的第一个, 所以设置的是张三 */
+      /* ul>li:nth-of-type(1){
+            color: royalblue;
+        } */
+
+      /* 不给第三个设置颜色, 其他的都设置颜色 */
+      /* ul>li:not(:nth-child(3)){
+            color: red;
+        } */
+    </style>
+  </head>
+
+  <body>
+    <ul>
+      <span>李二</span>
+      <li>张三</li>
+      <li>李四</li>
+      <li>王五</li>
+      <li>赵六</li>
+    </ul>
+  </body>
+</html>

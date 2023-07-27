@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .outer {
+        width: 800px;
+        height: 800px;
+        background-color: bisque;
+      }
+      .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        float: left;
+        margin: 50px;
+      }
+      .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+        float: left;
+      }
+      .box3 {
+        width: 200px;
+        height: 200px;
+        background-color: green;
+      }
+    </style>
+  </head>
+  <!-- 
+    设置浮动之后, 元素会从文档流中脱离出来, 所以下方的box3会代替浮动元素的位置
+    浮动,定位元素的margin不会和其他任何元素的margin发生重叠,包括它的子元素
+   -->
+  <body>
+    <div class="outer">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <div class="box3"></div>
+    </div>
+  </body>
+</html>

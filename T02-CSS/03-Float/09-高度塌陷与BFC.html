@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>高度塌陷</title>
+    <style>
+      .outer {
+        border: red 10px solid;
+        /* float: left; */
+        /* display: inline-block; */
+        overflow: hidden;
+      }
+      .inner {
+        width: 200px;
+        height: 200px;
+        background-color: grey;
+        float: left;
+      }
+    </style>
+
+    <!-- 
+        父容器的高度默认是有子元素撑开的, 但是如果子元素设置成了浮动, 那么子元素就不在能撑起父元素的高度了
+
+        解决高度塌陷的方案就两种
+            一是主动设置父元素的高度, 这样父元素的高度变不在由子元素撑开
+            二是BFC(block formatting context)块级格式化环境
+      
+        BFC是一个CSS中的隐藏属性, 可以为一个元素开启BFC, 开启BFC后改元素会变成一个独立的布局区域
+            1. 开启BFC的元素, 不会被浮动元素覆盖
+            2. 开启BFC的元素, 子元素和父元素外边距不会重叠
+            3. 开启BFC的元素可以包含浮动的子元素
+        
+        开启BFC
+            1. 设置成浮动, 但是浮动元素不在继承父元素的宽度, 而是由其内部的元素撑开
+            2. 将元素设置成行内块, 同样也会造成宽度丢失
+            3. 将overfolw元素的属性设置成非visiable, 通常设置成hidden, 因为scroll会出现滚动条
+    -->
+  </head>
+  <body>
+    <div class="outer">
+      <div class="inner"></div>
+    </div>
+  </body>
+</html>

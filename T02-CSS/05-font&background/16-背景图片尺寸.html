@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 500px;
+        height: 500px;
+        background-color: #bfa;
+        margin: 10px;
+      }
+
+      .box1 {
+        background-image: url('../source/imgs/font-imgs/06/2.jpg');
+        background-size: 100px 100px;
+      }
+
+      .box2 {
+        background-image: url('../source/imgs/font-imgs/06/2.jpg');
+        background-size: cover;
+      }
+
+      .box3 {
+        background-image: url('../source/imgs/font-imgs/06/2.jpg');
+        background-size: contain;
+      }
+
+      .box4 {
+        background-image: url('../source/imgs/font-imgs/06/2.jpg');
+        background-size: auto 100px;
+      }
+
+      .box5 {
+        background-image: url('../source/imgs/font-imgs/06/2.jpg');
+        background-size: auto;
+      }
+      .box6 {
+        background-image: url('../source/imgs/font-imgs/06/2.jpg');
+        background-size: 100%;
+      }
+    </style>
+  </head>
+
+  <!-- 
+    background-size 设置背景图片的大小
+        通过值设置: 第一个值表示宽度 第二个值表示高度 如果只写一个，则第二个值默认是auto
+           设置的是CSS像素,所以图片会完整的展示在图片中, 只不过宽高的缩放比例是不一样的, 可能宽缩小了5倍, 但是长度是10倍
+        cover: 缩放背景图片以完全覆盖背景区, 可能背景图片部分看不见
+            宽高都是按照相同的比例进行缩放的
+        contain: 缩放背景图片以完全装入背景区, 可能背景区部分空白(没有设置no-repeat的话, 便会出现平铺)
+            宽高都是按照相同的比例进行缩放的
+        所以div框的宽高比例必须和图片的宽高比例相同, 才能将图片完整的展示在div框中
+        背景图片无法填满时, 直接设置成100%
+ -->
+
+  <body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <div class="box3">3</div>
+    <div class="box4">4</div>
+    <div class="box5">5</div>
+    <div class="box6">6</div>
+    <div class="box7">7</div>
+  </body>
+</html>

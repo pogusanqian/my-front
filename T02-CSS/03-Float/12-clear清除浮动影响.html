@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        font-size: 30px;
+      }
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        float: left;
+      }
+
+      .box2 {
+        width: 400px;
+        height: 400px;
+        background-color: blue;
+        float: right;
+      }
+
+      .box3 {
+        width: 200px;
+        height: 200px;
+        background-color: grey;
+        clear: both;
+      }
+    </style>
+  </head>
+  <!-- 
+    clear: 属性可以清除浮动元素对此元素的影响, 原理就是给此元素添加上了对应的上外边距, 使其不收浮动元素影响(浏览器查看不到这个外边距)
+        left 清除左侧浮动元素对当前元素的影响
+        right 清除右侧浮动元素对当前元素的影响
+        both 清除左浮动和右浮动的影响(最大影响的那个)
+   -->
+  <body>
+    <div class="box1">1</div>
+    <div class="box2">2</div>
+    <!-- 浮动元素是不能覆盖文字元素的, box1浮动之后, 将box3进行了覆盖, 但是浮动元素是不能覆盖文字的, 所以3能正常显示 -->
+    <div class="box3">3</div>
+  </body>
+</html>

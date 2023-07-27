@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>防抖</title>
+  </head>
+  <!-- 节流(throttle): 指联塑触发事件, 但在n秒内指执行一次 -->
+  <script>
+    function throttle(fn, delay) {
+      let lastTime = 0;
+      return function () {
+        const nowTime = Date.now();
+        if (nowTime - lastTime > delay) {
+          fn.apply(this);
+          lastTime = nowTime;
+        }
+      };
+    }
+
+    function handle() {
+      console.log(Math.random());
+    }
+
+    window.addEventListener('scroll', throttle(handle, 1000));
+  </script>
+
+  <body>
+    <div style="width: 100px; height: 10000px; background-color: blue"></div>
+  </body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>深度遍历</title>
+  </head>
+  <!-- 
+  深度遍历(DFS): 从上至下, 对每一个分支一直往下遍历, 直至分支结束; 然后返回上一层, 对上一层的右子树继续深搜, 直至一棵树完全遍历;
+        数据结构: 适合用栈结构做数据遍历(先进后出), JS使用数组模拟栈
+        特性: 不保留全部节点, 占用空间少; 有回溯操作(即进栈出栈操作), 运行速度满
+
+  广度遍历(BFS): 从左至右, 对树的每一层节点进行遍历, 当前层遍历结束后, 对下一层开始遍历
+        数据结构: 适合用队列
+        特性: 保留全部节点, 占用空间大, 没有回溯操作, 运行速度快
+ -->
+
+  <script>
+    // 深度遍历
+    function dfs(node) {
+      // 栈对象, 用来先进后出
+      const stackList = [];
+      // 存储节点对象
+      const nodeList = [];
+      if (node) {
+        stackList.push(node);
+        while (stackList.length) {
+          const item = stackList.pop();
+          nodeList.push(item);
+          const children = item.children; // 获取子节点
+          for (let i = children.length - 1; i >= 0; i--) {
+            stackList.push(children[i]);
+          }
+        }
+      }
+      return nodeList;
+    }
+
+    function bfs(node) {
+      const stackList = [];
+      const nodeList = [];
+      if (node) {
+        stackList.push(node);
+        while (stackList.length) {
+          const item = stackList.shift();
+          nodeList.push(item);
+          const children = item.children; // 获取子节点
+          for (let i = 0; i <= children.length - 1; i++) {
+            stackList.push(children[i]);
+          }
+        }
+      }
+      return nodeList;
+    }
+
+    window.onload = () => {
+      const root = document.querySelector('#root');
+      console.log(dfs(root));
+      console.log(bfs(root));
+    };
+  </script>
+  <body>
+    <div id="root">
+      <div class="1">
+        <div class="1-1">
+          <div class="1-1-1"></div>
+          <div class="1-1-2"></div>
+          <div class="1-1-3"></div>
+        </div>
+        <div class="1-2"></div>
+        <div class="1-3"></div>
+      </div>
+      <div class="2">
+        <div class="2-1"></div>
+        <div class="2-2">
+          <div class="2-2-1"></div>
+          <div class="2-2-2"></div>
+          <div class="2-2-3"></div>
+        </div>
+        <div class="2-3"></div>
+      </div>
+      <div class="3">
+        <div class="3-1"></div>
+        <div class="3-2"></div>
+        <div class="3-3"></div>
+      </div>
+    </div>
+  </body>
+</html>

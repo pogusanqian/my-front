@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- 
+      外边距不会影响盒子的大小, 但是会影响盒子的位置; margin的默认值是0
+      也可以设置四个值, 也有top, left, bottom, right四个单独的属性值
+      值得注意的一点是, top, left是移动自身的, 而bottom, right是移动相邻元素的(这个和浏览器布局设置有关, 默认都是放到了左上角)
+   -->
+  <style>
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: #bfa;
+      border: 10px blue solid;
+      padding: 20px;
+      margin-top: 100px;
+      margin-left: 100px;
+      margin-bottom: 100px;
+    }
+
+    .box2 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+      border: 10px rgb(187, 255, 0) solid;
+      padding: 20px;
+      /* 设置成负值, 可以超相反的方向运动; 而且会把底层的box元素进行覆盖 */
+      margin-top: -10px;
+      margin-left: 100px;
+    }
+  </style>
+
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </body>
+</html>

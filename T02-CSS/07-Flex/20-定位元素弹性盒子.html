@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://meyerweb.com/eric/tools/css/reset/reset200802.css" />
+    <title>Document</title>
+    <style>
+      .outer {
+        height: 100vh;
+        background-color: rgb(123, 214, 11);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .inner {
+        width: 200px;
+        height: 200px;
+        background-color: blueviolet;
+        margin-bottom: 30px;
+      }
+
+      .box1 {
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        flex: 1 1 auto;
+      }
+
+      .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+      }
+
+      .box3 {
+        /* width: 100px; */
+        height: 100px;
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="box1">1</div>
+      <div class="box2">2</div>
+      <div class="box3">3</div>
+    </div>
+  </body>
+</html>

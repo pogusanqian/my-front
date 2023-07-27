@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css" />
+    <style>
+      ul {
+        width: 800px;
+        border: 10px red solid;
+        margin-bottom: 30px;
+        display: flex;
+      }
+
+      li {
+        width: 200px;
+        height: 100px;
+        /* flex-basis: 20px; */
+        flex: none;
+      }
+
+      li:first-child {
+        background-color: yellow;
+      }
+
+      li:nth-child(2) {
+        background-color: turquoise;
+      }
+
+      li:nth-child(3) {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <!-- 
+    flex-grow: 增长系数, 默认值是0( 表示不增长), 负值无效;
+    flex-shrink: 缩减系数, 负值无效, 默认值为1(进行缩减) 计算比较复杂, 所见系数和元素大小由关系
+    flex-basis: 指定的是元素在主轴上的基础长度(指定值后, 会导致宽高失效)
+        默认值是auto, 表示参考元素自身的高度或宽度
+        如果主轴是横向的, 则该值指定的就是元素的宽度
+        如果主轴是纵向的, 则该值指定的是就是元素的高度
+
+    flex: 可以统一设置弹性元素的三个值(增长 缩减 基础)
+        initial "flex: 0 1 auto"  元素可以收缩, 但是不会扩展
+        auto  "flex: 1 1 auto"    元素既能收缩, 也能扩展
+        none "flex: 0 0 auto" 元素没有弹性, 既不拉伸,也不缩减
+
+ -->
+  <body>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </body>
+</html>

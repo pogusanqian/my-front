@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- 
+    DOM: document object model
+    document: 表示整个html页面
+    objet: 将网页中的每一个部分都转换成了一个对象, 所以html中的所有标签都可以使用js对象表示
+    model: 模型就是dom树 方便管理管理网页
+
+    节点: 网页中的最基本组成部分
+          文档节点: 整个html文档
+          元素节点: html中的标签, 如<H><P>
+          属性节点: 标签中的属性, 例如id, name, value
+          文本节点: html中的文本内容, 就是双目标签中的内容
+    每一个node节点都有三个值, nodeName, nodeType, nodeValue
+ -->
+
+  <body>
+    <button>按钮</button>
+  </body>
+  <script>
+    console.log(document === window); // false
+    console.log(document === window.document); // true
+
+    // 获取button属性, 并修改text值; getElementById返回的是一个对象, getElementsByTagName返回的是一个数组元素
+    const btns = document.getElementsByTagName('button');
+    console.log(btns[0].innerHTML);
+    btns[0].innerHTML = "I'm Button";
+  </script>
+</html>

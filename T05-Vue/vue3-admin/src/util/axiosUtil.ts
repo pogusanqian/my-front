@@ -26,11 +26,14 @@ axiosUtil.interceptors.request.use(
 axiosUtil.interceptors.response.use(
   (res) => {
     const { code, message, data } = res.data;
-    if (code === 0) { // 成功响应
+    if (code === 0) {
+      // 成功响应
       res.data = data;
       return res;
-    } else { // 错误响应处理
-      if (code === 1001) { // 无效token, 重定向到首页
+    } else {
+      // 错误响应处理
+      if (code === 1001) {
+        // 无效token, 重定向到首页
         location.assign('https://localhost:3000/login');
       } else {
         ElMessage.error(message);

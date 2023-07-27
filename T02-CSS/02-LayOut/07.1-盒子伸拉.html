@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 
+      设置元素伸拉时, 除了设置resize的值之外, 还必须设置orverflow;
+        horizontal: 水平方向拖拽
+        vertical: 垂直方向拖拽
+        both: 水平垂直方向拖拽
+    -->
+    <style>
+      div {
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+        border: 1px solid black;
+        overflow: auto;
+        resize: both;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <div></div>
+  </body>
+</html>

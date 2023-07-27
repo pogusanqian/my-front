@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <script type="module">
+      // 解构导出的变量
+      import { name, myage as age } from './exportRename.js';
+      console.log(name, age);
 
-  <script type="module">
-    // 解构导出的变量
-    import { name, myage as age } from './exportRename.js';
-    console.log(name, age);
+      // *号可以接收导出对象
+      import * as exportObj from './exportRename.js';
+      console.log(exportObj);
 
-    // *号可以接收导出对象
-    import * as exportObj from './exportRename.js';
-    console.log(exportObj);
+      // 使用haha变量接收默认导出属性
+      import haha from './exportRename.js';
+      console.log(haha);
 
+      // 导出默认属性
+      import a from './exportDefault.js';
+      console.log(a);
+    </script>
+  </head>
 
-    // 使用haha变量接收默认导出属性
-    import haha from './exportRename.js';
-    console.log(haha);
-
-    // 导出默认属性
-    import a from './exportDefault.js';
-    console.log(a);
-  </script>
-</head>
-
-<body>
-  <h1>ES6-import导入包</h1>
-</body>
-
+  <body>
+    <h1>ES6-import导入包</h1>
+  </body>
 </html>

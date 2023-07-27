@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Documet</title>
+    <link rel="stylesheet" href="../source/css/reset.css" />
+  </head>
+  <!-- 
+    浏览器默认会给标签一定的默认样式, 如body标签默认有8px的外边距，在真实的项目中, 是要去除掉浏览器的默认样式
+    reset.css直接去除了浏览器的默认样式(通常用这个), normalize.css重新设置了一下默认样式
+   -->
+  <style>
+    .box1 {
+      width: 200px;
+      height: 200px;
+      background-color: burlywood;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+  </style>
+
+  <body>
+    <div class="box1"></div>
+    <p>段落1</p>
+    <p>段落2</p>
+    <p>段落3</p>
+    <ul>
+      <li>张三</li>
+      <li>李四</li>
+      <li>王五</li>
+      <li>赵六</li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css" />
+    <style>
+      ul {
+        width: 800px;
+        border: 10px red solid;
+        margin-bottom: 30px;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      li {
+        width: 300px;
+        height: 100px;
+        flex-shrink: 0;
+      }
+
+      li:first-child {
+        background-color: yellow;
+      }
+
+      li:nth-child(2) {
+        background-color: turquoise;
+      }
+
+      li:nth-child(3) {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <!-- 
+    如果不设置这个属性, 元素不会溢出; 既然不会溢出就不会换行
+    flex-wrap: 设置弹性容器, 是弹性容器内的元素自动换行
+        nowrap 元素不会自动换行(默认值)
+        wrap 元素沿着辅轴方向自动换行
+        wrap-reverse 元素沿着辅轴反方向换行
+
+    flex-flow: row wrap; 简写
+ -->
+  <body>
+    <ul class="uu1">
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </body>
+</html>

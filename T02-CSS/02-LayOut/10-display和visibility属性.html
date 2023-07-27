@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 
+      1.display可以设置元素是行内元素还是块元素, 如将span设置成块元素
+        inline 将元素设置为行内元素
+        block  将元素设置为块元素
+        inline-block 将元素设置为行内块元素, 行内块，既可以设置宽度和高度又不会独占一行; 行内块之间有缝隙
+        table 将元素设置为一个表格
+        none 元素不在页面中显示(完完全全没有, 不占据页面的任何位置)
+
+      2.isibility 用来设置元素的显示状态
+        visible 默认值，元素在页面中正常显示
+        hidden 元素在页面中隐藏 不显示，但是依然占据页面的位置
+     -->
+    <style>
+      #span1 {
+        display: block;
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+      }
+
+      #span2,
+      #span3 {
+        display: inline-block;
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+      }
+
+      .box1,
+      .box2 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+
+      .box1 {
+        /* display: none; */
+        visibility: hidden;
+      }
+    </style>
+  </head>
+
+  <body>
+    <span id="span1">张三</span>
+    <span id="span2">李四</span>
+    <span id="span3">王五</span>
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+  </body>
+</html>

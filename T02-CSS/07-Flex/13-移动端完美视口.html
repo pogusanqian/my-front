@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- 
+        可以通过viewport标签来指定视口的大小(适配), 进而控制css像素与物理像素的实际比例
+        content="widt=375px"指定视口的宽度是375px, device-width 是一个变量, 会自动填写视口的大小
+        initial-scale=1.0: 表示初始化大小为1倍, 和width=device-width的作用是一样的, 都写是为了保险
+     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      .box1 {
+        width: 300px;
+        height: 100px;
+        background-color: red;
+      }
+
+      .box2 {
+        width: 1000px;
+        height: 100px;
+        background-color: yellow;
+      }
+    </style>
+  </head>
+
+  <!-- 
+    移动端默认的视口大小是980px(css像素), 移动端的像素比就是 移动端像素/视口
+    当移动端的物理像素是375px时, 一个css像素等于375/980个物理像素, 这样就会造成网页的缩小
+    当将视口设置成375px时, 一个css像素对应一个物理像素
+
+    适配有什么作用呢?
+        调整视口, 使css像素和物理像素成1:1, 这样一个button在pc浏览器中显示多大, 在手机上就会显示多大(其实会小一点, 手机的物理像素点会更小一点)
+    使用适配后, 还会有什么问题?
+        手机浏览器不能展示网页的全貌了, 因为我们设置的宽度使375px, 需要滑动屏幕展示后面的内容
+
+    不使用适配, 手机浏览器便会将整个html页面显示在手机屏幕中, 因为我们的h5页面时给pc端显示的, 现在全部显示在了手机屏幕中, 所以整个网页就会缩小好多倍;
+    使用适配之后, 相当于将html等比放大到了pc端页面的大小, 但是手机屏幕太小, 显示不全整个网页
+ 
+ -->
+
+  <body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+  </body>
+</html>

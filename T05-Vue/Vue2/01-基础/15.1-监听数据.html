@@ -1,57 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>监听对象</title>
-	<script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
-</head>
-<!-- 
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>监听对象</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.7.6/vue.js"></script>
+  </head>
+  <!-- 
 	监听对象原理: 
 		1. 加工data数据, 形成_data; _data中的每一个属性都来自与data, 只不过_data中的每一个属性都有getter和setter
 		2. 将_data属性添加到vm实例对象上 vm._data = _data
-		3. 将_data中的属性结构到vm上, 注意这里采用的是代理形式, 访问vm.name实际上访问的是vm._data.name
+		3. 将_data中的属性解构到vm上, 注意这里采用的是代理形式, 访问vm.name实际上访问的是vm._data.name
 
 	vue之所以能实现数据改变之后重新渲染dom元素, 就是因为数据有对应的setter方法(数据劫持)
 	更新数组元素时, 只有调用push, pop, shift, unshift, splice, sort, reverse这七个方法, 才能进行响应式更改数据; 这七个方法vue重写了
+	vue2之所以不能监听到数组元素, 是因为vue2采用的是Object.defineProperty()实现了_data的setter, 此方法不能应用于数组
+  vue2不能实现新增属性的监听和删除属性的监听, 也是因为使用的是Object.defineProperty()实现的监听
  -->
 
-<body>
-	<div id="demo">
-		<button @click="addSex"> 添加性别</button>
-		<button @click="updateFriends"> 更新朋友</button><br>
-		<span>姓名: {{student.name}}<br></span>
-		<span>年龄: {{student.age}}<br></span>
-		<span v-if="student.sex">性别: {{student.sex}}<br></span>
-		<span>朋友: {{student.friends}}<br></span>
-	</div>
-
-</body>
-<script>
-	const vm = new Vue({
-		el: '#demo',
-		data: {
-			name: 'Vue',
-			student: {
-				name: '张三',
-				age: 23,
-				friends: ['李四', '王五']
-			}
-		},
-		methods: {
-			addSex() {
-				// this.student.sex = '男'; // 直接添加的sex属性是没有对应的setter, 只能改数据, 不能重新渲染dom
-				this.$set(this.student, 'sex', '男');
-			},
-			updateFriends() {
-				// this.friends[0] = 'lisi'; // 这种更改, 只是更改data, 并不能重新渲染数据
-				// this.$set(this.student, 'friends', ['lisi', 'wangwu']); // 可以整体进行更改
-				this.student.friends.splice(0, 1, 'lisi');
-			}
-		},
-	})
-</script>
-
+  <body>
+    <div id="demo">
+      <button @click="addSex">添加性别</button>
+      <button @click="updateFriends">更新朋友</button><br />
+      <span>姓名: {{student.name}}<br /></span>
+      <span>年龄: {{student.age}}<br /></span>
+      <span v-if="student.sex">性别: {{student.sex}}<br /></span>
+      <span>朋友: {{student.friends}}<br /></span>
+    </div>
+  </body>
+  <script>
+    const vm = new Vue({
+      el: '#demo',
+      data: {
+        name: 'Vue',
+        student: {
+          name: '张三',
+          age: 23,
+          friends: ['李四', '王五'],
+        },
+      },
+      methods: {
+        addSex() {
+          // this.student.sex = '男'; // 直接添加的sex属性是没有对应的setter, 只能改数据, 不能重新渲染dom
+          this.$set(this.student, 'sex', '男');
+        },
+        updateFriends() {
+          // this.friends[0] = 'lisi'; // 这种更改, 只是更改data, 并不能重新渲染数据
+          // this.$set(this.student, 'friends', ['lisi', 'wangwu']); // 可以整体进行更改
+          this.student.friends.splice(0, 1, 'lisi');
+        },
+      },
+    });
+  </script>
 </html>

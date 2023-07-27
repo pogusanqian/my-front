@@ -1,7 +1,7 @@
 <template>
   <div class="login-box">
     <el-form ref="formRef" :model="form" :rules="rules" label-width="60px" class="loginForm">
-      <h2>后台管理系统</h2>
+      <h2>{{ title }}</h2>
       <el-form-item label="账号: " prop="name">
         <el-input v-model="form.name" type="text" />
       </el-form-item>
@@ -24,6 +24,7 @@ import { FormInstance } from 'element-plus';
 import axiosUtil from '@/util/axiosUtil';
 import JSEncrypt from 'jsencrypt';
 
+const title = process.env.VUE_APP_TITLE;
 // useRouter只能在setup函数中调用, 否则返回的就是undefined(this引用问题)
 const router = useRouter();
 const formRef = $ref<FormInstance>();
@@ -49,7 +50,9 @@ async function submitForm(formEl: FormInstance | undefined) {
   const publicKey = process.env.VUE_APP_PUBLIC_KEY;
   const jsEncrypt = new JSEncrypt();
   jsEncrypt.setPublicKey(publicKey);
+  console.log(publicKey)
   const password = jsEncrypt.encrypt(Date.now() + form.password);
+  console.log('============', password)
   // 发起登录请求
   const res = await axiosUtil.post('/login', { name: form.name, password });
   // 存储token

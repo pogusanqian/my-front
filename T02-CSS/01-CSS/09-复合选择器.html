@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 
+            选择既是p元素的, 并且类名为class1元素, 这种用法被称作交集选择器
+            注意: 
+                交集选择器中如果有元素选择器, 则一定要以元素选择器开头 
+         */
+      p.class1 {
+        color: red;
+      }
+
+      /* 
+            并集选择器(分组选择器): 一次性选择了多个元素
+        */
+      h1,
+      span {
+        color: sienna;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>古诗词</h1>
+    <p class="class1">纵我不往, 子宁不来</p>
+    <p class="class2">女子有行, 远父母兄弟</p>
+    <span>窗前明月光, 疑是地上霜</span>
+    <span>落霞与孤鹜齐飞, 秋水共长天一色</span>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../source/css/reset.css" />
+    <link rel="stylesheet" href="../source/awesome/css/all.css" />
+    <style>
+      body {
+        /* i表填引入的是字体图片, 所以可以在body中统一设置字体 */
+        font-size: 100px;
+        font-family: 'Font Awesome 5 Free', sans-serif;
+      }
+
+      li::before {
+        /* 通过伪元素来设置图标字体, content中设置了字体的编码, 需要使用\隔开 */
+        content: '\f0f3';
+        color: red;
+      }
+    </style>
+  </head>
+  <!-- 
+    图标字体: 网页中经常会有一些图片样式, 可有通过图片来引入图片, 但是图片本身比较大, 并且容易失真; 所以就有了一种图标字体按, 可以用字体表示图片
+    fontawesome是一个图片字体库, 只有fas和fab两种前缀是免费的
+  -->
+  <body>
+    <!-- i表填是区分普通文本的文本标签, 这种方式不需要设置字体 -->
+    <i class="fas fa-home"></i>
+    <!-- 用实体来表示图片, 注意这里需要设置字体族; &#x;表示一种字体编码格式 -->
+    <i>&#xf0f3;</i>
+
+    <ul>
+      <li>锄禾日当午</li>
+      <li>汗滴禾下土</li>
+      <li>谁知盘中餐</li>
+      <li>粒粒皆辛苦</li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>防抖</title>
+  </head>
+  <!-- 防抖(debounce): 指事件在出发的n秒内只执行一次, 如果在n秒内又触发了事件, 则会重新计算函数执行事件 -->
+  <script>
+    function debounce(fn, delay) {
+      let timer = null;
+      return function () {
+        if (timer) clearTimeout(timer);
+        timer = setTimeout(fn, delay);
+      };
+    }
+
+    // 处理函数
+    function submit() {
+      console.log('======Submit======');
+    }
+
+    function handle() {
+      console.log(Math.random());
+    }
+
+    window.onload = () => {
+      // 滚动事件防抖
+      window.addEventListener('scroll', debounce(handle, 1000));
+      // 点击事件防抖
+      document.querySelector('#btn2').onclick = debounce(submit, 1000);
+    };
+  </script>
+  <body>
+    <!-- debounce调用一次就可以了, 我们这样调用导致每次都有一个新的timer, 无法形成闭包 -->
+    <button id="btn1" onclick="debounce(submit, 1000)()">错误防抖</button>
+    <button id="btn2">正确防抖</button>
+    <div style="width: 100px; height: 10000px; background-color: blue"></div>
+  </body>
+</html>

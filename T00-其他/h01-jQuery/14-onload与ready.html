@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>14-onload与ready</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- 
+    window.onload: 
+      包括页面的图片加载完后才会回调(晚)
+      只能有一个监听回调
+    $(document).ready()
+      页面加载完就回调(早)
+      可以有多个监听回调
+   -->
+    <script>
+      window.onload = function () {
+        console.log('onload', $('#logo').width());
+      };
+      window.onload = function () {
+        console.log('onload2', $('#logo').width());
+      };
+
+      $(function () {
+        console.log('ready', $('#logo').width());
+      });
+      $(function () {
+        console.log('ready2', $('#logo').width());
+      });
+
+      $('#logo').on('load', function () {
+        console.log('img load', $(this).width());
+      });
+    </script>
+  </head>
+
+  <body>
+    <img id="logo" src="http://pic1.win4000.com/wallpaper/2020-05-26/5ecce665b8483.jpg" />
+  </body>
+</html>

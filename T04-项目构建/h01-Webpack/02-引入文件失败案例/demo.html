@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 直接引入less文件时, 样式是不起作用的; html中需要引入的是css文件 -->
+    <link rel="stylesheet" href="./demo.less" />
+    <script src="./demo.js"></script>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <!-- 直接引入less文件时, 样式是不起作用的; html中需要引入的是css文件 -->
-  <link rel="stylesheet" href="./demo.less">
-  <script src="./demo.js"></script>
-</head>
-
-<body>
-  <p>不适用webpack打包, 直接引入文件</p>
-</body>
-
+  <body>
+    <p>不适用webpack打包, 直接引入文件</p>
+  </body>
 </html>

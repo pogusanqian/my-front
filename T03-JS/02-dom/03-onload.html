@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const btn = document.getElementById('btn1');
+        btn.onclick = function () {
+          alert('好好学习, 天天向上');
+        };
+      };
+    </script>
+  </head>
+  <!-- 
+    html在加载的时候, 是按照从上到下的顺序执行的, 如果没有给window对象添加onload属性, 那么我们的button按钮是添加不上onclick事件的
+    onload事件: 在整个页面及所有依赖资源如样式表和图片都已完成加载时触发
+    DOMContentLoaded事件: 只要页面DOM加载完成就触发, 无需等待依赖资源的加载
+  -->
+  <body>
+    <button id="btn1">按钮</button>
+  </body>
+</html>

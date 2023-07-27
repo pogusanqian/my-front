@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.onload = function () {
+        const btn1 = document.getElementById('btn1');
+        const btn2 = document.getElementById('btn2');
+
+        // 第二个点击事件会把第一个点击事件覆盖掉
+        btn1.onclick = () => console.log('btn1的第一个点击事件');
+        btn1.onclick = () => console.log('btn1的第二个点击事件');
+
+        /**
+         * addEventListener(): 为元素绑定事件, 同时为一个元素的相同事件同时绑定多个响应函数
+         * IE8及一下不支持此函数, 可以使用attachEvent()函数替换
+         */
+        btn2.addEventListener('click', () => console.log('btn2的第一个点击事件'));
+        btn2.addEventListener('click', () => console.log('btn2的第二个点击事件'));
+      };
+    </script>
+  </head>
+
+  <body>
+    <button id="btn1">事件覆盖</button>
+    <button id="btn2">事件追加</button>
+  </body>
+</html>
