@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01-link标签动态引入</title>
+    <link rel="stylesheet" href="./style/common.css" />
+    <link rel="stylesheet" class="theme" href="./style/light.css" />
+  </head>
+
+  <script>
+    const themeLink = document.querySelector('.theme');
+
+    function changeTheme(theme) {
+      themeLink.href = `./style/${theme}.css`;
+    }
+  </script>
+  <!-- 
+    优点:
+      实现了按需加载，提高了首屏加载时的性能
+      
+    缺点:
+        动态加载样式文件，如果文件过大网络情况不佳的情况下可能会有加载延迟，导致样式切换不流畅
+        如果主题样式表内定义不当，会有优先级问题
+        各个主题样式是写死的，后续针对某一主题样式表修改或者新增主题也很麻烦
+  -->
+
+  <body>
+    <div style="display: flex; justify-content: center">
+      <button onclick="changeTheme('light')">light</button>
+      <button onclick="changeTheme('dark')" style="margin-left: 20px">dark</button>
+    </div>
+    <hr />
+
+    <div class="box theme">
+      <p>hello</p>
+    </div>
+  </body>
+</html>

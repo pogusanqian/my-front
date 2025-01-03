@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02-类名切换主题</title>
+    <link rel="stylesheet" href="./style/common.css" />
+    <link rel="stylesheet" href="./style/dark.css" />
+    <link rel="stylesheet" href="./style/light.css" />
+  </head>
+
+  <script>
+    function changeTheme(theme) {
+      document.body.className = theme;
+    }
+
+    window.onload = () => {
+      changeTheme('light');
+    };
+  </script>
+
+<!-- 
+  优点:
+      不用重新加载样式文件，在样式切换时不会有卡顿
+
+  缺点:
+    首屏加载时会牺牲一些时间加载样式资源
+    如果主题样式表内定义不当，也会有优先级问题
+    各个主题样式是写死的，后续针对某一主题样式表修改或者新增主题也很麻烦
+-->
+  <body>
+    <div style="display: flex; justify-content: center">
+      <button onclick="changeTheme('light')">light</button>
+      <button onclick="changeTheme('dark')" style="margin-left: 20px">dark</button>
+    </div>
+    <hr />
+
+    <div class="box">
+      <p>hello</p>
+    </div>
+  </body>
+</html>
