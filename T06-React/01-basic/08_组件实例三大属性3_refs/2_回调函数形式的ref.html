@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2_回调函数形式的ref</title>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="test"></div>
+    <script type="text/babel">
+      class Demo extends React.Component {
+        showData = () => alert(this.input1.value)
+        showData2 = () => alert(this.input2.value)
+        render() {
+          return (
+            <div>
+              {/*ref的回调函数接收的是正是input节点(此节点唯一), 然后又给组件实例对象添加了使用input1属性*/}
+              <input ref={(currentNode) => (this.input1 = currentNode)} type="text" placeholder="点击按钮提示数据" />
+              &nbsp;
+              <button onClick={this.showData}>点我提示左侧的数据</button>&nbsp;
+              <input
+                onBlur={this.showData2}
+                ref={(currentNode) => (this.input2 = currentNode)}
+                type="text"
+                placeholder="失去焦点提示数据"
+              />
+              &nbsp;
+            </div>
+          )
+        }
+      }
+      ReactDOM.render(<Demo />, document.getElementById('test'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2_受控组件</title>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+  </head>
+
+  <!-- 受控组件: 通过state属性获取属性值, 一般都需要监听表单字段(表单字段变, state字段也变), vue中动态实现了双向绑定, argumen需要手写-->
+
+  <body>
+    <div id="test"></div>
+
+    <script type="text/babel">
+      class Login extends React.Component {
+        state = {
+          username: '',
+          password: ''
+        }
+
+        saveUsername = (event) => this.setState({ username: event.target.value })
+        savePassword = (event) => this.setState({ password: event.target.value })
+
+        handleSubmit = (event) => {
+          event.preventDefault() //阻止表单提交
+          const { username, password } = this.state
+          alert(`你输入的用户名是：${username},你输入的密码是：${password}`)
+        }
+
+        render() {
+          return (
+            <form onSubmit={this.handleSubmit}>
+              用户名：
+              <input onChange={this.saveUsername} type="text" name="username" />
+              密码：
+              <input onChange={this.savePassword} type="password" name="password" />
+              <button>登录</button>
+            </form>
+          )
+        }
+      }
+      ReactDOM.render(<Login />, document.getElementById('test'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>3_回调ref中回调执行次数的问题</title>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="test"></div>
+    <script type="text/babel">
+      class Demo extends React.Component {
+        state = { isHot: false }
+        showInfo = () => alert(this.input1.value)
+        changeWeather = () => this.setState({ isHot: !this.state.isHot })
+
+        // 非内敛回调, 只调用一次
+        saveInput = (c) => {
+          console.log('=======非内敛=======', c)
+          this.input1 = c
+        }
+
+        render() {
+          return (
+            <div>
+              <h2>今天天气很{this.state.isHot ? '炎热' : '凉爽'}</h2>
+              {/*ref如果是内敛回调, 再组件更新时(不包含初始化), 该函数会调用两次, 第一次传递的是null, 第二次才是dom节点*/}
+              <input
+                ref={(c) => {
+                  this.input1 = c
+                  console.log('====内敛=====', c)
+                }}
+                type="text"
+              />
+
+              {/*<input ref={this.saveInput} type="text" />*/}
+
+              <br />
+              <br />
+              <button onClick={this.showInfo}>点我提示输入的数据</button>
+              <button onClick={this.changeWeather}>点我切换天气</button>
+            </div>
+          )
+        }
+      }
+      ReactDOM.render(<Demo />, document.getElementById('test'))
+    </script>
+  </body>
+</html>

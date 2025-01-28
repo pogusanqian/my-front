@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>2_使用js创建虚拟DOM</title>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+  </head>
+
+  <body>
+    <div id="test"></div>
+    <script type="text/javascript">
+      // 这种语法不推荐使用, 如果标签嵌套标签会很乱
+      const VDOM = React.createElement('h1', { id: 'title' }, React.createElement('span', {}, 'Hello,React'))
+      ReactDOM.render(VDOM, document.getElementById('test'))
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>对props进行限制</title>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/javascript" src="../js/prop-types.js"></script>
+  </head>
+
+  <body>
+    <div id="test1"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+
+    <script type="text/babel">
+      class Person extends React.Component {
+        static propTypes = {
+          name: PropTypes.string.isRequired,
+          sex: PropTypes.string,
+          age: PropTypes.number
+        }
+
+        static defaultProps = {
+          sex: '男',
+          age: 18
+        }
+
+        render() {
+          // props属性不能直接修改, 可以copy出来, 进行修改
+          const { name, age, sex } = this.props
+          return (
+            <ul>
+              <li>姓名：{name}</li>
+              <li>性别：{sex}</li>
+              <li>年龄：{age + 1}</li>
+            </ul>
+          )
+        }
+      }
+      ReactDOM.render(<Person name="jerry" />, document.getElementById('test1'))
+    </script>
+  </body>
+</html>
