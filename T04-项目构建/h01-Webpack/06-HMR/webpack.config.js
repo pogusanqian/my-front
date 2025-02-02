@@ -7,25 +7,25 @@
   webpack5中devServer的hot值默认是true, webpack4中hot的默认值是false
 */
 
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   mode: 'development',
   entry: ['./src/js/index.js', './src/index.html'],
   output: {
     filename: 'js/main.js',
-    path: resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'build')
   },
   module: {
     rules: [
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader', 'less-loader'],
+        use: ['style-loader', 'css-loader', 'less-loader']
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        use: ['style-loader', 'css-loader']
       },
       {
         test: /\.(jpg|png|gif)$/,
@@ -35,13 +35,13 @@ module.exports = {
           name: '[hash:10].[ext]',
           // url-loader默认使用的es6模块解析, 而html-loader引入图片的方式commonjs
           esModule: false,
-          outputPath: 'imgs',
+          outputPath: 'imgs'
         },
-        type: 'javascript/auto',
+        type: 'javascript/auto'
       },
       {
         test: /\.html$/,
-        loader: 'html-loader',
+        loader: 'html-loader'
       },
       {
         exclude: /\.(html|js|css|less|jpg|png|gif)$/,
@@ -49,26 +49,26 @@ module.exports = {
         options: {
           name: '[hash:10].[ext]',
           outputPath: 'media',
-          esModule: false,
+          esModule: false
         },
-        type: 'javascript/auto',
-      },
-    ],
+        type: 'javascript/auto'
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
-    }),
+      template: './src/index.html'
+    })
   ],
   devServer: {
     static: {
-      directory: resolve(__dirname, 'build'),
+      directory: resolve(__dirname, 'build')
     },
     compress: true,
     port: 3000,
     open: true,
     // 开启HMR功能(当修改了webpack配置，新配置要想生效，必须重新webpack服务)
-    hot: true,
+    hot: true
   },
-  target: 'web',
-};
+  target: 'web'
+}

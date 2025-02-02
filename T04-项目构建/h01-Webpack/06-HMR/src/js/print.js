@@ -1,1 +1,1 @@
-console.log('print.js被加载了ssss');
+console.log('print.js被加载了ssss')

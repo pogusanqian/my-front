@@ -1,4 +1,4 @@
-console.log('===index执行=====');
+console.log('===index执行=====')
 
 /**
  * 动态引入文件, 使show.js文件单独打包成一个chunk
@@ -6,4 +6,4 @@ console.log('===index执行=====');
  */
 import(/*webpackChunkName: 'show'*/ './show')
   .then((mod) => mod.show())
-  .catch((err) => console.error(err));
+  .catch((err) => console.error(err))

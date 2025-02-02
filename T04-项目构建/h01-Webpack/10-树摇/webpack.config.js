@@ -6,12 +6,12 @@
  *    sideEffects: ["*.css", "*.less"], 不对css资源做树摇
  */
 
-const { resolve } = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { resolve } = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-process.env.NODE_ENV = 'production';
+process.env.NODE_ENV = 'production'
 
 module.exports = {
   mode: 'production',
@@ -19,7 +19,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'js/built.[contenthash:10].js',
-    path: resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'build')
   },
   module: {
     rules: [
@@ -29,18 +29,18 @@ module.exports = {
         enforce: 'pre',
         loader: 'eslint-loader',
         options: {
-          fix: true,
-        },
+          fix: true
+        }
       },
       {
         oneOf: [
           {
             test: /\.css$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
           },
           {
             test: /\.less$/,
-            use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader'],
+            use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader']
           },
           {
             test: /\.js$/,
@@ -55,14 +55,14 @@ module.exports = {
                     corejs: { version: 3 },
                     targets: {
                       chrome: '60',
-                      firefox: '50',
-                    },
-                  },
-                ],
+                      firefox: '50'
+                    }
+                  }
+                ]
               ],
               // 开启babel缓存
-              cacheDirectory: true,
-            },
+              cacheDirectory: true
+            }
           },
           {
             test: /\.(jpg|png|gif)/,
@@ -71,38 +71,38 @@ module.exports = {
               limit: 8 * 1024,
               name: '[hash:10].[ext]',
               outputPath: 'imgs',
-              esModule: false,
+              esModule: false
             },
-            type: 'javascript/auto',
+            type: 'javascript/auto'
           },
           {
             test: /\.html$/,
-            loader: 'html-loader',
+            loader: 'html-loader'
           },
           {
             exclude: /\.(js|css|less|html|jpg|png|gif)/,
             loader: 'file-loader',
             options: {
               outputPath: 'media',
-              esModule: false,
+              esModule: false
             },
-            type: 'javascript/auto',
-          },
-        ],
-      },
-    ],
+            type: 'javascript/auto'
+          }
+        ]
+      }
+    ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'css/built.[contenthash:10].css',
+      filename: 'css/built.[contenthash:10].css'
     }),
     new OptimizeCssAssetsWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       minify: {
         collapseWhitespace: true,
-        removeComments: true,
-      },
-    }),
-  ],
-};
+        removeComments: true
+      }
+    })
+  ]
+}

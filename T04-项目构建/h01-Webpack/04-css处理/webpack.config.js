@@ -1,10 +1,10 @@
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin');
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
 
 // 设置nodejs环境变量, 浏览器的兼容性browlist, 默认是production
-process.env.NODE_ENV = 'development';
+process.env.NODE_ENV = 'development'
 
 /**
  * 打包的css样式放在js中的缺点:
@@ -16,7 +16,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'main.js',
-    path: resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'build')
   },
   module: {
     rules: [
@@ -27,19 +27,19 @@ module.exports = {
           MiniCssExtractPlugin.loader,
           'css-loader',
           // CSS兼容性处理postcss-loader postcss-preset-env, 在package.json中配置browerlist属性, 配置css兼容性
-          'postcss-loader',
-        ],
-      },
-    ],
+          'postcss-loader'
+        ]
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     // 将css文件从打包的js文件中提取出来
     new MiniCssExtractPlugin({
       // 设置打包后, css文件的存放路径
-      filename: 'css/main.css',
+      filename: 'css/main.css'
     }),
     // 压缩css
-    new OptimizeCssAssetsWebpackPlugin(),
-  ],
-};
+    new OptimizeCssAssetsWebpackPlugin()
+  ]
+}

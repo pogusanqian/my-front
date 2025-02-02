@@ -1,4 +1,4 @@
 // 直接引入的是node_modules中的包
-import $ from 'jquery';
+import $ from 'jquery'
 
-console.log($);
+console.log($)

@@ -1,5 +1,5 @@
-const { resolve } = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { resolve } = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
   // 生成环境(production)下, 会自动压缩js代码
@@ -7,7 +7,7 @@ module.exports = {
   entry: './src/js/index.js',
   output: {
     filename: 'main.js',
-    path: resolve(__dirname, 'build'),
+    path: resolve(__dirname, 'build')
   },
   module: {
     rules: [
@@ -15,10 +15,12 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
+        // 设置js文件先执行eslint检查, 再执行babel-loader
         loader: 'eslint-loader',
+        enforce: 'pre',
         options: {
-          fix: true,
-        },
+          fix: true
+        }
       },
       /**
         js兼容性处理 babel-loader @babel/core 
@@ -48,20 +50,20 @@ module.exports = {
                   firefox: '60',
                   ie: '9',
                   safari: '10',
-                  edge: '17',
-                },
-              },
-            ],
-          ],
-        },
-      },
-    ],
+                  edge: '17'
+                }
+              }
+            ]
+          ]
+        }
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
       collapseWhitespace: true,
-      removeComments: true,
-    }),
-  ],
-};
+      removeComments: true
+    })
+  ]
+}

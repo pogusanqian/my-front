@@ -9,7 +9,7 @@
 
 - 优化打包构建速度
   - oneOf
-  - babel缓存
+  - babel 缓存
   - 多进程打包
   - externals
   - dll

@@ -1,4 +1,4 @@
-console.log('===index执行=====');
+console.log('===index执行=====')
 
 /**
  * 正常加载: 可以认为是并行加载(同一时间加载多个文件), 效率较低
@@ -6,5 +6,5 @@ console.log('===index执行=====');
  * 预加载: 等其他资源加载完毕，浏览器空闲了，再偷偷加载资源; webpackPrefetch: 设置预加载
  */
 document.getElementById('btn').onclick = () => {
-  import(/*webpackChunkName: 'show', webpackPrefetch: true*/ './show').then((mod) => mod.show());
-};
+  import(/*webpackChunkName: 'show', webpackPrefetch: true*/ './show').then((mod) => mod.show())
+}

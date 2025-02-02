@@ -1,5 +1,5 @@
-console.log('====show加载====');
+console.log('====show加载====')
 
 export function show() {
-  console.log('=========show===========');
+  console.log('=========show===========')
 }

@@ -2,7 +2,7 @@
   "curly": true,
   "eqeqeq": true,
   "eqnull": true,
-  "expr" : true,
+  "expr": true,
   "immed": true,
   "newcap": true,
   "noempty": true,
@@ -14,5 +14,5 @@
   "boss": false,
   "undef": true,
   "asi": false,
-  "predef": [ "define", "BMap", "angular", "BMAP_STATUS_SUCCESS"]
+  "predef": ["define", "BMap", "angular", "BMAP_STATUS_SUCCESS"]
 }
